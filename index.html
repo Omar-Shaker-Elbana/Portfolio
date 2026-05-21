@@ -588,26 +588,67 @@
       border-radius: 2px;
       overflow: hidden;
     }
+    /* FIX 1: skill-fill uses width transition instead of scaleX so IntersectionObserver works on all groups */
     .skill-fill {
       height: 100%;
       background: linear-gradient(90deg, var(--mint), rgba(100,255,210,0.5));
       border-radius: 2px;
-      transform-origin: left;
-      transform: scaleX(0);
-      transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0%;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .skill-fill.gold-fill {
       background: linear-gradient(90deg, var(--gold), rgba(255,209,102,0.5));
     }
-    .skill-fill.animate { transform: scaleX(1); }
+    .skill-fill.animate {
+      width: var(--skill-width, 0%);
+    }
 
     /* ─── PROJECTS ───────────────────────────────────────────── */
+    /* FIX 2: Redesigned project grid layout for better visual hierarchy */
     #projects { background: var(--bg-1); }
-    .projects-grid {
+
+    /* Featured card: full width, horizontal layout */
+    .project-featured {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: 1fr 220px;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 1.5rem;
+      transition: border-color var(--trans), transform var(--trans), box-shadow var(--trans);
+      position: relative;
+      overflow: hidden;
     }
+    .project-featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--mint), rgba(100,255,210,0.3), transparent);
+    }
+    .project-featured:hover {
+      border-color: var(--border-mid);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+    }
+
+    /* Secondary projects: 2-column grid */
+    .projects-secondary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Solo bottom card: full width */
+    .projects-solo {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
     .project-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -622,9 +663,7 @@
     .project-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 2px;
       background: linear-gradient(90deg, transparent, var(--mint), transparent);
       opacity: 0;
@@ -636,12 +675,21 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
     .project-card:hover::before { opacity: 1; }
-    .project-card.featured {
-      grid-column: span 2;
+
+    /* Dijkstra card spans full width in its solo row */
+    .project-card.solo {
       flex-direction: row;
-      gap: 2.5rem;
+      gap: 2rem;
       align-items: start;
     }
+    .project-card.solo .project-main { flex: 1; }
+    .project-card.solo .project-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-width: 160px;
+    }
+
     .project-header { margin-bottom: 1rem; }
     .project-icon {
       width: 44px;
@@ -669,6 +717,14 @@
       font-weight: 700;
       color: var(--text-0);
       letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .project-title-lg {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-0);
+      letter-spacing: -0.03em;
       margin-bottom: 0.25rem;
     }
     .project-status {
@@ -721,10 +777,8 @@
       border: 1px solid var(--border);
       transition: color var(--trans), border-color var(--trans);
     }
-    .project-card:hover .tech-tag {
-      color: var(--text-1);
-      border-color: var(--border-mid);
-    }
+    .project-card:hover .tech-tag,
+    .project-featured:hover .tech-tag { color: var(--text-1); border-color: var(--border-mid); }
     .project-footer {
       display: flex;
       gap: 0.75rem;
@@ -746,7 +800,6 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 1rem 1.25rem;
-      margin-bottom: 1rem;
     }
     .project-metric-value {
       font-family: var(--font-display);
@@ -766,14 +819,15 @@
 
     /* ─── EXPERIENCE / ACTIVITIES ────────────────────────────── */
     #experience { background: var(--bg-0); }
+    /* FIX 3: Timeline vertical line properly centered on dots */
     .timeline {
       position: relative;
-      padding-left: 2rem;
+      padding-left: 2.5rem;
     }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 0;
+      left: 0.75rem; /* center of the 10px dot (dot is at left: 0, width 10px → center at 5px) */
       top: 0;
       bottom: 0;
       width: 1px;
@@ -786,7 +840,7 @@
     .timeline-item:last-child { padding-bottom: 0; }
     .timeline-dot {
       position: absolute;
-      left: -2.45rem;
+      left: -2rem; /* sits within the padding-left space */
       top: 0.35rem;
       width: 10px;
       height: 10px;
@@ -794,6 +848,7 @@
       background: var(--mint);
       border: 2px solid var(--bg-0);
       box-shadow: 0 0 0 3px var(--mint-dim);
+      /* dot center = left(-2rem) + 5px — line is at left: 5px from container = same position */
     }
     .timeline-date {
       font-family: var(--font-mono);
@@ -835,8 +890,164 @@
       flex-shrink: 0;
     }
 
+    /* ─── CERTIFICATIONS ─────────────────────────────────────── */
+    /* FIX 5: New certifications section */
+    #certifications { background: var(--bg-1); }
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.25rem;
+    }
+    .cert-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      transition: border-color var(--trans), transform var(--trans);
+      position: relative;
+      overflow: hidden;
+    }
+    .cert-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--mint-dim), transparent);
+      opacity: 0;
+      transition: opacity var(--trans);
+    }
+    .cert-card:hover {
+      border-color: var(--border-mid);
+      transform: translateY(-4px);
+    }
+    .cert-card:hover::after { opacity: 1; }
+    .cert-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      background: var(--mint-dim);
+      border: 1px solid var(--border-mid);
+    }
+    .cert-icon.gold-bg {
+      background: var(--gold-dim);
+      border-color: rgba(255,209,102,0.2);
+    }
+    .cert-icon.coral-bg {
+      background: rgba(255,107,107,0.1);
+      border-color: rgba(255,107,107,0.2);
+    }
+    .cert-icon.purple-bg {
+      background: rgba(138,99,255,0.1);
+      border-color: rgba(138,99,255,0.2);
+    }
+    .cert-body { flex: 1; min-width: 0; }
+    .cert-title {
+      font-family: var(--font-display);
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-0);
+      letter-spacing: -0.01em;
+      margin-bottom: 0.2rem;
+      line-height: 1.3;
+    }
+    .cert-issuer {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+    .cert-desc {
+      font-size: 0.85rem;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .cert-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.65rem;
+    }
+    .cert-badge {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.18rem 0.5rem;
+      border-radius: 4px;
+      background: var(--bg-2);
+      color: var(--text-2);
+      border: 1px solid var(--border);
+    }
+    .cert-badge.mint {
+      background: var(--mint-dim);
+      color: var(--mint);
+      border-color: var(--border-mid);
+    }
+    .cert-badge.gold {
+      background: var(--gold-dim);
+      color: var(--gold);
+      border-color: rgba(255,209,102,0.2);
+    }
+
+    /* Achievement highlight strip */
+    .achievement-strip {
+      background: linear-gradient(135deg, rgba(100,255,210,0.05), rgba(255,209,102,0.03));
+      border: 1px solid var(--border-mid);
+      border-radius: var(--radius-lg);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    .achievement-strip-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+    .achievement-strip-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-0);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
+    }
+    .achievement-strip-desc {
+      font-size: 0.92rem;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+    .achievement-strip-meta {
+      margin-left: auto;
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .achievement-strip-meta-value {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .achievement-strip-meta-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+    }
+
     /* ─── LEETCODE / OPEN SOURCE ─────────────────────────────── */
-    #stats { background: var(--bg-1); }
+    #stats { background: var(--bg-0); }
     .stats-row {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -889,7 +1100,7 @@
     }
 
     /* ─── CONTENT SERIES ─────────────────────────────────────── */
-    #content { background: var(--bg-0); }
+    #content { background: var(--bg-1); }
     .content-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -931,7 +1142,7 @@
     }
 
     /* ─── CONTACT ────────────────────────────────────────────── */
-    #contact { background: var(--bg-1); }
+    #contact { background: var(--bg-0); }
     .contact-wrapper {
       max-width: 680px;
       margin: 0 auto;
@@ -991,20 +1202,27 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 900px) {
-      .project-card.featured {
-        grid-column: span 1;
-        flex-direction: column;
+      .project-featured {
+        grid-template-columns: 1fr;
       }
+      .project-featured .project-metrics-col {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .projects-secondary { grid-template-columns: 1fr; }
+      .project-card.solo { flex-direction: column; }
+      .project-card.solo .project-side { flex-direction: row; flex-wrap: wrap; min-width: unset; }
       .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .achievement-strip { flex-direction: column; align-items: flex-start; }
+      .achievement-strip-meta { margin-left: 0; text-align: left; }
     }
     @media (max-width: 720px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .hero-stats { gap: 1.5rem; }
-      .content-card {
-        grid-template-columns: 1fr;
-      }
+      .content-card { grid-template-columns: 1fr; }
       .content-card-visual { display: none; }
+      .certs-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 480px) {
       .container { width: calc(100% - 2.5rem); }
@@ -1027,6 +1245,7 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#certifications">Certifications</a></li>
         <li><a href="#stats">Stats</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
@@ -1043,6 +1262,7 @@
     <a href="#skills" class="mobile-link">Skills</a>
     <a href="#projects" class="mobile-link">Projects</a>
     <a href="#experience" class="mobile-link">Experience</a>
+    <a href="#certifications" class="mobile-link">Certifications</a>
     <a href="#stats" class="mobile-link">Stats</a>
     <a href="#contact" class="mobile-link">Contact</a>
   </div>
@@ -1140,20 +1360,10 @@
             <div class="info-card-title">Education</div>
             <div class="info-card-value">German International University <span>·</span> GIU</div>
             <div style="color:var(--text-2); font-size:0.85rem; margin-top:0.4rem;">B.Sc. Computer Science & Informatics · 2025–2029</div>
+            <!-- FIX 4: Removed the "Relevant Coursework" section entirely -->
             <div class="badge-row" style="margin-top:0.75rem;">
               <span class="badge gold">Excellence Scholarship Award</span>
               <span class="badge gold">#3 Class Rank</span>
-            </div>
-            <div style="margin-top:1.1rem;">
-              <div style="font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:0.6rem;">Relevant Coursework</div>
-              <!-- <div class="badge-row"> -->
-                <!-- <span class="badge">Programming</span>
-                <span class="badge">Computer Organization</span>
-                <span class="badge">Mathematics</span>
-                <span class="badge">Computer Networks</span>
-                <span class="badge">Theoritical Computer Science</span>
-                <span class="badge">Digital Logic Design</span> -->
-              <!-- </div> -->
             </div>
           </div>
           <div class="info-card">
@@ -1211,28 +1421,28 @@
                 <span class="skill-name">Python</span>
                 <span class="skill-level">Expert</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.9"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">Java</span>
                 <span class="skill-level">Proficient</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.75"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">SQL</span>
                 <span class="skill-level">Proficient</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.78"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
             </div>
             <!-- <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">HTML / CSS</span>
                 <span class="skill-level">Familiar</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.6"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
             </div> -->
           </div>
         </div>
@@ -1249,28 +1459,28 @@
                 <span class="skill-name">Django</span>
                 <span class="skill-level">Advanced</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.82"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">REST APIs</span>
                 <span class="skill-level">Advanced</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.8"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">PostgreSQL</span>
                 <span class="skill-level">Proficient</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.72"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="72"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">WebSockets</span>
                 <span class="skill-level">Familiar</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.55"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="55"></div></div>
             </div>
           </div>
         </div>
@@ -1287,33 +1497,34 @@
                 <span class="skill-name">NumPy</span>
                 <span class="skill-level">Advanced</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill gold-fill" data-width="0.78"></div></div>
+              <div class="skill-bar"><div class="skill-fill gold-fill" data-width="78"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">Linear Algebra</span>
                 <span class="skill-level">Strong</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill gold-fill" data-width="0.75"></div></div>
+              <div class="skill-bar"><div class="skill-fill gold-fill" data-width="75"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">scikit-learn</span>
                 <span class="skill-level">Familiar</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill gold-fill" data-width="0.5"></div></div>
+              <div class="skill-bar"><div class="skill-fill gold-fill" data-width="50"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">Pandas</span>
                 <span class="skill-level">Familiar</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill gold-fill" data-width="0.48"></div></div>
+              <div class="skill-bar"><div class="skill-fill gold-fill" data-width="48"></div></div>
             </div>
           </div>
         </div> -->
 
         <!-- CS Foundations -->
+        <!-- FIX 1: skill-fill now uses CSS custom property --skill-width for width-based animation -->
         <div class="skill-group reveal reveal-delay-3">
           <div class="skill-group-title">
             <div class="skill-group-icon">🧱</div>
@@ -1325,28 +1536,28 @@
                 <span class="skill-name">Data Structures & Algorithms</span>
                 <span class="skill-level">Strong</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.8"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">OOP & Design Patterns</span>
                 <span class="skill-level">Strong</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.82"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">Computer Networking</span>
                 <span class="skill-level">Proficient</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.65"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
             </div>
             <div class="skill-item">
               <div class="skill-item-header">
                 <span class="skill-name">Git & Version Control</span>
                 <span class="skill-level">Advanced</span>
               </div>
-              <div class="skill-bar"><div class="skill-fill" data-width="0.83"></div></div>
+              <div class="skill-bar"><div class="skill-fill" data-width="83"></div></div>
             </div>
           </div>
         </div>
@@ -1357,70 +1568,73 @@
   <div class="divider"></div>
 
   <!-- ─── PROJECTS ───────────────────────────────────────────── -->
+  <!-- FIX 2: Restructured project layout — featured card full-width, then 2-col grid, then full-width solo -->
   <section id="projects" class="pad">
     <div class="container">
       <div class="section-label reveal">Projects</div>
       <h2 class="section-title reveal reveal-delay-1">Things I've built.</h2>
       <p class="section-sub reveal reveal-delay-2">Real projects with real architecture decisions — not just tutorial clones.</p>
 
-      <div class="projects-grid">
-
-        <!-- StoreHub FEATURED -->
-        <div class="project-card featured reveal">
-          <div style="flex:1;">
-            <div class="project-icon">🛒</div>
-            <div class="project-header">
-              <div class="project-title">StoreHub</div>
-              <div class="project-status">In Progress</div>
-            </div>
-            <p class="project-desc">
-              A full-stack e-commerce platform built from scratch 
-              across 7 Django apps — not a tutorial clone. 
-              Covers the complete user-merchant flow with 
-              a normalized relational schema, 
-              RESTful backend logic, session-based authentication, 
-              and role-based access control across admin, 
-              merchant, and customer roles.
-            </p>
-            <ul class="project-highlights">
-              <li>7 Django apps with clean domain separation</li>
-              <li>30+ views · 12+ normalized database models</li>
-              <li>Role-based access — admin, merchant, customer</li>
-              <li>RESTful APIs — products, orders, inventory, auth</li>
-              <li>Session management & authentication flow</li>
-              <li>Full user-to-merchant purchase flow</li>
-            </ul>
-            <div class="project-tech">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Django</span>
-              <span class="tech-tag">DRF</span>
-              <span class="tech-tag">PostgreSQL</span>
-              <span class="tech-tag">JWT</span>
-              <span class="tech-tag">REST API</span>
-              <span class="tech-tag">Signals</span>
-            </div>
-            <div class="project-footer">
-              <a href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" class="project-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                View on GitHub
-              </a>
-            </div>
+      <!-- StoreHub FEATURED — full width horizontal card -->
+      <div class="project-featured reveal">
+        <div>
+          <div class="project-icon">🛒</div>
+          <div class="project-header">
+            <div class="project-title-lg">StoreHub</div>
+            <div class="project-status">In Progress</div>
           </div>
-          <div style="display:flex;flex-direction:column;gap:1rem;min-width:180px;">
-            <div class="project-metric">
-              <div class="project-metric-value">7</div>
-              <div class="project-metric-label">Django Apps</div>
-            </div>
-            <div class="project-metric">
-              <div class="project-metric-value" style="color:var(--gold);">30+</div>
-              <div class="project-metric-label">Views Implemented</div>
-            </div>
-            <div class="project-metric">
-              <div class="project-metric-value">12+</div>
-              <div class="project-metric-label">Normalized DB Models</div>
-            </div>
+          <p class="project-desc">
+            A full-stack e-commerce platform built from scratch 
+            across 7 Django apps — not a tutorial clone. 
+            Covers the complete user-merchant flow with 
+            a normalized relational schema, 
+            RESTful backend logic, session-based authentication, 
+            and role-based access control across admin, 
+            merchant, and customer roles.
+          </p>
+          <ul class="project-highlights">
+            <li>7 Django apps with clean domain separation</li>
+            <li>30+ views · 12+ normalized database models</li>
+            <li>Role-based access — admin, merchant, customer</li>
+            <li>RESTful APIs — products, orders, inventory, auth</li>
+            <li>Session management & authentication flow</li>
+            <li>Full user-to-merchant purchase flow</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Django</span>
+            <span class="tech-tag">DRF</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">JWT</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Signals</span>
+          </div>
+          <div class="project-footer">
+            <a href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" class="project-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
           </div>
         </div>
+        <!-- Metrics column -->
+        <div class="project-metrics-col" style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="project-metric">
+            <div class="project-metric-value">7</div>
+            <div class="project-metric-label">Django Apps</div>
+          </div>
+          <div class="project-metric">
+            <div class="project-metric-value" style="color:var(--gold);">30+</div>
+            <div class="project-metric-label">Views Implemented</div>
+          </div>
+          <div class="project-metric">
+            <div class="project-metric-value">12+</div>
+            <div class="project-metric-label">Normalized DB Models</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Linear Regression & DooR DasH — 2-column side by side -->
+      <div class="projects-secondary">
 
         <!-- Linear Regression -->
         <div class="project-card reveal reveal-delay-1">
@@ -1460,6 +1674,7 @@
             </a>
           </div>
         </div>
+
         <!-- DooR DasH -->
         <div class="project-card reveal reveal-delay-2">
           <div class="project-icon coral-bg">🎮</div>
@@ -1501,47 +1716,62 @@
             </a>
           </div>
         </div>
-
-        <!-- Dijkstra's Algorithm -->
-<div class="project-card reveal reveal-delay-3">
-  <div class="project-icon" style="background:rgba(138,99,255,0.1); border-color:rgba(138,99,255,0.2);">🔗</div>
-  <div class="project-header">
-    <div class="project-title">Dijkstra's Algorithm</div>
-    <div class="project-status done">Completed</div>
-  </div>
-  <p class="project-desc">
-    A clean, production-ready implementation of Dijkstra's shortest path algorithm built from scratch in Python —
-    no library calls, just a custom Graph class, a min-heap priority queue, and path reconstruction logic.
-    Validated against a hand-crafted 17-node graph with cycles, zero-weight edges, chords, and a
-    fully disconnected island to stress-test correctness at the edges.
-  </p>
-  <ul class="project-highlights">
-    <li>Custom Graph class — adjacency list, add/remove vertex & edge, vertex renaming</li>
-    <li>O((V + E) log V) via binary heap — handles 0-weight edges and unreachable nodes</li>
-    <li>Path reconstruction with full route tracing back to source</li>
-    <li>17-node stress-test graph with cycles, traps, chords, and disconnected components</li>
-  </ul>
-  <div class="project-tech">
-    <span class="tech-tag">Python</span>
-    <span class="tech-tag">Graph Theory</span>
-    <span class="tech-tag">DSA</span>
-    <span class="tech-tag">OOP</span>
-  </div>
-  <div class="project-footer">
-    <a href="https://github.com/Omar-Shaker-Elbana/Dijkstra-s_Algorithm" target="_blank" rel="noopener" class="project-link">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-      View on GitHub
-    </a>
-  </div>
-</div>
-
       </div>
+
+      <!-- Dijkstra's Algorithm — solo full-width card with side metrics -->
+      <div class="projects-solo">
+        <div class="project-card solo reveal reveal-delay-3">
+          <div class="project-main">
+            <div class="project-icon" style="background:rgba(138,99,255,0.1); border-color:rgba(138,99,255,0.2);">🔗</div>
+            <div class="project-header">
+              <div class="project-title">Dijkstra's Algorithm</div>
+              <div class="project-status done">Completed</div>
+            </div>
+            <p class="project-desc">
+              A clean, production-ready implementation of Dijkstra's shortest path algorithm built from scratch in Python —
+              no library calls, just a custom Graph class, a min-heap priority queue, and path reconstruction logic.
+              Validated against a hand-crafted 17-node graph with cycles, zero-weight edges, chords, and a
+              fully disconnected island to stress-test correctness at the edges.
+            </p>
+            <ul class="project-highlights">
+              <li>Custom Graph class — adjacency list, add/remove vertex & edge, vertex renaming</li>
+              <li>O((V + E) log V) via binary heap — handles 0-weight edges and unreachable nodes</li>
+              <li>Path reconstruction with full route tracing back to source</li>
+              <li>17-node stress-test graph with cycles, traps, chords, and disconnected components</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Graph Theory</span>
+              <span class="tech-tag">DSA</span>
+              <span class="tech-tag">OOP</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/Omar-Shaker-Elbana/Dijkstra-s_Algorithm" target="_blank" rel="noopener" class="project-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                View on GitHub
+              </a>
+            </div>
+          </div>
+          <div class="project-side">
+            <div class="project-metric">
+              <div class="project-metric-value" style="color:#8a63ff;">17</div>
+              <div class="project-metric-label">Node Stress Graph</div>
+            </div>
+            <div class="project-metric">
+              <div class="project-metric-value" style="color:var(--gold);font-size:1.1rem;">O((V+E)<br/>log V)</div>
+              <div class="project-metric-label">Time Complexity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <div class="divider"></div>
 
   <!-- ─── EXPERIENCE ─────────────────────────────────────────── -->
+  <!-- FIX 3: Timeline vertical line aligned to dot centers -->
   <section id="experience" class="pad">
     <div class="container">
       <div class="section-label reveal">Experience & Activities</div>
@@ -1601,6 +1831,149 @@
             <li>Not grinding for a number — training to think clearly under constraint</li>
           </ul>
         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── CERTIFICATIONS ────────────────────────────────────── -->
+<!-- FIX 5: New section for certifications, courses, and achievements -->
+<section id="certifications" class="pad">
+  <div class="container">
+    <div class="section-label reveal">Certifications & Achievements</div>
+    <h2 class="section-title reveal reveal-delay-1">Credentials & recognition.</h2>
+    <p class="section-sub reveal reveal-delay-2">
+      Certifications, technical programs, and academic achievements that reflect a strong focus on backend engineering, problem solving, and continuous learning.
+    </p>
+
+    <!-- Top achievement strip -->
+    <div class="achievement-strip reveal reveal-delay-2">
+      <div class="achievement-strip-icon">🏆</div>
+      <div>
+        <div class="achievement-strip-title">Top 3 Governorate Student</div>
+        <div class="achievement-strip-desc">
+          Ranked among the top 3 students in El-Gharbeia Governorate in the Thanaweya Amma Mathematics section, competing against 750,000+ students nationwide.
+        </div>
+      </div>
+      <div class="achievement-strip-meta">
+        <div class="achievement-strip-meta-value">#3</div>
+        <div class="achievement-strip-meta-label">Governorate Rank · 750000+ Students</div>
+      </div>
+    </div>
+
+    <div class="achievement-strip reveal reveal-delay-2">
+      <div class="achievement-strip-icon">🏆</div>
+      <div>
+        <div class="achievement-strip-title">Excellence Scholarship Award</div>
+        <div class="achievement-strip-desc">
+          Awarded a full academic excellence scholarship by the German International University based on outstanding academic performance and ranking.
+        </div>
+      </div>
+      <div class="achievement-strip-meta">
+        <div class="achievement-strip-meta-value">#3</div>
+        <div class="achievement-strip-meta-label">Class Rank · 500+ Students</div>
+      </div>
+    </div>
+
+    <div class="certs-grid">
+
+      <!-- Cert / Course cards -->
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-icon">🐍</div>
+        <div class="cert-body">
+          <div class="cert-title">Master the Coding Interview: Data Structures + Algorithms</div>
+          <div class="cert-issuer">Udemy</div>
+          <div class="cert-desc">
+            Intensive problem-solving course focused on core data structures and algorithms including arrays, trees, graphs, recursion, dynamic programming, and interview-oriented algorithmic thinking.
+          </div>
+          <div class="cert-badge-row">
+            <span class="cert-badge mint">Completed</span>
+            <span class="cert-badge">Data Structures</span>
+            <span class="cert-badge">Algorithms</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-icon purple-bg">📐</div>
+        <div class="cert-body">
+          <div class="cert-title">
+            SQL Full Course From Zero to Hero
+          </div>
+          <div class="cert-issuer">Data with Baraa</div>
+          <div class="cert-desc">
+            Comprehensive SQL training covering relational databases, joins, aggregations, subqueries, normalization, window functions, and practical database querying for real-world applications.
+          </div>
+          <div class="cert-badge-row">
+            <span class="cert-badge mint">Completed</span>
+            <span class="cert-badge">SQL</span>
+            <span class="cert-badge">Databases</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon">⚙️</div>
+        <div class="cert-body">
+          <div class="cert-title">Try Django 2.2 - Web Development with Python 3.6+</div>
+          <div class="cert-issuer">Udemy</div>
+          <div class="cert-desc">
+            Learned full-stack web development fundamentals using Django, including models, views, templates, authentication, routing, forms, and building dynamic web applications with Python.
+          </div>
+          <div class="cert-badge-row">
+            <span class="cert-badge mint">Completed</span>
+            <span class="cert-badge">Django</span>
+            <span class="cert-badge">Web Development</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal">
+        <div class="cert-icon gold-bg">☁️</div>
+        <div class="cert-body">
+          <div class="cert-title">AWS AI Practitioner</div>
+          <div class="cert-issuer">Amazon Web Services (AWS) · Udacity · In Progress</div>
+          <div class="cert-desc">
+            Studying cloud computing and AI fundamentals including AWS infrastructure, machine learning services, cloud security, deployment concepts, and scalable AI-powered applications.
+          </div>
+          <div class="cert-badge-row">
+            <span class="cert-badge gold">AWS</span>
+            <span class="cert-badge">Cloud Computing</span>
+            <span class="cert-badge">In Progress</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-icon gold-bg">🧩</div>
+        <div class="cert-body">
+          <div class="cert-title">McKinsey Forward Program</div>
+          <div class="cert-issuer">McKinsey Academy · In Progress</div>
+          <div class="cert-desc">
+            Professional development program focused on structured problem solving, communication, adaptability, leadership, and workplace effectiveness in high-performance environments.
+          </div>
+          <div class="cert-badge-row">
+            <span class="cert-badge mint">Leadership</span>
+            <span class="cert-badge">Problem Solving</span>
+            <!-- <span class="cert-badge">In Progress</span> -->
+          </div>
+        </div>
+      </div>
+
+<!-- <div class="cert-card reveal reveal-delay-3">
+    <div class="cert-icon coral-bg">🏅</div>
+    <div class="cert-body">
+        <div class="cert-title">GIU Academic Excellence Award</div>
+        <div class="cert-issuer">German International University · 2025</div>
+  <div class="cert-desc">Ranked 3rd in a cohort of 500+ Computer Science & Informatics students. GPA of 0.7 on the German scale — equivalent to A+ / 4.0 internationally.</div>
+  <div class="cert-badge-row">
+      <span class="cert-badge gold">GPA 0.7 · A+</span>
+      <span class="cert-badge gold">Top 1%</span>
+  </div>
+</div>
+</div> -->
 
       </div>
     </div>
@@ -1721,7 +2094,7 @@
   <!-- ─── FOOTER ─────────────────────────────────────────────── -->
   <footer>
     <div class="container">
-      <p>Designed & built by <span>Omar Shaker</span> · Cairo, Egypt 🇪🇬 · <span>2025</span></p>
+      <p>Designed & built by <span>Omar Shaker</span> · Cairo, Egypt 🇪🇬 · <span>2026</span></p>
     </div>
   </footer>
 
@@ -1760,18 +2133,19 @@
     revealEls.forEach(el => revealObs.observe(el));
 
     /* ── Skill bar animation ── */
+    /* FIX 1: Use CSS custom property --skill-width with percentage values (data-width is now 0–100) */
     const skillFills = document.querySelectorAll('.skill-fill');
     const skillObs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const fill = entry.target;
           const w = parseFloat(fill.dataset.width);
-          fill.style.transform = `scaleX(${w})`;
+          fill.style.setProperty('--skill-width', w + '%');
           fill.classList.add('animate');
           skillObs.unobserve(fill);
         }
       });
-    }, { rootMargin: '0px 0px 0px 0px' });
+    }, { rootMargin: '0px 0px 0px 0px', threshold: 0.1 });
     skillFills.forEach(f => skillObs.observe(f));
 
     /* ── Typewriter effect ── */

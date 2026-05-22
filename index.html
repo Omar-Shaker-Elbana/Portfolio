@@ -1633,7 +1633,67 @@
         </div>
       </div>
 
-      <!-- Linear Regression & DooR DasH — 2-column side by side -->
+<!-- DooR DasH — full width -->
+<div class="projects-solo" style="margin-bottom:1.5rem;">
+  <div class="project-featured reveal reveal-delay-1">
+    <div>
+      <div class="project-icon coral-bg">🎮</div>
+      <div class="project-header">
+        <div class="project-title">DooR DasH: Scare vs Laugh</div>
+        <div class="project-status done">Completed</div>
+      </div>
+      <p class="project-desc">
+        A 2-player, 100-cell strategy board game engineered 
+        across 20+ Java classes — not a simple school project.
+        Built with a fully event-driven JavaFX GUI, 
+        a deep OOP class hierarchy, and a polymorphic 
+        monster system where energy mechanics cascade 
+        through overridden method chains. Every 
+        architectural decision was deliberate: MVC for 
+        separation of concerns, CSV-based loading for 
+        configurability, custom exceptions for control flow clarity.
+      </p>
+      <ul class="project-highlights">
+        <li>20+ Java classes across a clean MVC architecture with full separation of concerns</li>
+        <li>10+ distinct cell effect types — each with unique board interaction logic</li>
+        <li>Polymorphic monster system with cascading energy mechanics through overridden method chains</li>
+        <li>Fully event-driven JavaFX GUI — zero logic leaking into the view layer</li>
+        <li>CSV-based DataLoader for dynamic, configuration-driven board setup</li>
+        <li>Custom exception hierarchy for structured, predictable error handling</li>
+        <li>JUnit test suite covering core game logic and edge cases</li>
+      </ul>
+      <div class="project-tech">
+        <span class="tech-tag">Java</span>
+        <span class="tech-tag">JavaFX</span>
+        <span class="tech-tag">OOP</span>
+        <span class="tech-tag">MVC</span>
+        <span class="tech-tag">JUnit</span>
+      </div>
+      <div class="project-footer">
+        <a href="https://github.com/Omar-Shaker-Elbana/DooR_DasH" target="_blank" rel="noopener" class="project-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+    <div class="project-metrics-col" style="display:flex;flex-direction:column;gap:1rem;">
+      <div class="project-metric">
+        <div class="project-metric-value" style="color:var(--coral);">20+</div>
+        <div class="project-metric-label">Java Classes</div>
+      </div>
+      <div class="project-metric">
+        <div class="project-metric-value" style="color:var(--gold);">10+</div>
+        <div class="project-metric-label">Cell Effect Types</div>
+      </div>
+      <div class="project-metric">
+        <div class="project-metric-value">MVC</div>
+        <div class="project-metric-label">Architecture Pattern</div>
+      </div>
+    </div>
+  </div>
+</div>      
+
+<!-- Linear Regression & Dijkstra — 2-column side by side -->
       <div class="projects-secondary">
 
         <!-- Linear Regression -->
@@ -1675,96 +1735,40 @@
           </div>
         </div>
 
-        <!-- DooR DasH -->
+        <!-- Dijkstra -->
         <div class="project-card reveal reveal-delay-2">
-          <div class="project-icon coral-bg">🎮</div>
+          <div class="project-icon" style="background:rgba(138,99,255,0.1); border-color:rgba(138,99,255,0.2);">🔗</div>
           <div class="project-header">
-            <div class="project-title">DooR DasH: Scare vs Laugh</div>
+            <div class="project-title">Dijkstra's Algorithm</div>
             <div class="project-status done">Completed</div>
           </div>
           <p class="project-desc">
-            A 2-player, 100-cell strategy board game engineered 
-            across 20+ Java classes — not a simple school project.
-             Built with a fully event-driven JavaFX GUI, 
-             a deep OOP class hierarchy, and a polymorphic 
-             monster system where energy mechanics cascade 
-             through overridden method chains. Every 
-             architectural decision was deliberate: MVC for 
-             separation of concerns, CSV-based loading for 
-             configurability, custom exceptions for control flow clarity.
+            A clean, production-ready implementation of Dijkstra's shortest path algorithm built from scratch in Python —
+            no library calls, just a custom Graph class, a min-heap priority queue, and path reconstruction logic.
+            Validated against a hand-crafted 17-node graph with cycles, zero-weight edges, chords, and a
+            fully disconnected island to stress-test correctness at the edges.
           </p>
           <ul class="project-highlights">
-            <li>20+ Java classes across a clean MVC architecture with full separation of concerns</li>
-            <li>10+ distinct cell effect types — each with unique board interaction logic</li>
-            <li>Polymorphic monster system with cascading energy mechanics through overridden method chains</li>
-            <li>Fully event-driven JavaFX GUI — zero logic leaking into the view layer</li>
-            <li>CSV-based DataLoader for dynamic, configuration-driven board setup</li>
-            <li>Custom exception hierarchy for structured, predictable error handling</li>
-            <li>JUnit test suite covering core game logic and edge cases</li>
+            <li>Custom Graph class — adjacency list, add/remove vertex & edge, vertex renaming</li>
+            <li>O((V + E) log V) via binary heap — handles 0-weight edges and unreachable nodes</li>
+            <li>Path reconstruction with full route tracing back to source</li>
+            <li>17-node stress-test graph with cycles, traps, chords, and disconnected components</li>
           </ul>
           <div class="project-tech">
-            <span class="tech-tag">Java</span>
-            <span class="tech-tag">JavaFX</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Graph Theory</span>
+            <span class="tech-tag">DSA</span>
             <span class="tech-tag">OOP</span>
-            <span class="tech-tag">MVC</span>
-            <span class="tech-tag">JUnit</span>
           </div>
           <div class="project-footer">
-            <a href="https://github.com/Omar-Shaker-Elbana/DooR_DasH" target="_blank" rel="noopener" class="project-link">
+            <a href="https://github.com/Omar-Shaker-Elbana/Dijkstra-s_Algorithm" target="_blank" rel="noopener" class="project-link">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              GitHub
+              View on GitHub
             </a>
           </div>
         </div>
-      </div>
 
-      <!-- Dijkstra's Algorithm — solo full-width card with side metrics -->
-      <div class="projects-solo">
-        <div class="project-card solo reveal reveal-delay-3">
-          <div class="project-main">
-            <div class="project-icon" style="background:rgba(138,99,255,0.1); border-color:rgba(138,99,255,0.2);">🔗</div>
-            <div class="project-header">
-              <div class="project-title">Dijkstra's Algorithm</div>
-              <div class="project-status done">Completed</div>
-            </div>
-            <p class="project-desc">
-              A clean, production-ready implementation of Dijkstra's shortest path algorithm built from scratch in Python —
-              no library calls, just a custom Graph class, a min-heap priority queue, and path reconstruction logic.
-              Validated against a hand-crafted 17-node graph with cycles, zero-weight edges, chords, and a
-              fully disconnected island to stress-test correctness at the edges.
-            </p>
-            <ul class="project-highlights">
-              <li>Custom Graph class — adjacency list, add/remove vertex & edge, vertex renaming</li>
-              <li>O((V + E) log V) via binary heap — handles 0-weight edges and unreachable nodes</li>
-              <li>Path reconstruction with full route tracing back to source</li>
-              <li>17-node stress-test graph with cycles, traps, chords, and disconnected components</li>
-            </ul>
-            <div class="project-tech">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Graph Theory</span>
-              <span class="tech-tag">DSA</span>
-              <span class="tech-tag">OOP</span>
-            </div>
-            <div class="project-footer">
-              <a href="https://github.com/Omar-Shaker-Elbana/Dijkstra-s_Algorithm" target="_blank" rel="noopener" class="project-link">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                View on GitHub
-              </a>
-            </div>
-          </div>
-          <div class="project-side">
-            <div class="project-metric">
-              <div class="project-metric-value" style="color:#8a63ff;">17</div>
-              <div class="project-metric-label">Node Stress Graph</div>
-            </div>
-            <div class="project-metric">
-              <div class="project-metric-value" style="color:var(--gold);font-size:1.1rem;">O((V+E)<br/>log V)</div>
-              <div class="project-metric-label">Time Complexity</div>
-            </div>
-          </div>
-        </div>
       </div>
-
     </div>
   </section>
 

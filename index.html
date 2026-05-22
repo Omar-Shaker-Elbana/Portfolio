@@ -165,7 +165,7 @@
 
     /* ─── MOBILE NAV ─────────────────────────────────────────── */
     .mobile-menu {
-      display: none;
+      display: flex;
       position: fixed;
       inset: 0;
       background: rgba(5, 5, 13, 0.97);
@@ -175,8 +175,17 @@
       align-items: center;
       justify-content: center;
       gap: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-12px);
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .mobile-menu.open { display: flex; }
+    .mobile-menu.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
     .mobile-menu a {
       font-family: var(--font-display);
       font-size: 1.8rem;
@@ -1245,6 +1254,7 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#content">Series</a></li>
         <li><a href="#certifications">Certifications</a></li>
         <li><a href="#stats">Stats</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -1257,11 +1267,12 @@
 
   <!-- ─── MOBILE MENU ────────────────────────────────────────── -->
   <div class="mobile-menu" id="mobile-menu">
-    <span class="mobile-close" id="mobile-close">✕</span>
+    <!-- <span class="mobile-close" id="mobile-close">✕</span> -->
     <a href="#about" class="mobile-link">About</a>
     <a href="#skills" class="mobile-link">Skills</a>
     <a href="#projects" class="mobile-link">Projects</a>
     <a href="#experience" class="mobile-link">Experience</a>
+    <a href="#content" class="mobile-link">Series</a>
     <a href="#certifications" class="mobile-link">Certifications</a>
     <a href="#stats" class="mobile-link">Stats</a>
     <a href="#contact" class="mobile-link">Contact</a>
@@ -1273,12 +1284,12 @@
     <div class="hero-glow"></div>
     <div class="container">
       <div class="hero-content">
-        <div class="hero-tag">Available for Internships & Free Lancing</div>
         <h1 class="hero-name">Omar<br/><span class="accent">Shaker.</span></h1>
         <div class="hero-title-line">
           <span class="hero-title">Backend Engineer &amp;</span>
           <span class="typewriter" id="typewriter"></span>
         </div>
+        <div class="hero-tag">Available for 2026 Summer Internships & Free Lancing</div>
         <p class="hero-bio">
           CS student at <strong>German International University</strong>, Cairo.
           I build systems the way I study math — <strong>structured, clean, and scalable</strong>.
@@ -1290,13 +1301,17 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             View My Work
           </a>
-          <a href="#contact" class="btn btn-outline">
+          <!-- <a href="#contact" class="btn btn-outline">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             Get In Touch
-          </a>
+          </a> -->
           <a href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" class="btn btn-outline">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             GitHub
+          </a>
+          <a href="/resume.pdf" download="Omar_Shaker_Resume.pdf" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Resume
           </a>
         </div>
         <div class="hero-stats">
@@ -1311,6 +1326,10 @@
           <div class="stat-item">
             <div class="stat-num"><span>Excellence</span></div>
             <div class="stat-label">Scholarship Award</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num"><span>350% Audience Growth</span></div>
+            <div class="stat-label">on LinkedIN thanks to "Python in 60 Seconds" series</div>
           </div>
           <!-- <div class="stat-item">
             <div class="stat-num">2029</div>
@@ -1818,7 +1837,7 @@
           <ul class="timeline-desc">
             <li>GPA: 0.7 (German Scale) — equivalent to 4.0 / A+ · Ranked 3rd out of 500+ students</li>
             <li>Full Excellence Scholarship — awarded on academic merit, not need</li>
-            <li>Coursework: Programming, Data Structure and Algorithms, Computer Organization, Mathematics, Computer Networks, Theoritical Computer Science, Digital Logic Design</li>
+            <li>Coursework: Programming, Data Structure and Algorithms, Computer Organization, Mathematics, Computer Networks, Theoretical Computer Science, Digital Logic Design</li>
             <li>Active in technical and entrepreneurship events — building network and exposure from year one</li>
           </ul>
         </div>
@@ -1834,6 +1853,12 @@
             <li>Focus areas chosen deliberately: the exact pattern sets that appear in backend and systems interviews</li>
             <li>Not grinding for a number — training to think clearly under constraint</li>
           </ul>
+          <div style="margin-top:1rem;">
+            <a href="https://leetcode.com/u/Omar-Shaker-Elbana/" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-flex; font-size:0.78rem; padding:0.6rem 1.2rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a1.376 1.376 0 0 0 0 1.898l3.854 4.126 5.406 5.788a1.376 1.376 0 0 0 1.942 0l5.406-5.788 1.431-1.534a1.376 1.376 0 0 0 0-1.898l-1.431-1.534L14.444.438A1.374 1.374 0 0 0 13.483 0zm-2.866 12.815l-4.352-4.352 2.332-2.332 4.352 4.352-2.332 2.332zm5.73 0l-2.332-2.332 4.352-4.352 2.332 2.332-4.352 4.352z"/></svg>
+              View LeetCode Profile
+            </a>
+          </div>
         </div>
 
       </div>
@@ -1841,6 +1866,45 @@
   </section>
 
   <div class="divider"></div>
+
+  <!-- ─── CONTENT SERIES ─────────────────────────────────────── -->
+  <section id="content" class="pad">
+    <div class="container">
+      <div class="section-label reveal">Content</div>
+      <h2 class="section-title reveal reveal-delay-1">Teaching while building.</h2>
+      <p class="section-sub reveal reveal-delay-2">I write to sharpen thinking. Technical content that respects the reader's intelligence.</p>
+
+      <div class="content-card reveal reveal-delay-2">
+        <div>
+          <div class="project-status" style="margin-bottom:0.75rem; display:block;">LinkedIn Series · Active</div>
+          <div class="content-card-title">Python in 60 Seconds</div>
+          <p class="content-card-desc">
+            A LinkedIn series breaking down Python concepts, patterns, and tricks in bite-sized posts.
+            No fluff — just clean, precise breakdowns of list comprehensions, decorators, generators,
+            context managers, and OOP design decisions. Aimed at engineers who prefer depth over hype.
+          </p>
+          <div class="badge-row" style="margin-top:1.25rem;">
+            <span class="badge">Decorators</span>
+            <span class="badge">Generators</span>
+            <span class="badge">Comprehensions</span>
+            <span class="badge">OOP Patterns</span>
+            <span class="badge">Type Hints</span>
+            <span class="badge">Context Managers</span>
+          </div>
+          <div style="margin-top:1.5rem;">
+            <a href="https://www.linkedin.com/posts/omar-shaker-elbana_python-learnpython-programming-share-7407453424247668736-9DKl?utm_source=share&utm_medium=member_android&rcm=ACoAAEfLww4BhDniy2UjbAT01ppyyXKEFtZt5Pw" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-flex;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              Follow on LinkedIn
+            </a>
+          </div>
+        </div>
+        <div class="content-card-visual">🐍</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
 
   <!-- ─── CERTIFICATIONS ────────────────────────────────────── -->
 <!-- FIX 5: New section for certifications, courses, and achievements -->
@@ -1985,44 +2049,7 @@
 
   <div class="divider"></div>
 
-  <!-- ─── CONTENT SERIES ─────────────────────────────────────── -->
-  <section id="content" class="pad">
-    <div class="container">
-      <div class="section-label reveal">Content</div>
-      <h2 class="section-title reveal reveal-delay-1">Teaching while building.</h2>
-      <p class="section-sub reveal reveal-delay-2">I write to sharpen thinking. Technical content that respects the reader's intelligence.</p>
-
-      <div class="content-card reveal reveal-delay-2">
-        <div>
-          <div class="project-status" style="margin-bottom:0.75rem; display:block;">LinkedIn Series · Active</div>
-          <div class="content-card-title">Python in 60 Seconds</div>
-          <p class="content-card-desc">
-            A LinkedIn series breaking down Python concepts, patterns, and tricks in bite-sized posts.
-            No fluff — just clean, precise breakdowns of list comprehensions, decorators, generators,
-            context managers, and OOP design decisions. Aimed at engineers who prefer depth over hype.
-          </p>
-          <div class="badge-row" style="margin-top:1.25rem;">
-            <span class="badge">Decorators</span>
-            <span class="badge">Generators</span>
-            <span class="badge">Comprehensions</span>
-            <span class="badge">OOP Patterns</span>
-            <span class="badge">Type Hints</span>
-            <span class="badge">Context Managers</span>
-          </div>
-          <div style="margin-top:1.5rem;">
-            <a href="https://www.linkedin.com/posts/omar-shaker-elbana_python-learnpython-programming-share-7407453424247668736-9DKl?utm_source=share&utm_medium=member_android&rcm=ACoAAEfLww4BhDniy2UjbAT01ppyyXKEFtZt5Pw" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-flex;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              Follow on LinkedIn
-            </a>
-          </div>
-        </div>
-        <div class="content-card-visual">🐍</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
+  
   <!-- ─── STATS ──────────────────────────────────────────────── -->
   <section id="stats" class="pad">
     <div class="container">
@@ -2036,7 +2063,7 @@
           <div class="stat-card-label">Shipped Projects</div>
         </div>
         <div class="stat-card">
-          <div class="stat-card-num gold">8</div>
+          <div class="stat-card-num gold">7</div>
           <div class="stat-card-label">Django Apps in StoreHub</div>
         </div>
         <div class="stat-card">
@@ -2048,8 +2075,8 @@
           <div class="stat-card-label">Class Rank at GIU</div>
         </div>
         <div class="stat-card">
-          <div class="stat-card-num mint">Med+</div>
-          <div class="stat-card-label">LeetCode Difficulty</div>
+          <div class="stat-card-num mint">110+</div>
+          <div class="stat-card-label">LeetCode Problems</div>
         </div>
       </div>
 
@@ -2187,11 +2214,11 @@
     /* ── Hamburger menu ── */
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
-    const mobileClose = document.getElementById('mobile-close');
-    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-    mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
     document.querySelectorAll('.mobile-link').forEach(a => {
-      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+      });
     });
 
     /* ── Smooth anchor scroll (fallback for older browsers) ── */

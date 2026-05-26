@@ -629,7 +629,7 @@
       margin-bottom: 1.5rem;
       transition: border-color var(--trans), transform var(--trans), box-shadow var(--trans);
       position: relative;
-      overflow: hidden;
+      /* overflow: hidden; */
     }
     .project-featured::before {
       content: '';
@@ -667,7 +667,7 @@
       flex-direction: column;
       transition: border-color var(--trans), transform var(--trans), box-shadow var(--trans);
       position: relative;
-      overflow: hidden;
+      /* overflow: hidden; */
     }
     .project-card::before {
       content: '';
@@ -1055,6 +1055,15 @@
       margin-top: 0.25rem;
     }
 
+    .project-featured {
+  grid-template-columns: 1fr 220px;
+  grid-template-rows: auto auto;  /* add this */
+}
+
+.project-featured .project-dropdown {
+  grid-column: 1 / -1;  /* span both columns */
+}
+
     /* ─── LEETCODE / OPEN SOURCE ─────────────────────────────── */
     #stats { background: var(--bg-0); }
     .stats-row {
@@ -1149,6 +1158,87 @@
       font-size: 2.5rem;
       flex-shrink: 0;
     }
+
+    /* ─── PROJECT DROPDOWN ───────────────────────────────────── */
+.project-dropdown {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  opacity: 0;
+}
+.project-dropdown.open {
+  max-height: 1000px;
+  opacity: 1;
+}
+.project-dropdown-inner {
+  border-top: 1px solid var(--border);
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.project-dropdown-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.25rem;
+}
+.project-dropdown-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+.project-dropdown-images img {
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  object-fit: cover;
+  transition: border-color var(--trans);
+}
+.project-dropdown-images img:hover {
+  border-color: var(--border-mid);
+}
+.project-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--bg-0);
+  background: var(--mint);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
+  margin-top: 0;
+  /* width: 100%; */
+  justify-content: auto;
+  letter-spacing: 0.03em;
+}
+.project-toggle-btn:hover {
+  background: #7fffdf;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(100,255,210,0.3);
+}
+.project-toggle-btn.open {
+  background: var(--mint-dim);
+  color: var(--mint);
+  border: 1px solid var(--border-mid);
+}
+.project-toggle-btn svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.35s ease;
+  flex-shrink: 0;
+}
+.project-toggle-btn.open svg {
+  transform: rotate(180deg);
+}
 
     /* ─── CONTACT ────────────────────────────────────────────── */
     #contact { background: var(--bg-0); }
@@ -1587,14 +1677,13 @@
   <div class="divider"></div>
 
   <!-- ─── PROJECTS ───────────────────────────────────────────── -->
-  <!-- FIX 2: Restructured project layout — featured card full-width, then 2-col grid, then full-width solo -->
   <section id="projects" class="pad">
     <div class="container">
       <div class="section-label reveal">Projects</div>
       <h2 class="section-title reveal reveal-delay-1">Things I've built.</h2>
       <p class="section-sub reveal reveal-delay-2">Real projects with real architecture decisions — not just tutorial clones.</p>
 
-      <!-- StoreHub FEATURED — full width horizontal card -->
+      <!-- StoreHub FEATURED -->
       <div class="project-featured reveal">
         <div>
           <div class="project-icon">🛒</div>
@@ -1631,11 +1720,24 @@
           <div class="project-footer">
             <a href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" class="project-link">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              View on GitHub
+              GitHub
             </a>
+            <button class="project-toggle-btn" onclick="toggleDropdown(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px;flex-shrink:0;transition:transform 0.35s ease"><polyline points="6 9 12 15 18 9"/></svg>
+              <span>Preview & Output</span>
+            </button>
+          </div>
+          <div class="project-dropdown">
+            <div class="project-dropdown-inner">
+              <div class="project-dropdown-label">Screenshots & Output</div>
+              <div class="project-dropdown-images">
+                <img src="images/SH1" alt="StoreHub screenshot 1" />
+                <!-- <img src="images/storehub-2.png" alt="StoreHub screenshot 2" />
+                <img src="images/storehub-3.png" alt="StoreHub screenshot 3" /> -->
+              </div>
+            </div>
           </div>
         </div>
-        <!-- Metrics column -->
         <div class="project-metrics-col" style="display:flex;flex-direction:column;gap:1rem;">
           <div class="project-metric">
             <div class="project-metric-value">7</div>
@@ -1652,67 +1754,81 @@
         </div>
       </div>
 
-<!-- DooR DasH — full width -->
-<div class="projects-solo" style="margin-bottom:1.5rem;">
-  <div class="project-featured reveal reveal-delay-1">
-    <div>
-      <div class="project-icon coral-bg">🎮</div>
-      <div class="project-header">
-        <div class="project-title">DooR DasH: Scare vs Laugh</div>
-        <div class="project-status done">Completed</div>
+      <!-- DooR DasH -->
+      <div class="projects-solo" style="margin-bottom:1.5rem;">
+        <div class="project-featured reveal reveal-delay-1">
+          <div>
+            <div class="project-icon coral-bg">🎮</div>
+            <div class="project-header">
+              <div class="project-title">DooR DasH: Scare vs Laugh</div>
+              <div class="project-status done">Completed</div>
+            </div>
+            <p class="project-desc">
+              A 2-player, 100-cell strategy board game engineered 
+              across 20+ Java classes — not a simple school project.
+              Built with a fully event-driven JavaFX GUI, 
+              a deep OOP class hierarchy, and a polymorphic 
+              monster system where energy mechanics cascade 
+              through overridden method chains. Every 
+              architectural decision was deliberate: MVC for 
+              separation of concerns, CSV-based loading for 
+              configurability, custom exceptions for control flow clarity.
+            </p>
+            <ul class="project-highlights">
+              <li>20+ Java classes across a clean MVC architecture with full separation of concerns</li>
+              <li>10+ distinct cell effect types — each with unique board interaction logic</li>
+              <li>Polymorphic monster system with cascading energy mechanics through overridden method chains</li>
+              <li>Fully event-driven JavaFX GUI — zero logic leaking into the view layer</li>
+              <li>CSV-based DataLoader for dynamic, configuration-driven board setup</li>
+              <li>Custom exception hierarchy for structured, predictable error handling</li>
+              <li>JUnit test suite covering core game logic and edge cases</li>
+            </ul>
+            <div class="project-tech">
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">JavaFX</span>
+              <span class="tech-tag">OOP</span>
+              <span class="tech-tag">MVC</span>
+              <span class="tech-tag">JUnit</span>
+            </div>
+            <div class="project-footer">
+              <a href="https://github.com/Omar-Shaker-Elbana/DooR_DasH" target="_blank" rel="noopener" class="project-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <button class="project-toggle-btn" onclick="toggleDropdown(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px;flex-shrink:0;transition:transform 0.35s ease"><polyline points="6 9 12 15 18 9"/></svg>
+                <span>Preview & Output</span>
+              </button>
+            </div>
+            <div class="project-dropdown">
+              <div class="project-dropdown-inner">
+                <div class="project-dropdown-label">Screenshots & Output</div>
+                <div class="project-dropdown-images">
+                  <img src="images/doordash-1.png" alt="DooR DasH screenshot 1" />
+                  <img src="images/doordash-2.png" alt="DooR DasH screenshot 2" />
+                  <img src="images/doordash-3.png" alt="DooR DasH screenshot 3" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="project-metrics-col" style="display:flex;flex-direction:column;gap:1rem;">
+            <div class="project-metric">
+              <div class="project-metric-value" style="color:var(--coral);">20+</div>
+              <div class="project-metric-label">Java Classes</div>
+            </div>
+            <div class="project-metric">
+              <div class="project-metric-value" style="color:var(--gold);">10+</div>
+              <div class="project-metric-label">Cell Effect Types</div>
+            </div>
+            <div class="project-metric">
+              <div class="project-metric-value">MVC</div>
+              <div class="project-metric-label">Architecture Pattern</div>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="project-desc">
-        A 2-player, 100-cell strategy board game engineered 
-        across 20+ Java classes — not a simple school project.
-        Built with a fully event-driven JavaFX GUI, 
-        a deep OOP class hierarchy, and a polymorphic 
-        monster system where energy mechanics cascade 
-        through overridden method chains. Every 
-        architectural decision was deliberate: MVC for 
-        separation of concerns, CSV-based loading for 
-        configurability, custom exceptions for control flow clarity.
-      </p>
-      <ul class="project-highlights">
-        <li>20+ Java classes across a clean MVC architecture with full separation of concerns</li>
-        <li>10+ distinct cell effect types — each with unique board interaction logic</li>
-        <li>Polymorphic monster system with cascading energy mechanics through overridden method chains</li>
-        <li>Fully event-driven JavaFX GUI — zero logic leaking into the view layer</li>
-        <li>CSV-based DataLoader for dynamic, configuration-driven board setup</li>
-        <li>Custom exception hierarchy for structured, predictable error handling</li>
-        <li>JUnit test suite covering core game logic and edge cases</li>
-      </ul>
-      <div class="project-tech">
-        <span class="tech-tag">Java</span>
-        <span class="tech-tag">JavaFX</span>
-        <span class="tech-tag">OOP</span>
-        <span class="tech-tag">MVC</span>
-        <span class="tech-tag">JUnit</span>
-      </div>
-      <div class="project-footer">
-        <a href="https://github.com/Omar-Shaker-Elbana/DooR_DasH" target="_blank" rel="noopener" class="project-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-      </div>
-    </div>
-    <div class="project-metrics-col" style="display:flex;flex-direction:column;gap:1rem;">
-      <div class="project-metric">
-        <div class="project-metric-value" style="color:var(--coral);">20+</div>
-        <div class="project-metric-label">Java Classes</div>
-      </div>
-      <div class="project-metric">
-        <div class="project-metric-value" style="color:var(--gold);">10+</div>
-        <div class="project-metric-label">Cell Effect Types</div>
-      </div>
-      <div class="project-metric">
-        <div class="project-metric-value">MVC</div>
-        <div class="project-metric-label">Architecture Pattern</div>
-      </div>
-    </div>
-  </div>
-</div>      
 
-<!-- Linear Regression & Dijkstra — 2-column side by side -->
+      <!-- Linear Regression & Dijkstra -->
       <div class="projects-secondary">
 
         <!-- Linear Regression -->
@@ -1725,19 +1841,16 @@
           <p class="project-desc">
             Implemented three regression algorithms from mathematical 
             first principles — no ML libraries, just NumPy and matrix
-             calculus. The goal wasn't to get predictions; it was to 
-             understand why the math works before
-              touching an abstraction. Results achieve 
-              machine-precision agreement with 
-              scikit-learn at under 1e-13 error. 
-              Trained on a Canadian vehicle CO₂ emissions dataset.
+            calculus. The goal wasn't to get predictions; it was to 
+            understand why the math works before touching an abstraction.
+            Results achieve machine-precision agreement with 
+            scikit-learn at under 1e-13 error. 
+            Trained on a Canadian vehicle CO₂ emissions dataset.
           </p>
           <ul class="project-highlights">
-            <li>Normal Equation derived from matrix calculus 
-              — (XᵀX)⁻¹Xᵀy implemented from scratch</li>
+            <li>Normal Equation derived from matrix calculus — (XᵀX)⁻¹Xᵀy implemented from scratch</li>
             <li>Gradient Descent converging to optimal weights at Δ < 1e-3</li>
-            <li>Ridge Regularization with experimental
-               bias-variance analysis across λ = 0 → 100</li>
+            <li>Ridge Regularization with experimental bias-variance analysis across λ = 0 → 100</li>
             <li>MSE ≈ 913 · R² ≈ 0.734 · <1e-13 error vs scikit-learn</li>
           </ul>
           <div class="project-tech">
@@ -1751,6 +1864,19 @@
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
               GitHub
             </a>
+            <button class="project-toggle-btn" onclick="toggleDropdown(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px;flex-shrink:0;transition:transform 0.35s ease"><polyline points="6 9 12 15 18 9"/></svg>
+              <span>Preview & Output</span>
+            </button>
+          </div>
+          <div class="project-dropdown">
+            <div class="project-dropdown-inner">
+              <div class="project-dropdown-label">Screenshots & Output</div>
+              <div class="project-dropdown-images">
+                <img src="images/linreg-1.png" alt="Linear Regression output 1" />
+                <img src="images/linreg-2.png" alt="Linear Regression output 2" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1782,8 +1908,21 @@
           <div class="project-footer">
             <a href="https://github.com/Omar-Shaker-Elbana/Dijkstra-s_Algorithm" target="_blank" rel="noopener" class="project-link">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-              View on GitHub
+              GitHub
             </a>
+            <button class="project-toggle-btn" onclick="toggleDropdown(this)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px;flex-shrink:0;transition:transform 0.35s ease"><polyline points="6 9 12 15 18 9"/></svg>
+              <span>Preview & Output</span>
+            </button>
+          </div>
+          <div class="project-dropdown">
+            <div class="project-dropdown-inner">
+              <div class="project-dropdown-label">Screenshots & Output</div>
+              <div class="project-dropdown-images">
+                <img src="images/dijkstra-1.png" alt="Dijkstra output 1" />
+                <img src="images/dijkstra-2.png" alt="Dijkstra output 2" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1792,7 +1931,6 @@
   </section>
 
   <div class="divider"></div>
-
   <!-- ─── EXPERIENCE ─────────────────────────────────────────── -->
   <!-- FIX 3: Timeline vertical line aligned to dot centers -->
   <section id="experience" class="pad">
@@ -2231,6 +2369,31 @@
         }
       });
     });
+
+    /* ── Project dropdown toggle ── */
+function toggleDropdown(btn) {
+  const card = btn.closest('.project-featured, .project-card');
+  const dropdown = card.querySelector('.project-dropdown');
+  const isOpen = dropdown.classList.contains('open');
+  dropdown.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  btn.textContent = '';
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '2.5');
+  svg.style.width = '12px';
+  svg.style.height = '12px';
+  svg.style.flexShrink = '0';
+  svg.style.transition = 'transform 0.35s ease';
+  if (!isOpen) svg.style.transform = 'rotate(180deg)';
+  const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+  poly.setAttribute('points', '6 9 12 15 18 9');
+  svg.appendChild(poly);
+  btn.appendChild(svg);
+  btn.appendChild(document.createTextNode(!isOpen ? ' Hide Preview' : ' Preview & Output'));
+}
   </script>
 </body>
 </html>

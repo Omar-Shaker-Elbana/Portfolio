@@ -1,8 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="canonical" href="https://omar-shaker-elbana.github.io" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<link rel="icon" href="images/icon.png" type="image/jpeg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Omar Shaker — Backend Engineer and CS student at GIU Cairo. Building scalable systems with Python, Django, and REST APIs. Open to 2026 summer internships." />
+<meta property="og:title" content="Omar Shaker · Backend Engineer" />
+<meta property="og:description" content="CS student at GIU Cairo, ranked #3 in class. Building production-grade backends with Python, Django, and REST APIs. Open to 2026 summer internships." />
+<meta property="og:image" content="images/omar.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://omar-shaker-elbana.github.io" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Omar Shaker · Backend Engineer" />
+<meta name="twitter:description" content="CS student at GIU Cairo. Python, Django, REST APIs. Open to 2026 summer internships." />
+<meta name="twitter:image" content="images/omar.jpg" />
   <title>Omar Shaker · Backend Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1267,12 +1281,12 @@
     .contact-wrapper .section-title { margin-bottom: 1rem; }
     .contact-wrapper .section-sub { margin-left: auto; margin-right: auto; text-align: center; }
     .contact-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 2.5rem;
-    }
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
     .contact-link {
       display: flex;
       align-items: center;
@@ -1294,6 +1308,238 @@
     }
     .contact-link svg { width: 16px; height: 16px; flex-shrink: 0; }
 
+
+    .copy-email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-2);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--trans);
+}
+.copy-email-btn:hover {
+  color: var(--mint);
+  border-color: var(--mint);
+  background: var(--mint-dim);
+  transform: translateY(-2px);
+}
+.copy-email-btn.copied {
+  color: var(--mint);
+  border-color: var(--mint);
+  background: var(--mint-dim);
+}
+
+/* ─── EMAIL CARD ─────────────────────────────────────────── */
+.email-contact-card {
+  padding: 0 !important;
+  overflow: hidden;
+  gap: 0 !important;
+}
+.email-contact-card:hover {
+  transform: none; /* let inner parts handle their own hover */
+}
+.email-mailto {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.25rem;
+  color: var(--text-2);
+  flex: 1;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  transition: color var(--trans), background var(--trans);
+  white-space: nowrap;
+}
+.email-mailto:hover {
+  color: var(--mint);
+  background: var(--mint-dim);
+}
+.email-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--border);
+  flex-shrink: 0;
+}
+.email-contact-card .copy-email-btn {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0.85rem 1rem;
+  flex-shrink: 0;
+}
+.email-contact-card .copy-email-btn:hover {
+  border-radius: 0;
+  transform: none;
+}
+.email-contact-card .copy-email-btn.copied {
+  border-radius: 0;
+}
+
+/* ─── LIGHT MODE PALETTE ─────────────────────────────────── */
+[data-theme="light"] {
+  --bg-0:       #f4f5fb;
+  --bg-1:       #eceef8;
+  --bg-2:       #e2e5f5;
+  --bg-card:    #ffffff;
+  --bg-hover:   #f0f2fc;
+  --border:     rgba(40, 50, 120, 0.1);
+  --border-mid: rgba(40, 50, 120, 0.22);
+
+  --mint:       #00b894;
+  --mint-dim:   rgba(0, 184, 148, 0.1);
+  --mint-glow:  rgba(0, 184, 148, 0.2);
+  --gold:       #e09a00;
+  --gold-dim:   rgba(224, 154, 0, 0.1);
+  --coral:      #e05252;
+
+  --text-0:     #09091e;
+  --text-1:     #1c1c40;
+  --text-2:     #4a4a78;
+  --text-3:     #9090b8;
+}
+
+[data-theme="light"] body {
+  background: var(--bg-0);
+}
+
+[data-theme="light"] #header.scrolled {
+  background: rgba(244, 245, 251, 0.92);
+  box-shadow: 0 1px 0 var(--border);
+}
+
+[data-theme="light"] .mobile-menu {
+  background: rgba(244, 245, 251, 0.98);
+}
+
+[data-theme="light"] .hero-grid-bg {
+  background-image:
+    linear-gradient(rgba(40,50,120,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(40,50,120,0.04) 1px, transparent 1px);
+}
+
+[data-theme="light"] .hero-glow {
+  background: radial-gradient(ellipse, rgba(0,184,148,0.08) 0%, transparent 70%);
+}
+
+[data-theme="light"] .project-card,
+[data-theme="light"] .project-featured,
+[data-theme="light"] .now-card,
+[data-theme="light"] .cert-card,
+[data-theme="light"] .info-card,
+[data-theme="light"] .skill-group,
+[data-theme="light"] .stat-card,
+[data-theme="light"] .github-card,
+[data-theme="light"] .content-card,
+[data-theme="light"] .achievement-strip {
+  box-shadow: 0 2px 16px rgba(40,50,120,0.07);
+}
+
+[data-theme="light"] .timeline::before {
+  background: linear-gradient(to bottom, var(--mint), transparent);
+}
+
+[data-theme="light"] .timeline-dot {
+  border-color: var(--bg-0);
+}
+
+[data-theme="light"] body::before {
+  opacity: 0.25;
+}
+
+/* ─── THEME TOGGLE BUTTON ────────────────────────────────── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color var(--trans), background var(--trans), transform var(--trans);
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  border-color: var(--mint);
+  background: var(--mint-dim);
+  transform: translateY(-1px);
+}
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-2);
+  transition: color var(--trans);
+}
+.theme-toggle:hover svg { color: var(--mint); }
+.theme-toggle .icon-moon { display: block; }
+.theme-toggle .icon-sun  { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun  { display: block; }
+
+/* ─── LAZY IMAGE LOAD ────────────────────────────────────── */
+.lazy-img {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.lazy-img.img-loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+.img-wrap {
+  position: relative;
+  background: var(--bg-2);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.img-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(100,255,210,0.06) 50%,
+    transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s ease infinite;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+.img-wrap.img-loaded::before { opacity: 0; }
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* hero photo specific */
+.hero-photo-wrap .img-wrap {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+.hero-photo-wrap .img-wrap .lazy-img {
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── SCROLL PROGRESS BAR ───────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--mint), rgba(100,255,210,0.5));
+  z-index: 200;
+  transition: width 0.1s linear;
+}
     /* ─── FOOTER ─────────────────────────────────────────────── */
     footer {
       padding: 2.5rem 0;
@@ -1343,10 +1589,272 @@
       .hero-actions { flex-direction: column; }
       .btn { justify-content: center; }
     }
+
+    /* ─── HERO PHOTO ─────────────────────────────────────────── */
+.hero-layout {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+}
+.hero-photo-wrap {
+  flex-shrink: 0;
+  width: 300px;
+  height: 400px;
+  margin-left: auto;
+  position: relative;
+}
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 16px;
+  display: block;
+  -webkit-mask-image: linear-gradient(to bottom, black 90%, transparent 100%),
+  linear-gradient(to top, black 90%, transparent 100%),
+  linear-gradient(to right, black 90%, transparent 100%),
+  linear-gradient(to left, black 90%, transparent 100%);
+-webkit-mask-composite: destination-in;
+mask-image: linear-gradient(to bottom, black 90%, transparent 100%),
+  linear-gradient(to top, black 90%, transparent 100%),
+  linear-gradient(to right, black 90%, transparent 100%),
+  linear-gradient(to left, black 90%, transparent 100%);
+mask-composite: intersect;
+}
+@media (max-width: 900px) {
+  .hero-photo-wrap { width: 220px; height: 300px; }
+}
+@media (max-width: 720px) {
+  .hero-layout { flex-direction: column-reverse; gap: 1.5rem; }
+  .hero-photo-wrap {
+    width: 150px; height: 180px;
+    margin-left: 0; margin-right: auto;
+  }
+}
+
+  /* ─── NOW SECTION ────────────────────────────────────────── */
+#now { background: var(--bg-0); }
+
+.now-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-mid);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  position: relative;
+}
+
+.now-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.now-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 0 3px var(--mint-dim);
+  animation: pulse 2s ease infinite;
+  flex-shrink: 0;
+}
+.now-status-text {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mint);
+}
+
+.now-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.now-project-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.5rem;
+}
+.now-project-name {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-0);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.now-project-type {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--mint);
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.02em;
+}
+.now-project-summary {
+  font-size: 0.92rem;
+  color: var(--text-2);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+  max-width: 420px;
+}
+.now-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius);
+  transition: color var(--trans), border-color var(--trans), background var(--trans);
+}
+.now-github-link:hover {
+  color: var(--mint);
+  border-color: var(--mint);
+  background: var(--mint-dim);
+}
+
+.now-progress-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+.now-progress-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.25rem;
+}
+.now-progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.now-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.now-progress-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-1);
+}
+.now-progress-pct {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--mint);
+}
+.now-progress-bar {
+  height: 4px;
+  background: var(--bg-2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.now-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--mint), rgba(100,255,210,0.4));
+  border-radius: 4px;
+  transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.now-progress-fill.animate {
+  width: var(--p, 0%);
+}
+
+.now-stack-block { }
+.now-stack-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.now-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+  background: var(--mint-dim);
+  color: var(--mint);
+  border: 1px solid var(--border-mid);
+  letter-spacing: 0.03em;
+}
+
+.now-also-row {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.now-also-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.now-also-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.now-also-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-2);
+  transition: border-color var(--trans), color var(--trans);
+}
+.now-also-item:hover {
+  border-color: var(--border-mid);
+  color: var(--text-1);
+}
+.now-also-icon {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .now-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 480px) {
+  .now-also-items { flex-direction: column; }
+}
+@media (max-width: 720px) {
+  .contact-links {
+    flex-wrap: wrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
   </style>
 </head>
 
 <body>
+  <div id="scroll-progress"></div>
 
   <!-- ─── HEADER ─────────────────────────────────────────────── -->
   <header id="header">
@@ -1360,13 +1868,34 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#content">Series</a></li>
+        <li><a href="#now">Now</a></li>
         <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#stats">Stats</a></li>
+        <!-- <li><a href="#stats">Stats</a></li> -->
+        <li><a href="#resume">Resume</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
-      <div class="hamburger" id="hamburger" aria-label="Open menu">
-        <span></span><span></span><span></span>
-      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+  <!-- Moon icon (shown in dark mode) -->
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+  </svg>
+  <!-- Sun icon (shown in light mode) -->
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="5"/>
+    <line x1="12" y1="1" x2="12" y2="3"/>
+    <line x1="12" y1="21" x2="12" y2="23"/>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+    <line x1="1" y1="12" x2="3" y2="12"/>
+    <line x1="21" y1="12" x2="23" y2="12"/>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+  </svg>
+</button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+      <!-- </div> -->
     </nav>
   </header>
 
@@ -1378,8 +1907,10 @@
     <a href="#projects" class="mobile-link">Projects</a>
     <a href="#experience" class="mobile-link">Experience</a>
     <a href="#content" class="mobile-link">Series</a>
+    <a href="#now" class="mobile-link">Now</a>
     <a href="#certifications" class="mobile-link">Certifications</a>
-    <a href="#stats" class="mobile-link">Stats</a>
+    <!-- <a href="#stats" class="mobile-link">Stats</a> -->
+    <a href="#resume" class="mobile-link">Resume</a>
     <a href="#contact" class="mobile-link">Contact</a>
   </div>
 
@@ -1388,13 +1919,14 @@
     <div class="hero-grid-bg"></div>
     <div class="hero-glow"></div>
     <div class="container">
+      <div class="hero-layout">
       <div class="hero-content">
         <h1 class="hero-name">Omar<br/><span class="accent">Shaker.</span></h1>
         <div class="hero-title-line">
           <span class="hero-title">Backend Engineer &amp;</span>
           <span class="typewriter" id="typewriter"></span>
         </div>
-        <div class="hero-tag">Available for 2026 Summer Internships & Free Lancing</div>
+        <div class="hero-tag">Available for 2026 Summer Internships & Freelancing</div>
         <p class="hero-bio">
           CS student at <strong>German International University</strong>, Cairo.
           I build systems the way I study math — <strong>structured, clean, and scalable</strong>.
@@ -1414,10 +1946,10 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
             GitHub
           </a>
-          <a href="resume.pdf" download="Omar_Shaker_Resume.pdf" class="btn btn-outline">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Resume
-          </a>
+          <a href="#resume" class="btn btn-outline">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+  View Resume
+</a>
         </div>
         <div class="hero-stats">
           <div class="stat-item">
@@ -1434,7 +1966,7 @@
           </div>
           <div class="stat-item">
             <div class="stat-num"><span>350% Audience Growth</span></div>
-            <div class="stat-label">on LinkedIN thanks to "Python in 60 Seconds" series</div>
+            <div class="stat-label">on LinkedIn thanks to "Python in 60 Seconds" series</div>
           </div>
           <!-- <div class="stat-item">
             <div class="stat-num">2029</div>
@@ -1442,6 +1974,12 @@
           </div> -->
         </div>
       </div>
+      <div class="hero-photo-wrap">
+  <div class="img-wrap">
+    <img src="images/omar.jpg" alt="Omar Shaker" class="hero-photo lazy-img" loading="lazy" />
+  </div>
+</div>
+      </div><!-- end hero-layout -->
     </div>
     <!-- <div class="scroll-indicator">
       <span>Scroll</span>
@@ -1762,7 +2300,7 @@
         <div class="project-dropdown-inner">
           <div class="project-dropdown-label">Screenshots & Output</div>
           <div class="project-dropdown-images">
-            <img src="images/SH1.png" alt="StoreHub screenshot 1" />
+            <img src="images/SH1.png" alt="StoreHub screenshot 1"  class="lazy-img" loading="lazy" />
           </div>
         </div>
       </div>
@@ -1834,8 +2372,8 @@
           <div class="project-dropdown-inner">
             <div class="project-dropdown-label">Screenshots & Output</div>
             <div class="project-dropdown-images">
-              <img src="images/DD1.png" alt="DooR DasH screenshot 1" />
-              <img src="images/DD2.png" alt="DooR DasH screenshot 2" />
+              <img src="images/DD1.png" alt="DooR DasH screenshot 1"  class="lazy-img" loading="lazy" />
+              <img src="images/DD2.png" alt="DooR DasH screenshot 2"  class="lazy-img" loading="lazy" />
             </div>
           </div>
         </div>
@@ -1887,9 +2425,15 @@
           <div class="project-dropdown-inner">
             <div class="project-dropdown-label">Screenshots & Output</div>
             <div class="project-dropdown-images">
-              <img src="images/ML1.png" alt="Linear Regression output 1" />
-              <img src="images/ML2.png" alt="Linear Regression output 2" />
-              <img src="images/ML3.png" alt="Linear Regression output 3" />
+              <div class="img-wrap">
+                <img src="images/ML1.png" alt="Linear Regression output 1" class="lazy-img" loading="lazy" />
+              </div>
+              <div class="img-wrap">
+                <img src="images/ML2.png" alt="Linear Regression output 2" class="lazy-img" loading="lazy" />
+              </div>
+              <div class="img-wrap">
+                <img src="images/ML3.png" alt="Linear Regression output 3" class="lazy-img" loading="lazy" />
+              </div>
             </div>
           </div>
         </div>
@@ -1934,7 +2478,9 @@
           <div class="project-dropdown-inner">
             <div class="project-dropdown-label">Screenshots & Output</div>
             <div class="project-dropdown-images">
-              <img src="images/DI1.png" alt="Dijkstra output 1" />
+              <div class="img-wrap">
+                <img src="images/DI1.png" alt="Dijkstra output 1"  class="lazy-img" loading="lazy" />
+              </div>
             </div>
           </div>
         </div>
@@ -2007,7 +2553,7 @@
           </ul>
           <div style="margin-top:1rem;">
             <a href="https://leetcode.com/u/Omar-Shaker-Elbana/" target="_blank" rel="noopener" class="btn btn-outline" style="display:inline-flex; font-size:0.78rem; padding:0.6rem 1.2rem;">
-             <img src="https://leetcode.com/favicon.ico" width="14" height="14" style="border-radius:2px;" alt="LeetCode" />
+             <img src="images/leetcode.ico" width="14" height="14" style="border-radius:2px;" alt="LeetCode" />
               View LeetCode Profile
             </a>
           </div>
@@ -2056,6 +2602,118 @@
   </section>
 
   <div class="divider"></div>
+
+  <!-- ─── NOW ───────────────────────────────────────────────── -->
+<section id="now" class="pad">
+  <div class="container">
+    <div class="section-label reveal">Now</div>
+    <h2 class="section-title reveal reveal-delay-1">What I'm building now!</h2>
+    <p class="section-sub reveal reveal-delay-2">A live snapshot of my current focus — updated as I ship.</p>
+
+    <!-- Main Now Card -->
+    <div class="now-card reveal reveal-delay-2">
+      <div class="now-status-bar">
+        <div class="now-status-dot"></div>
+        <span class="now-status-text">Active Build · May 2026</span>
+      </div>
+
+      <div class="now-grid">
+        <!-- Left: project identity -->
+        <div class="now-project-identity">
+          <div class="now-project-label">Main Project</div>
+          <div class="now-project-name">StoreHub</div>
+          <div class="now-project-type">Full-Stack E-Commerce Platform · Django</div>
+          <p class="now-project-summary">
+            A production-grade e-commerce backend I'm building from scratch — 
+            7 Django apps, role-based access, normalized schema, and RESTful APIs.
+            Not a tutorial. Every decision is deliberate.
+          </p>
+          <a href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" class="now-github-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+
+        <!-- Right: progress + stack -->
+        <div class="now-project-right">
+
+          <!-- Progress bars -->
+          <div class="now-progress-block">
+            <div class="now-progress-title">Build Progress</div>
+            <div class="now-progress-item">
+              <div class="now-progress-header">
+                <span class="now-progress-label">Auth & User Management</span>
+                <span class="now-progress-pct">100%</span>
+              </div>
+              <div class="now-progress-bar"><div class="now-progress-fill" style="--p:100%"></div></div>
+            </div>
+            <div class="now-progress-item">
+              <div class="now-progress-header">
+                <span class="now-progress-label">Product & Inventory APIs</span>
+                <span class="now-progress-pct">85%</span>
+              </div>
+              <div class="now-progress-bar"><div class="now-progress-fill" style="--p:85%"></div></div>
+            </div>
+            <div class="now-progress-item">
+              <div class="now-progress-header">
+                <span class="now-progress-label">Orders & Checkout Flow</span>
+                <span class="now-progress-pct">60%</span>
+              </div>
+              <div class="now-progress-bar"><div class="now-progress-fill" style="--p:60%"></div></div>
+            </div>
+            <div class="now-progress-item">
+              <div class="now-progress-header">
+                <span class="now-progress-label">Admin Dashboard</span>
+                <span class="now-progress-pct">40%</span>
+              </div>
+              <div class="now-progress-bar"><div class="now-progress-fill" style="--p:40%"></div></div>
+            </div>
+          </div>
+
+          <!-- Stack pills -->
+          <div class="now-stack-block">
+            <div class="now-progress-title">Stack</div>
+            <div class="now-stack-pills">
+              <span class="now-pill">Python</span>
+              <span class="now-pill">Django</span>
+              <span class="now-pill">DRF</span>
+              <span class="now-pill">PostgreSQL</span>
+              <span class="now-pill">JWT</span>
+              <span class="now-pill">Signals</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bottom: also doing row -->
+      <!-- <div class="now-also-row">
+        <div class="now-also-label">Also this week</div>
+        <div class="now-also-items">
+          <div class="now-also-item">
+            <div class="now-also-icon">📚</div>
+            <span>LeetCode — Medium/Hard daily streak</span>
+          </div>
+          <div class="now-also-item">
+            <div class="now-also-icon">☁️</div>
+            <span>AWS AI Practitioner prep</span>
+          </div>
+          <div class="now-also-item">
+            <div class="now-also-icon">✍️</div>
+            <span>Python in 60 Seconds — LinkedIn series</span>
+          </div>
+          <div class="now-also-item">
+            <div class="now-also-icon">🎓</div>
+            <span>McKinsey Forward Program</span>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
 
 
   <!-- ─── CERTIFICATIONS ────────────────────────────────────── -->
@@ -2201,7 +2859,45 @@
 
   <div class="divider"></div>
 
-  
+    
+  <!-- ─── RESUME VIEWER ─────────────────────────────────────── -->
+<section id="resume" class="pad">
+  <div class="container">
+    <div class="section-label reveal">Resume</div>
+    <h2 class="section-title reveal reveal-delay-1">My CV.</h2>
+    <p class="section-sub reveal reveal-delay-2">View inline or download a copy.</p>
+
+    <div class="reveal reveal-delay-2" style="
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    ">
+      <div style="
+        display: flex;
+        justify-content: flex-end;
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid var(--border);
+        background: var(--bg-2);
+      ">
+        <a href="resume.pdf" download="Omar_Shaker_Resume.pdf" class="btn btn-outline" style="font-size:0.78rem; padding:0.5rem 1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+      </div>
+      <iframe
+        src="resume.pdf"
+        width="100%"
+        height="780px"
+        style="display:block; border:none;"
+        title="Omar Shaker Resume"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
   <!-- ─── STATS ──────────────────────────────────────────────── -->
   <section id="stats" class="pad">
     <div class="container">
@@ -2219,8 +2915,8 @@
           <div class="stat-card-label">Django Apps in StoreHub</div>
         </div>
         <div class="stat-card">
-          <div class="stat-card-num mint">12</div>
-          <div class="stat-card-label">Decimal Precision vs sklearn</div>
+          <div class="stat-card-num mint">1e-13</div>
+          <div class="stat-card-label">1e-13 Error vs sklearn</div>
         </div>
         <div class="stat-card">
           <div class="stat-card-num gold">#3</div>
@@ -2246,34 +2942,54 @@
 
   <div class="divider"></div>
 
-  <!-- ─── CONTACT ────────────────────────────────────────────── -->
-  <section id="contact" class="pad">
-    <div class="container">
-      <div class="contact-wrapper">
-        <div class="section-label reveal">Contact</div>
-        <h2 class="section-title reveal reveal-delay-1">Let's build something.</h2>
-        <p class="section-sub reveal reveal-delay-2">
-          I'm actively looking for summer internship opportunities in Backend or Software Engineering.
-          If you're hiring, collaborating, or just want to connect — reach out.
-        </p>
-        <div class="contact-links reveal reveal-delay-3">
-          <a href="mailto:omarshaker082@gmail.com" class="contact-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+
+ <!-- ─── CONTACT ────────────────────────────────────────────── -->
+<section id="contact" class="pad">
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="section-label reveal">Contact</div>
+      <h2 class="section-title reveal reveal-delay-1">Let's build something.</h2>
+      <p class="section-sub reveal reveal-delay-2">
+        I'm actively looking for summer internship opportunities in Backend or Software Engineering.
+        If you're hiring, collaborating, or just want to connect — reach out.
+      </p>
+
+      <div class="contact-links reveal reveal-delay-3">
+
+        <!-- Email + Copy -->
+        <div class="contact-link email-contact-card">
+          <a href="mailto:omarshaker082@gmail.com" class="email-mailto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;flex-shrink:0;">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
             omarshaker082@gmail.com
           </a>
-          <a href="https://www.linkedin.com/in/omar-shaker-elbana/" target="_blank" rel="noopener" class="contact-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            LinkedIn
-          </a>
-          <a href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" class="contact-link">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
-          </a>
+          <div class="email-divider"></div>
+          <button class="copy-email-btn" onclick="copyEmail(this)" aria-label="Copy email address">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <span>Copy</span>
+          </button>
         </div>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/omar-shaker-elbana/" target="_blank" rel="noopener" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;flex-shrink:0;"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;flex-shrink:0;"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
       </div>
     </div>
-  </section>
-
+  </div>
+</section>
   <!-- ─── FOOTER ─────────────────────────────────────────────── -->
   <footer>
     <div class="container">
@@ -2366,12 +3082,6 @@
     /* ── Hamburger menu ── */
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobile-menu');
-    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-    document.querySelectorAll('.mobile-link').forEach(a => {
-      a.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-      });
-    });
 
     /* ── Smooth anchor scroll (fallback for older browsers) ── */
     document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -2408,6 +3118,78 @@ function toggleDropdown(btn) {
   btn.appendChild(svg);
   btn.appendChild(document.createTextNode(!isOpen ? ' Hide Preview' : ' Preview & Output'));
 }
+
+  /* ── Copy email to clipboard ── */
+function copyEmail(btn) {
+  navigator.clipboard.writeText('omarshaker082@gmail.com').then(() => {
+    const span = btn.querySelector('span');
+    btn.classList.add('copied');
+    span.textContent = 'Copied!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      span.textContent = 'Copy';
+    }, 2000);
+  });
+}
+
+/* ── Now section progress bars ── */
+const nowFills = document.querySelectorAll('.now-progress-fill');
+const nowObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate');
+      nowObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+nowFills.forEach(f => nowObs.observe(f));
+
+/* ── Scroll progress bar ── */
+const scrollBar = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  scrollBar.style.width = (scrolled / total * 100) + '%';
+}, { passive: true });
+
+/* ── Theme toggle ── */
+const themeToggle = document.getElementById('theme-toggle');
+const savedTheme = localStorage.getItem('theme') || 'dark';
+if (savedTheme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+themeToggle.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme');
+  const next = current === 'light' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('theme', next);
+});
+
+/* ── Lazy image fade-in ── */
+const lazyImages = document.querySelectorAll('.lazy-img');
+const imgObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      img.addEventListener('load', () => {
+        img.classList.add('img-loaded');
+        const wrap = img.closest('.img-wrap');
+        if (wrap) wrap.classList.add('img-loaded');
+      });
+      if (img.complete) {
+        img.classList.add('img-loaded');
+        const wrap = img.closest('.img-wrap');
+        if (wrap) wrap.classList.add('img-loaded');
+      }
+      imgObs.unobserve(img);
+    }
+  });
+}, { rootMargin: '0px 0px 100px 0px' });
+lazyImages.forEach(img => imgObs.observe(img));
+
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', isOpen);
+});
   </script>
 </body>
 </html>

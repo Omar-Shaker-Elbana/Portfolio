@@ -2632,7 +2632,7 @@
       <div class="now-card reveal reveal-delay-2">
         <div class="now-status-bar">
           <div class="now-status-dot"></div>
-          <span class="now-status-text">Active Build · May 2026</span>
+          <span class="now-status-text" id="now-status-date">Active Build · </span>
         </div>
 
         <div class="now-grid">
@@ -3247,6 +3247,10 @@
       });
     }, { rootMargin: '0px 0px 100px 0px' });
     lazyImages.forEach(img => imgObs.observe(img));
+
+    const now = new Date();
+const label = now.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+document.getElementById('now-status-date').textContent = 'Active Build · ' + label;
   </script>
 </body>
 </html>

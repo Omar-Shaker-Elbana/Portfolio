@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Omar Shaker | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --bg:#070b14;
+      --card:rgba(255,255,255,0.05);
+      --border:rgba(255,255,255,0.08);
+      --text:#f5f7ff;
+      --muted:#a8b0c2;
+      --accent:#66ffcc;
+      --accent2:#6ea8ff;
+      --shadow:0 10px 40px rgba(0,0,0,0.45);
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:'Inter',sans-serif;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at 20% 20%, rgba(102,255,204,0.13), transparent 25%),
+      radial-gradient(circle at 80% 10%, rgba(110,168,255,0.15), transparent 25%),
+      radial-gradient(circle at 50% 80%, rgba(138,92,246,0.14), transparent 30%);
+      z-index:-2;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size:40px 40px;
+      z-index:-1;
+      mask-image: radial-gradient(circle at center, black 30%, transparent 85%);
+    }
+
+    .cursor-glow{
+      position:fixed;
+      width:300px;
+      height:300px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(102,255,204,0.14), transparent 70%);
+      pointer-events:none;
+      transform:translate(-50%,-50%);
+      z-index:0;
+    }
+
+    nav{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      z-index:1000;
+      backdrop-filter:blur(20px);
+      background:rgba(7,11,20,0.5);
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-container{
+      width:min(1200px,90%);
+      margin:auto;
+      height:80px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:1.4rem;
+      font-weight:800;
+      letter-spacing:2px;
+    }
+
+    .logo span{
+      color:var(--accent);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:2rem;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--muted);
+      transition:0.3s;
+      position:relative;
+      font-weight:500;
+    }
+
+    .nav-links a:hover{
+      color:white;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-5px;
+      width:0%;
+      height:2px;
+      background:var(--accent);
+      transition:0.3s;
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    section{
+      width:min(1200px,90%);
+      margin:auto;
+      padding:120px 0;
+      position:relative;
+      z-index:2;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:4rem;
+    }
+
+    .hero-left{
+      flex:1;
+    }
+
+    .hero-tag{
+      display:inline-block;
+      padding:10px 18px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.04);
+      border-radius:999px;
+      margin-bottom:1.5rem;
+      color:var(--accent);
+      backdrop-filter:blur(12px);
+    }
+
+    .hero h1{
+      font-size:clamp(3rem,7vw,6rem);
+      line-height:1;
+      margin-bottom:1.5rem;
+    }
+
+    .hero h1 span{
+      background:linear-gradient(to right,var(--accent),#89a7ff);
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .hero p{
+      color:var(--muted);
+      line-height:1.8;
+      font-size:1.1rem;
+      max-width:650px;
+      margin-bottom:2rem;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 28px;
+      border-radius:14px;
+      text-decoration:none;
+      transition:0.35s;
+      font-weight:600;
+      border:1px solid transparent;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent),#7caeff);
+      color:#07111f;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-4px);
+      box-shadow:0 15px 40px rgba(102,255,204,0.2);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.1);
+      color:white;
+      background:rgba(255,255,255,0.04);
+      backdrop-filter:blur(14px);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,0.08);
+      transform:translateY(-4px);
+    }
+
+    .hero-right{
+      flex:1;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+    }
+
+    .glass-card{
+      width:400px;
+      height:500px;
+      border-radius:32px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      backdrop-filter:blur(20px);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+      animation:float 6s ease-in-out infinite;
+    }
+
+    .glass-card::before{
+      content:"";
+      position:absolute;
+      width:200px;
+      height:200px;
+      background:radial-gradient(circle, rgba(102,255,204,0.3), transparent 70%);
+      top:-50px;
+      right:-50px;
+    }
+
+    .glass-card::after{
+      content:"";
+      position:absolute;
+      width:200px;
+      height:200px;
+      background:radial-gradient(circle, rgba(110,168,255,0.3), transparent 70%);
+      bottom:-60px;
+      left:-60px;
+    }
+
+    .card-content{
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:2rem;
+    }
+
+    .card-content h2{
+      font-size:2rem;
+      margin-bottom:1rem;
+    }
+
+    .card-content p{
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .section-title{
+      font-size:3rem;
+      margin-bottom:1rem;
+      position:relative;
+      display:inline-block;
+    }
+
+    .section-title::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-10px;
+      width:60%;
+      height:4px;
+      border-radius:20px;
+      background:linear-gradient(to right,var(--accent),transparent);
+    }
+
+    .section-sub{
+      color:var(--muted);
+      max-width:700px;
+      margin-bottom:4rem;
+      line-height:1.8;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:2rem;
+    }
+
+    .card{
+      padding:2rem;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:24px;
+      transition:0.4s;
+      backdrop-filter:blur(14px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(130deg, transparent, rgba(255,255,255,0.04), transparent);
+      transform:translateX(-100%);
+      transition:0.7s;
+    }
+
+    .card:hover::before{
+      transform:translateX(100%);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:rgba(102,255,204,0.25);
+      box-shadow:0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .card h3{
+      margin-bottom:1rem;
+      font-size:1.4rem;
+    }
+
+    .card p{
+      color:var(--muted);
+      line-height:1.8;
+    }
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+      gap:2rem;
+    }
+
+    .project{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06);
+      min-height:320px;
+      transition:0.4s;
+    }
+
+    .project:hover{
+      transform:translateY(-10px);
+    }
+
+    .project-content{
+      padding:2rem;
+      position:absolute;
+      inset:0;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+      background:linear-gradient(to top, rgba(7,11,20,0.95), rgba(7,11,20,0.2));
+    }
+
+    .project h3{
+      font-size:1.6rem;
+      margin-bottom:1rem;
+    }
+
+    .project p{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    footer{
+      padding:4rem 0;
+      text-align:center;
+      border-top:1px solid rgba(255,255,255,0.06);
+      color:var(--muted);
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(40px);
+      transition:1s;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-18px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @media(max-width:900px){
+
+      .hero{
+        flex-direction:column;
+        text-align:center;
+        padding-top:120px;
+      }
+
+      .hero-buttons{
+        justify-content:center;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .glass-card{
+        width:100%;
+        max-width:380px;
+      }
+
+      .section-title{
+        font-size:2.4rem;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="cursor-glow"></div>
+
+<nav>
+  <div class="nav-container">
+    <div class="logo">O<span>S</span></div>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+
+  <div class="hero-left reveal">
+
+    <div class="hero-tag">
+      Computer Science Student • Data Science • Developer
+    </div>
+
+    <h1>
+      Building <span>modern</span><br>
+      digital experiences.
+    </h1>
+
+    <p>
+      Passionate Computer Science student focused on software engineering,
+      backend systems, artificial intelligence, and creating impactful
+      digital products with clean architecture and premium user experiences.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-secondary">Contact Me</a>
+    </div>
+
+  </div>
+
+  <div class="hero-right reveal">
+
+    <div class="glass-card">
+      <div class="card-content">
+        <h2>Omar Shaker</h2>
+
+        <p>
+          Data Science student at GIU with strong interests in
+          software engineering, mathematics, AI, backend development,
+          and modern system design.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="about">
+
+  <h2 class="section-title reveal">About Me</h2>
+
+  <p class="section-sub reveal">
+    I enjoy building software, solving difficult problems,
+    exploring mathematics and physics, and constantly pushing
+    myself to improve technically and intellectually.
+    My goal is to combine engineering, business, and innovation
+    to create impactful systems and companies in the future.
+  </p>
+
+  <div class="grid">
+
+    <div class="card reveal">
+      <h3>Software Engineering</h3>
+      <p>
+        Designing scalable systems, writing clean maintainable code,
+        and understanding how modern applications work internally.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <h3>Artificial Intelligence</h3>
+      <p>
+        Exploring machine learning, data science,
+        neural networks, and intelligent systems.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <h3>Problem Solving</h3>
+      <p>
+        Strong passion for mathematics, algorithms,
+        optimization, and analytical thinking.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="skills">
+
+  <h2 class="section-title reveal">Skills</h2>
+
+  <p class="section-sub reveal">
+    Technologies and fields I continuously work on and improve.
+  </p>
+
+  <div class="grid">
+
+    <div class="card reveal">
+      <h3>Frontend</h3>
+      <p>
+        HTML, CSS, JavaScript, responsive design,
+        animations, UI/UX principles.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <h3>Backend</h3>
+      <p>
+        Python, databases, APIs,
+        backend architecture and systems.
+      </p>
+    </div>
+
+    <div class="card reveal">
+      <h3>Computer Science</h3>
+      <p>
+        Data structures, algorithms,
+        operating systems, networking,
+        and theoretical CS.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="projects">
+
+  <h2 class="section-title reveal">Projects</h2>
+
+  <p class="section-sub reveal">
+    Some of the projects and systems I’ve worked on.
+  </p>
+
+  <div class="projects">
+
+    <div class="project reveal">
+      <div class="project-content">
+        <h3>Portfolio Website</h3>
+
+        <p>
+          A modern personal portfolio focused on clean design,
+          smooth animations, responsiveness, and premium UI/UX.
+        </p>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-content">
+        <h3>AI & Programming Projects</h3>
+
+        <p>
+          Exploring machine learning systems,
+          backend applications, and software engineering concepts.
+        </p>
+      </div>
+    </div>
+
+    <div class="project reveal">
+      <div class="project-content">
+        <h3>Future Systems</h3>
+
+        <p>
+          Building toward larger-scale projects,
+          startups, intelligent systems,
+          and ambitious engineering goals.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contact">
+
+  <h2 class="section-title reveal">Contact</h2>
+
+  <p class="section-sub reveal">
+    Interested in collaboration, projects,
+    or just a good technical discussion?
+    Feel free to reach out.
+  </p>
+
+  <div class="hero-buttons reveal">
+    <a href="mailto:youremail@example.com" class="btn btn-primary">
+      Email Me
+    </a>
+
+    <a href="https://github.com/" target="_blank" class="btn btn-secondary">
+      GitHub
+    </a>
+
+    <a href="https://linkedin.com/" target="_blank" class="btn btn-secondary">
+      LinkedIn
+    </a>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Omar Shaker. Built with passion, curiosity, and ambition.
+</footer>
+
+<script>
+
+  const reveals = document.querySelectorAll(".reveal");
+
+  window.addEventListener("scroll", () => {
+
+    reveals.forEach((el) => {
+
+      const windowHeight = window.innerHeight;
+      const elementTop = el.getBoundingClientRect().top;
+
+      if(elementTop < windowHeight - 100){
+        el.classList.add("active");
+      }
+
+    });
+
+  });
+
+  const glow = document.querySelector(".cursor-glow");
+
+  document.addEventListener("mousemove", (e)=>{
+
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+
+  });
+
+</script>
+
+</body>
+</html>

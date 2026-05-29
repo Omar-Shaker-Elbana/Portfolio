@@ -853,30 +853,17 @@
     @media (max-width: 720px) {
   /* Keep row layout — photo sits beside the name at the top */
   .hero-layout {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-  .hero-content {
-    flex: 1;
-    min-width: 0;
-  }
-  .hero-photo-wrap {
-    width: 85px;
-    height: 110px;
-    flex-shrink: 0;
-    margin: 0;
-    align-self: flex-start;
-  }
-  .hero-name {
-    font-size: clamp(1.85rem, 9.5vw, 2.75rem);
-  }
-  .hero-photo {
-    -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
-  }
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+.hero-content {
+  width: 100%;
+  min-width: 0;
+}
+.hero-photo-wrap {
+  display: none;
+}
   .now-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 
@@ -1268,30 +1255,46 @@
 .horiz-counter span { color: var(--mint); font-weight: 700; }
 
 /* ─── Mobile: horizontal scroll, same as desktop ─── */
+/* ─── Mobile: native swipe scroll ─── */
 @media (max-width: 768px) {
-  .projects-sticky-outer { height: calc(100vh * 4); }
+  .projects-sticky-outer {
+    height: auto !important;
+  }
   .projects-sticky-inner {
-    position: sticky;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
+    position: relative !important;
+    height: auto !important;
+    overflow-x: scroll;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    display: block;
+    padding: 1.5rem 0 3rem;
+  }
+  .projects-sticky-inner::-webkit-scrollbar {
+    display: none;
   }
   .projects-track {
-    flex-direction: row !important;
+    display: flex !important;
+    transform: none !important;
+    flex-direction: row;
     gap: 1rem;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+    width: max-content;
   }
   .proj-slide {
-    width: min(82vw, 460px) !important;
-    height: min(72vh, 560px) !important;
-    min-height: unset;
+    scroll-snap-align: start;
+    width: min(82vw, 400px) !important;
+    height: auto !important;
+    min-height: 460px;
+    opacity: 1 !important;
+    transform: none !important;
   }
   .proj-slide-desc { -webkit-line-clamp: 3; }
-  .horiz-progress-bar { display: flex !important; }
-  .horiz-scroll-hint  { display: flex !important; font-size: 0.6rem; }
-  .horiz-counter      { display: block !important; }
+  .horiz-progress-bar,
+  .horiz-scroll-hint,
+  .horiz-counter { display: none !important; }
 }
 
 /* ─── SLIDE DROPDOWN ─── */
@@ -2751,6 +2754,7 @@
    23. HORIZONTAL PROJECTS SCROLL — sticky track
 ══════════════════════════════════════════════════════════ */
 function initHorizProjects() {
+  if (window.innerWidth <= 768) return;
   const outer   = document.querySelector('.projects-sticky-outer');
   const track   = document.querySelector('.projects-track');
   const hint    = document.querySelector('.horiz-scroll-hint');

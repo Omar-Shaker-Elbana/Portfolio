@@ -1426,6 +1426,78 @@
   box-shadow: 0 8px 24px var(--mint-glow);
 }
 
+/* ═══════════════════════════════════════════════════
+   MOBILE LAYOUT FIXES
+═══════════════════════════════════════════════════════ */
+
+@media (max-width: 720px) {
+  section.pad { padding: 5rem 0; }
+  #hero { padding: 6rem 0 3.5rem; }
+  .hero-tag { font-size: 0.68rem; white-space: normal; line-height: 1.5; }
+  .hero-title-line { flex-wrap: wrap; gap: 0.4rem; }
+  .stat-num { font-size: 1.5rem; }
+  .stat-label { font-size: 0.64rem; }
+  .projects-section-head { padding: 5rem 0 2.5rem; }
+  iframe[title="Omar Shaker Resume"] { height: 520px !important; }
+  .now-card { padding: 1.75rem; }
+}
+
+@media (max-width: 480px) {
+  section.pad { padding: 4rem 0; }
+
+  /* Hero */
+  #hero { padding: 5rem 0 3rem; }
+  .hero-tag {
+    font-size: 0.62rem; padding: 0.3rem 0.65rem;
+    white-space: normal; line-height: 1.5; border-radius: 12px;
+  }
+  .hero-title-line { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+  .hero-title { font-size: 1rem; }
+  .typewriter { font-size: 1rem; }
+  .hero-bio { font-size: 0.9rem; margin-bottom: 1.75rem; }
+  .hero-stats { gap: 1rem; }
+  .stat-num { font-size: 1.15rem; }
+  .stat-num span { font-size: 0.92rem; }
+  .stat-label { font-size: 0.57rem; word-break: break-word; line-height: 1.4; }
+  .projects-section-head { padding: 4.5rem 0 2rem; }
+
+  /* Contact */
+  .contact-links { flex-direction: column; align-items: stretch; }
+  .contact-link { justify-content: center; width: 100%; }
+
+  /* Resume */
+  iframe[title="Omar Shaker Resume"] { height: 360px !important; }
+
+  /* Now */
+  .now-card { padding: 1.25rem; }
+  .now-project-name { font-size: 1.5rem; }
+  .now-progress-label { font-size: 0.62rem; }
+
+  /* Timeline */
+  .timeline { padding-left: 1.75rem; }
+  .timeline-dot { left: -1.5rem; }
+  .timeline-title { font-size: 1rem; }
+  .timeline-desc { font-size: 0.84rem; }
+
+  /* Stats cards */
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .stat-card-num { font-size: 2rem; }
+  .github-card { padding: 1.5rem; }
+
+  /* Certifications */
+  .cert-card { flex-direction: column; }
+
+  /* Achievement strip */
+  .achievement-strip { padding: 1.25rem 1.5rem; }
+  .achievement-strip-title { font-size: 1.05rem; }
+
+  /* Section sub spacing */
+  .section-sub { margin-bottom: 2.5rem; }
+
+  /* Back to top */
+  #back-to-top { bottom: 1rem; right: 1rem; width: 38px; height: 38px; }
+}
+
     </style>
 </head>
 

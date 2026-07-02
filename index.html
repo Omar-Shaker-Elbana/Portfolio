@@ -2,26 +2,24 @@
 <html lang="en">
 <head>
   <link rel="canonical" href="https://omar-shaker-elbana.github.io" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <link rel="icon" href="images/icon.png" type="image/jpeg" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Omar Shaker — Backend Engineer and CS student at GIU Cairo. Building scalable systems with Python, Django, and REST APIs. Open to 2026 summer internships." />
-  <meta property="og:title" content="Omar Shaker · Backend Engineer" />
-  <meta property="og:description" content="CS student at GIU Cairo, ranked #3 in class. Building production-grade backends with Python, Django, and REST APIs. Open to 2026 summer internships." />
-  <meta property="og:image" content="images/omar.jpg" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://omar-shaker-elbana.github.io" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Omar Shaker · Backend Engineer" />
-  <meta name="twitter:description" content="CS student at GIU Cairo. Python, Django, REST APIs. Open to 2026 summer internships." />
-  <meta name="twitter:image" content="images/omar.jpg" />
-  <title>Omar Shaker · Backend Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<link rel="icon" href="images/icon.png" type="image/png" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#05050d" />
+<meta name="description" content="Omar Shaker — Backend Engineer and CS student at GIU Cairo. Building scalable systems with Python, Django, and REST APIs. Open to 2026 summer internships." />
+<meta property="og:title" content="Omar Shaker · Backend Engineer" />
+<meta property="og:description" content="CS student at GIU Cairo, ranked #3 in class. Building production-grade backends with Python, Django, and REST APIs. Open to 2026 summer internships." />
+<meta property="og:image" content="https://omar-shaker-elbana.github.io/images/omar.jpg" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://omar-shaker-elbana.github.io" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Omar Shaker · Backend Engineer" />
+<meta name="twitter:description" content="CS student at GIU Cairo. Python, Django, REST APIs. Open to 2026 summer internships." />
+<meta name="twitter:image" content="https://omar-shaker-elbana.github.io/images/omar.jpg" />
+<title>Omar Shaker · Backend Engineer</title>
   <style>
     /* ─── VARIABLES ─── */
     :root {
@@ -31,11 +29,27 @@
       --mint: #64ffda; --mint-dim: rgba(100,255,210,0.12); --mint-glow: rgba(100,255,210,0.25);
       --gold: #ffd166; --gold-dim: rgba(255,209,102,0.12); --coral: #ff6b6b;
       --text-0: #f0f0fa; --text-1: #c8c8e0; --text-2: #7878a0; --text-3: #454568;
+      /* per-section accent colors — dark mode */
+      --acc-about: #64ffda; --acc-education: #ffd166; --acc-skills: #5ec8ff;
+      --acc-projects: #a78bfa; --acc-experience: #4ade80; --acc-content: #ff9f6b;
+      --acc-now: #8a9cff; --acc-certifications: #ffcb66; --acc-resume: #4fd1c5;
+      --acc-stats: #c084fc; --acc-contact: #64ffda;
       --font-display: 'Syne', sans-serif; --font-mono: 'JetBrains Mono', monospace; --font-body: 'DM Sans', sans-serif;
       --radius: 8px; --radius-lg: 16px;
       --trans: 0.3s cubic-bezier(0.4,0,0.2,1); --trans-slow: 0.6s cubic-bezier(0.4,0,0.2,1);
       --spring: cubic-bezier(0.34,1.56,0.64,1);
       --expo: cubic-bezier(0.16,1,0.3,1);
+      --sec-about: #0a0e1c;
+--sec-education: #140e08;
+--sec-skills: #070b16;
+--sec-projects: #0d0a1a;
+--sec-experience: #081410;
+--sec-content: #16110a;
+--sec-now: #0a0a1c;
+--sec-certifications: #140d05;
+--sec-resume: #0a0f0c;
+--sec-stats: #0e0a18;
+--sec-contact: #06080f;
     }
 
     /* ─── RESET ─── */
@@ -278,7 +292,12 @@
     .reveal-delay-4 { --delay: 0.4s; }
 
     /* ─── ABOUT ─── */
-    #about { background: var(--bg-1); }
+    #about {
+  background:
+    radial-gradient(ellipse 800px 450px at 108% -10%, color-mix(in srgb, var(--acc-about) 16%, transparent), transparent 60%),
+    repeating-linear-gradient(115deg, color-mix(in srgb, var(--acc-about) 7%, transparent) 0px, color-mix(in srgb, var(--acc-about) 7%, transparent) 1px, transparent 1px, transparent 70px),
+    var(--sec-about);
+}
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
     .about-text p { color: var(--text-2); margin-bottom: 1.25rem; font-size: 1rem; line-height: 1.8; }
     .about-text p strong { color: var(--text-1); font-weight: 500; }
@@ -298,7 +317,17 @@
     .badge.gold { background: var(--gold-dim); color: var(--gold); border-color: rgba(255,209,102,0.2); }
 
     /* ─── SKILLS ─── */
-    #skills { background: var(--bg-0); }
+    #skills { position: relative; background: var(--sec-skills); overflow: hidden; }
+#skills::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--acc-skills) 12%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--acc-skills) 12%, transparent) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 50%, black 25%, transparent 95%);
+  pointer-events: none;
+}
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
     .skill-group {
       background: var(--bg-card); border: 1px solid var(--border);
@@ -334,7 +363,12 @@
     }
 
     /* ─── PROJECTS ─── */
-    #projects { background: var(--bg-1); }
+    #projects {
+  background:
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--acc-projects) 10%, transparent) 0px, color-mix(in srgb, var(--acc-projects) 10%, transparent) 2px, transparent 2px, transparent 24px),
+    var(--sec-projects);
+  padding: 0;
+}
     .project-featured {
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius-lg); padding: 2.5rem;
@@ -420,7 +454,14 @@
     .project-metric-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; }
 
     /* ─── EXPERIENCE ─── */
-    #experience { background: var(--bg-0); }
+    #experience { position: relative; background: var(--sec-experience); }
+#experience::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background-image: repeating-linear-gradient(180deg, color-mix(in srgb, var(--acc-experience) 14%, transparent) 0, color-mix(in srgb, var(--acc-experience) 14%, transparent) 1px, transparent 1px, transparent 54px);
+  mask-image: linear-gradient(180deg, transparent, black 12%, black 88%, transparent);
+  pointer-events: none;
+}
     .timeline { position: relative; padding-left: 2.5rem; }
     .timeline::before {
       content: ''; position: absolute; left: 0.75rem; top: 0; bottom: 0;
@@ -455,7 +496,15 @@
     .timeline-desc li::before { content: '—'; color: var(--text-3); flex-shrink: 0; }
 
     /* ─── CERTIFICATIONS ─── */
-    #certifications { background: var(--bg-1); }
+    #certifications { position: relative; background: var(--sec-certifications); }
+#certifications::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background-image: radial-gradient(circle, color-mix(in srgb, var(--acc-certifications) 22%, transparent) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 50%, black 20%, transparent 95%);
+  pointer-events: none;
+}
     .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
     .cert-card {
       background: var(--bg-card); border: 1px solid var(--border);
@@ -504,14 +553,34 @@
     .achievement-strip-meta-label { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.25rem; }
 
     /* ─── STATS ─── */
-    #stats { background: var(--bg-0); }
-    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 3rem; }
-    .stat-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 1.75rem; text-align: center;
-      transition: border-color 0.3s, transform 0.4s var(--spring);
-      --anim: animScaleIn; --dur: 0.6s;
+    /* ─── STATS ─── */
+    #stats { position: relative; background: var(--sec-stats); }
+#stats::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background-image: repeating-linear-gradient(90deg, color-mix(in srgb, var(--acc-stats) 14%, transparent) 0, color-mix(in srgb, var(--acc-stats) 14%, transparent) 1px, transparent 1px, transparent 60px);
+  mask-image: linear-gradient(180deg, transparent, black 15%, black 85%, transparent);
+  pointer-events: none;
+}
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
     }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 1.5rem;
+      text-align: center;
+      transition: border-color 0.4s, transform 0.4s var(--spring);
+    }
+    .stat-card:hover { border-color: var(--border-mid); transform: translateY(-6px) scale(1.02); }
+    @media (max-width: 900px) {
+      .stats-row { grid-template-columns: repeat(3, 1fr); }
+    }
+
     .stat-card:hover { border-color: var(--border-mid); transform: translateY(-6px) scale(1.02); }
     .stat-card-num { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; line-height: 1; margin-bottom: 0.5rem; }
     .stat-card-num.mint { color: var(--mint); }
@@ -521,7 +590,12 @@
     .github-card p { color: var(--text-2); font-size: 0.95rem; margin-bottom: 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
 
     /* ─── CONTENT SERIES ─── */
-    #content { background: var(--bg-1); }
+    #content {
+  background:
+    radial-gradient(circle at 15% 30%, color-mix(in srgb, var(--acc-content) 20%, transparent), transparent 45%),
+    radial-gradient(circle at 85% 70%, color-mix(in srgb, var(--acc-content) 12%, transparent), transparent 45%),
+    var(--sec-content);
+}
     .content-card {
       background: var(--bg-card); border: 1px solid var(--border);
       border-radius: var(--radius-lg); padding: 2.5rem;
@@ -556,7 +630,15 @@
     .project-toggle-btn.open svg { transform: rotate(180deg); }
 
     /* ─── NOW ─── */
-    #now { background: var(--bg-0); }
+    #now { position: relative; background: var(--sec-now); overflow: hidden; }
+#now::before {
+  content: '';
+  position: absolute; z-index: -1;
+  width: 560px; height: 560px; top: -220px; right: -160px; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--acc-now) 22%, transparent), transparent 70%);
+  animation: glowPulse 5s ease-in-out infinite alternate;
+  pointer-events: none;
+}
     .now-card {
       background: var(--bg-card); border: 1px solid var(--border-mid);
       border-radius: var(--radius-lg); padding: 2.5rem; position: relative;
@@ -590,8 +672,34 @@
     .now-pill { font-family: var(--font-mono); font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 100px; background: var(--mint-dim); color: var(--mint); border: 1px solid var(--border-mid); letter-spacing: 0.03em; transition: transform 0.3s var(--spring), box-shadow 0.3s; }
     .now-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 12px var(--mint-glow); }
 
+#resume { position: relative; background: var(--sec-resume); }
+#resume::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--acc-resume) 12%, transparent) 0, color-mix(in srgb, var(--acc-resume) 12%, transparent) 1px, transparent 1px, transparent 30px);
+  pointer-events: none;
+}
+
+#stats { position: relative; background: var(--sec-stats); }
+#stats::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background-image: repeating-linear-gradient(90deg, rgba(138,99,255,0.1) 0, rgba(138,99,255,0.1) 1px, transparent 1px, transparent 60px);
+  mask-image: linear-gradient(180deg, transparent, black 15%, black 85%, transparent);
+  pointer-events: none;
+}
+
+#contact { position: relative; background: var(--sec-contact); overflow: hidden; }
+#contact::before {
+  content: '';
+  position: absolute; z-index: -1;
+  width: 800px; height: 400px; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse, color-mix(in srgb, var(--acc-contact) 18%, transparent), transparent 70%);
+  pointer-events: none;
+}
+
     /* ─── CONTACT ─── */
-    #contact { background: var(--bg-0); }
+    #contact { background: var(--sec-contact); }
     .contact-wrapper { max-width: 680px; margin: 0 auto; text-align: center; }
     .contact-wrapper .section-label { justify-content: center; }
     .contact-wrapper .section-label::before { display: none; }
@@ -624,7 +732,23 @@
     .project-featured .project-dropdown { grid-column: 1 / -1; }
 
     /* ─── LIGHT THEME ─── */
-    [data-theme="light"] { --bg-0: #f4f5fb; --bg-1: #eceef8; --bg-2: #e2e5f5; --bg-card: #ffffff; --bg-hover: #f0f2fc; --border: rgba(40,50,120,0.1); --border-mid: rgba(40,50,120,0.22); --mint: #00b894; --mint-dim: rgba(0,184,148,0.1); --mint-glow: rgba(0,184,148,0.2); --gold: #e09a00; --gold-dim: rgba(224,154,0,0.1); --coral: #e05252; --text-0: #09091e; --text-1: #1c1c40; --text-2: #4a4a78; --text-3: #9090b8; }
+    [data-theme="light"] { --bg-0: #f4f5fb; --bg-1: #eceef8; --bg-2: #e2e5f5; --bg-card: #ffffff; --bg-hover: #f0f2fc; --border: rgba(40,50,120,0.1); --border-mid: rgba(40,50,120,0.22); --mint: #00b894; --mint-dim: rgba(0,184,148,0.1); --mint-glow: rgba(0,184,148,0.2); --gold: #e09a00; --gold-dim: rgba(224,154,0,0.1); --coral: #e05252; --text-0: #09091e; --text-1: #1c1c40; --text-2: #4a4a78; --text-3: #9090b8;
+    /* per-section accent colors — light mode (deeper/more saturated for contrast on white) */
+    --acc-about: #00b894; --acc-education: #cf8b00; --acc-skills: #0086c3;
+    --acc-projects: #7c5cff; --acc-experience: #1f9d55; --acc-content: #d9682f;
+    --acc-now: #4a5ce0; --acc-certifications: #c98a00; --acc-resume: #0d9c8f;
+    --acc-stats: #9333ea; --acc-contact: #00b894;
+    --sec-about: #e2f7f0;
+--sec-education: #fbeed3;
+--sec-skills: #e1f0fb;
+--sec-projects: #eee7fc;
+--sec-experience: #e2f6e8;
+--sec-content: #fbe6d7;
+--sec-now: #e6e8fc;
+--sec-certifications: #fbecd0;
+--sec-resume: #dff5f1;
+--sec-stats: #f1e5fc;
+--sec-contact: #dceefb; }
     [data-theme="light"] body { background: var(--bg-0); }
     [data-theme="light"] #header.scrolled { background: rgba(244,245,251,0.92); box-shadow: 0 1px 0 var(--border); }
     [data-theme="light"] .mobile-menu { background: rgba(244,245,251,0.98); }
@@ -871,7 +995,12 @@
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
   
     /* ─── HORIZONTAL PROJECTS SCROLL ─── */
-#projects { background: var(--bg-1); padding: 0; }
+#projects {
+  background:
+    repeating-linear-gradient(135deg, color-mix(in srgb, var(--acc-projects) 10%, transparent) 0px, color-mix(in srgb, var(--acc-projects) 10%, transparent) 2px, transparent 2px, transparent 24px),
+    var(--sec-projects);
+  padding: 0;
+}
 .projects-section-head { padding: 7rem 0 3.5rem; }
 
 .projects-sticky-outer {
@@ -1063,7 +1192,12 @@
 .horiz-counter span { color: var(--mint); font-weight: 700; }
 
   /* ─── HORIZONTAL PROJECTS SCROLL ─── */
-#projects { background: var(--bg-1); padding: 0; }
+#projects {
+  background:
+    repeating-linear-gradient(135deg, rgba(100,255,210,0.07) 0px, rgba(100,255,210,0.07) 2px, transparent 2px, transparent 24px),
+    var(--sec-projects);
+  padding: 0;
+}
 .projects-section-head { padding: 7rem 0 3.5rem; }
 
 .projects-sticky-outer {
@@ -1258,8 +1392,9 @@
 /* ─── Mobile: native swipe scroll ─── */
 @media (max-width: 768px) {
   .projects-sticky-outer {
-    height: auto !important;
-  }
+  height: 260vh; /* fallback before JS measures the track; overwritten on load */
+  position: relative;
+}
   .projects-sticky-inner {
     position: relative !important;
     height: auto !important;
@@ -1401,7 +1536,77 @@
 #lightbox.multi #lb-prev,
 #lightbox.multi #lb-next { opacity: 1; pointer-events: auto; }
 #lb-prev.edge, #lb-next.edge { opacity: 0.25 !important; }
+/* ─── PDF VIEWER MODAL ─── */
+#pdf-viewer {
+  position: fixed; inset: 0; z-index: 2100;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+#pdf-viewer.open { opacity: 1; pointer-events: auto; }
+#pdf-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(5,5,13,0.93);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+}
+#pdf-inner {
+  position: relative; z-index: 1;
+  width: min(920px, 94vw); height: min(88vh, 1000px);
+  display: flex; flex-direction: column;
+  background: var(--bg-card); border: 1px solid var(--border-mid);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 32px 80px rgba(0,0,0,0.65);
+  overflow: hidden;
+  transform: scale(0.92) translateY(14px);
+  opacity: 0;
+  transition: transform 0.45s var(--spring), opacity 0.35s ease;
+}
+#pdf-viewer.open #pdf-inner { transform: scale(1) translateY(0); opacity: 1; }
+#pdf-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1rem 1.25rem; border-bottom: 1px solid var(--border);
+  background: var(--bg-2); flex-shrink: 0; gap: 1rem;
+}
+#pdf-title {
+  font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
+  color: var(--text-0); letter-spacing: -0.01em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+#pdf-header-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
+.pdf-action-btn {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-2);
+  border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: var(--radius);
+  transition: color var(--trans), border-color var(--trans), background var(--trans);
+}
+.pdf-action-btn:hover { color: var(--mint); border-color: var(--mint); background: var(--mint-dim); }
+#pdf-close {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--bg-card); border: 1px solid var(--border-mid);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-2); flex-shrink: 0;
+  transition: background var(--trans), color var(--trans), transform var(--trans);
+}
+#pdf-close:hover { background: var(--mint-dim); color: var(--mint); transform: rotate(90deg) scale(1.1); }
+#pdf-close svg { width: 14px; height: 14px; }
+#pdf-frame { flex: 1; width: 100%; border: none; background: #fff; }
 
+/* trigger button inside dropdowns */
+.pdf-view-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
+  color: var(--bg-0); background: var(--gold); border: none;
+  border-radius: var(--radius); padding: 0.55rem 1.1rem;
+  cursor: pointer; transition: background var(--trans), transform var(--trans), box-shadow var(--trans);
+  letter-spacing: 0.02em; width: fit-content;
+}
+.pdf-view-btn:hover { background: #ffe08a; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,209,102,0.3); }
+.pdf-view-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+@media (max-width: 720px) {
+  #pdf-inner { width: 96vw; height: 82vh; }
+  #pdf-title { font-size: 0.82rem; }
+}
 /* make dropdown images zoomable */
 .project-dropdown-images img,
 .proj-slide .project-dropdown-images img { cursor: zoom-in; }
@@ -1611,7 +1816,76 @@
   }
 }
 
+/* ─── EDUCATION ─── */
+#education { position: relative; background: var(--sec-education); }
+#education::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(circle at 8% 18%, color-mix(in srgb, var(--acc-education) 20%, transparent), transparent 48%),
+    radial-gradient(circle at 92% 82%, color-mix(in srgb, var(--acc-about) 14%, transparent), transparent 48%);
+}
+.edu-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 820px; }
+.edu-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2rem;
+  transition: border-color 0.4s, box-shadow 0.4s, transform 0.4s var(--spring);
+  --anim: animBlurIn; --dur: 0.9s;
+}
+.edu-card:hover { border-color: var(--border-mid); box-shadow: 0 20px 56px rgba(0,0,0,0.35); transform: translateY(-4px); }
+.edu-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; }
+.edu-card-icon { width: 46px; height: 46px; border-radius: 12px; background: var(--mint-dim); border: 1px solid var(--border-mid); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.edu-card-icon.gold-bg { background: var(--gold-dim); border-color: rgba(255,209,102,0.2); }
+.edu-card-period { font-family: var(--font-mono); font-size: 0.72rem; color: var(--mint); letter-spacing: 0.06em; text-transform: uppercase; }
+.edu-card-degree { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--text-0); letter-spacing: -0.02em; margin-bottom: 0.3rem; }
+.edu-card-school { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gold); margin-bottom: 1.5rem; }
+.edu-stat-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+.edu-stat-val { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--mint); line-height: 1; margin-bottom: 0.3rem; }
+.edu-stat-val.gold { color: var(--gold); }
+.edu-stat-lbl { font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.05em; max-width: 150px; line-height: 1.4; }
+.edu-card-courses-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 0.75rem; }
+.edu-card-note { font-size: 0.9rem; color: var(--text-2); line-height: 1.7; }
+
+.section-title,
+.timeline-title,
+.timeline-org,
+.cert-title,
+.achievement-strip-title,
+.now-project-name,
+.edu-card-degree,
+.edu-card-school {
+  overflow-wrap: break-word;
+  word-break:    break-word;
+}
+
     </style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Omar Shaker",
+  "url": "https://omar-shaker-elbana.github.io",
+  "image": "https://omar-shaker-elbana.github.io/images/omar.jpg",
+  "jobTitle": "Backend Engineer",
+  "description": "CS student at German International University (GIU) Cairo, ranked #3 in class. Building backend systems with Python, Django, and REST APIs.",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "German International University",
+    "sameAs": "https://giu-uni.de"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "German International University"
+  },
+  "knowsAbout": ["Python", "Django", "REST APIs", "PostgreSQL", "Java", "Data Structures and Algorithms", "Machine Learning", "System Design"],
+  "sameAs": [
+    "https://github.com/Omar-Shaker-Elbana",
+    "https://www.linkedin.com/in/omar-shaker-elbana/",
+    "https://leetcode.com/u/Omar-Shaker-Elbana/"
+  ],
+  "email": "mailto:omarshaker082@gmail.com"
+}
+</script>
 </head>
 
 <!-- ─── LIGHTBOX ─── -->
@@ -1635,6 +1909,26 @@
   </button>
 </div>
 
+<!-- ─── PDF VIEWER ─── -->
+<div id="pdf-viewer" role="dialog" aria-modal="true" aria-label="PDF viewer">
+  <div id="pdf-backdrop"></div>
+  <div id="pdf-inner">
+    <div id="pdf-header">
+      <span id="pdf-title">Document</span>
+      <div id="pdf-header-actions">
+        <a id="pdf-download" href="#" download class="pdf-action-btn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </a>
+        <button id="pdf-close" aria-label="Close PDF viewer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <iframe id="pdf-frame" src="" title="PDF Viewer"></iframe>
+  </div>
+</div>
+
 <body>
   <div id="scroll-progress"></div>
 
@@ -1644,6 +1938,7 @@
       <a href="#hero" class="nav-logo">OS<span>.</span></a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#experience">Experience</a></li>
@@ -1666,6 +1961,7 @@
   <!-- ─── MOBILE MENU ─── -->
   <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <a href="#about" class="mobile-link">About</a>
+    <a href="#education" class="mobile-link">Education</a>
     <a href="#skills" class="mobile-link">Skills</a>
     <a href="#projects" class="mobile-link">Projects</a>
     <a href="#experience" class="mobile-link">Experience</a>
@@ -1776,6 +2072,51 @@
   </section>
 
   <div class="divider"></div>
+
+  <!-- ─── EDUCATION ─── -->
+<section id="education" class="pad">
+  <div class="container">
+    <div class="section-label reveal">Education</div>
+    <h2 class="section-title reveal reveal-delay-1">Academic background.</h2>
+    <p class="section-sub reveal reveal-delay-2">A track record of ranking at the top — built on consistency, not luck.</p>
+
+    <div class="edu-grid">
+      <div class="edu-card reveal reveal-delay-2">
+        <div class="edu-card-top">
+          <div class="edu-card-icon">🎓</div>
+          <div class="edu-card-period">2025 — 2029</div>
+        </div>
+        <div class="edu-card-degree">B.Sc. Computer Science &amp; Informatics</div>
+        <div class="edu-card-school">German International University (GIU) · Cairo, Egypt</div>
+        <div class="edu-stat-row">
+          <div class="edu-stat"><div class="edu-stat-val">0.7</div><div class="edu-stat-lbl">GPA (German Scale) · ~4.0 / A+</div></div>
+          <div class="edu-stat"><div class="edu-stat-val">#3</div><div class="edu-stat-lbl">Class Rank · 500+ Students</div></div>
+          <div class="edu-stat"><div class="edu-stat-val">Full</div><div class="edu-stat-lbl">Excellence Scholarship</div></div>
+        </div>
+        <div class="edu-card-courses-label">Relevant Coursework</div>
+        <div class="badge-row">
+          <span class="badge">CSEN104 · Programming 1</span><span class="badge">CSIS201 · Programming 2</span><span class="badge">CSMR101 · Computer Organization</span><span class="badge">CNET101 · Computer Networks</span><span class="badge">CSIS102 · Theoretical CS</span><span class="badge">MATH109 · Math 1</span><span class="badge">MATH204 · Math 2</span><span class="badge">CSEN103 · Digital Logic Design</span><span class="badge">SM101 · Scientific Methods</span><span class="badge">AS101 · English for Academic Purposes</span><span class="badge">DE101 · German 1</span><span class="badge">DE202 · German 2</span>
+        </div>
+      </div>
+
+      <div class="edu-card reveal reveal-delay-3">
+        <div class="edu-card-top">
+          <div class="edu-card-icon gold-bg">📜</div>
+          <div class="edu-card-period">Graduated 2025</div>
+        </div>
+        <div class="edu-card-degree">Thanaweya Amma · Mathematics Section</div>
+        <div class="edu-card-school">El-Gharbeia Governorate, Egypt</div>
+        <div class="edu-stat-row">
+          <div class="edu-stat"><div class="edu-stat-val gold">#3</div><div class="edu-stat-lbl">Governorate Rank</div></div>
+          <div class="edu-stat"><div class="edu-stat-val gold">750K+</div><div class="edu-stat-lbl">Students Nationwide</div></div>
+        </div>
+        <p class="edu-card-note">Ranked among the top 3 students in the governorate's Mathematics section — the foundation that earned the Excellence Scholarship at GIU.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
 
   <!-- ─── SKILLS ─── -->
   <section id="skills" class="pad">
@@ -2018,6 +2359,153 @@
           </div>
         </div>
         <!-- end slide 4 -->
+
+        <!-- ── SLIDE 5 · GIU-Net ── -->
+        <div class="proj-slide" style="--slide-accent: linear-gradient(90deg, #5ec8ff, rgba(94,200,255,0.25), transparent);">
+          <div class="proj-slide-num">05</div>
+          <div class="proj-slide-head">
+            <div class="proj-slide-icon" style="background:rgba(94,200,255,0.12);border-color:rgba(94,200,255,0.25);">🖧</div>
+            <span class="proj-slide-status done">Completed</span>
+          </div>
+          <div class="proj-slide-title">GIU-Net: Protocol &amp; Campus Network</div>
+          <p class="proj-slide-desc">A hand-built transport protocol on raw UDP, paired with the campus network engineered to carry it — designed and shipped with a 4-person team for CNET101. No TCP, no shortcuts: every handshake, ACK, and route was derived from scratch and verified live on the wire.</p>
+          <ul class="proj-slide-bullets">
+            <li>Custom UDP protocol — handshake, sequencing, ACKs, retransmission</li>
+            <li>Multithreaded Java client/server, verified with a live Wireshark capture</li>
+            <li>VLSM subnetting of a /22 block into 5 right-sized subnets by hand</li>
+            <li>Cisco Packet Tracer topology — 2 routers, static routing, HTTP service</li>
+            <li>Bonus ACL enforcing access control at the network layer</li>
+          </ul>
+          <div class="proj-slide-tech">
+            <span class="tech-tag">Java</span><span class="tech-tag">UDP Sockets</span><span class="tech-tag">Wireshark</span><span class="tech-tag">Cisco Packet Tracer</span><span class="tech-tag">VLSM</span>
+            <a href="https://github.com/mark1234720/GIUNet/tree/main" target="_blank" rel="noopener" class="proj-github-tag">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+          <div class="proj-slide-footer">
+            <div class="proj-slide-metrics">
+              <div><div class="proj-slide-metric-val" style="color:#5ec8ff">5</div><div class="proj-slide-metric-lbl">VLSM Subnets</div></div>
+              <div><div class="proj-slide-metric-val" style="color:var(--gold)">3s</div><div class="proj-slide-metric-lbl">Retry Timeout</div></div>
+              <div><div class="proj-slide-metric-val" style="color:#5ec8ff">2</div><div class="proj-slide-metric-lbl">Routers Configured</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <div class="proj-slide-num-badge">05</div>
+              <button class="project-toggle-btn" onclick="toggleDropdown(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px;flex-shrink:0;transition:transform 0.35s ease"><polyline points="6 9 12 15 18 9"/></svg>
+                Preview &amp; Output
+              </button>
+            </div>
+          </div>
+          <div class="project-dropdown">
+            <div class="project-dropdown-inner">
+              <div class="project-dropdown-label">Report &amp; Output</div>
+              <button class="pdf-view-btn" onclick="openPdfViewer('GIUNet_Report.pdf', 'GIU-Net Project Report')">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                View Full Report (PDF)
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- end slide 5 -->
+
+        <!-- ── SLIDE 6 · Vault Protection System ── -->
+        <div class="proj-slide" style="--slide-accent: linear-gradient(90deg, #4ade80, rgba(74,222,128,0.25), transparent);">
+          <div class="proj-slide-num">06</div>
+          <div class="proj-slide-head">
+            <div class="proj-slide-icon" style="background:rgba(74,222,128,0.12);border-color:rgba(74,222,128,0.25);">🔐</div>
+            <span class="proj-slide-status done">Completed</span>
+          </div>
+          <div class="proj-slide-title">Vault Protection System</div>
+          <p class="proj-slide-desc">A PIN-authenticated vault access system built on Arduino, simulated in Tinkercad and rebuilt on real hardware. Four push buttons set the 4-digit code by press-count, an I2C LCD tracks entry live, and a strict 3-trial lockout drives a buzzer alarm on repeated failed attempts.</p>
+          <ul class="proj-slide-bullets">
+            <li>Press-count digit entry — each press increments 0→9, rolls over, hold-to-repeat</li>
+            <li>Edge-detected button reads with debounced state tracking across 5 inputs</li>
+            <li>3-trial lockout — red LED + buzzer alarm on repeated failures</li>
+            <li>16x2 I2C LCD — live PIN entry, Accepted/Rejected/Alarm status</li>
+            <li>Designed &amp; simulated in Tinkercad before hardware implementation</li>
+          </ul>
+          <div class="proj-slide-tech">
+            <span class="tech-tag">Arduino</span><span class="tech-tag">C++</span><span class="tech-tag">Embedded Systems</span><span class="tech-tag">I2C LCD</span><span class="tech-tag">State Machine</span><span class="tech-tag">Tinkercad</span>
+            <a href="https://github.com/Omar-Shaker-Elbana/Vault-Sim" target="_blank" rel="noopener" class="proj-github-tag">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+          <div class="proj-slide-footer">
+            <div class="proj-slide-metrics">
+              <div><div class="proj-slide-metric-val" style="color:#4ade80">4</div><div class="proj-slide-metric-lbl">PIN Digits</div></div>
+              <div><div class="proj-slide-metric-val" style="color:var(--coral)">3</div><div class="proj-slide-metric-lbl">Max Trials</div></div>
+              <div><div class="proj-slide-metric-val" style="color:#4ade80">16x2</div><div class="proj-slide-metric-lbl">I2C LCD</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:1rem;">
+              <div class="proj-slide-num-badge">06</div>
+              <button class="project-toggle-btn" onclick="toggleDropdown(this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px;flex-shrink:0;transition:transform 0.35s ease"><polyline points="6 9 12 15 18 9"/></svg>
+                Preview &amp; Output
+              </button>
+            </div>
+          </div>
+          <div class="project-dropdown">
+            <div class="project-dropdown-inner">
+              <div class="project-dropdown-label">Screenshots &amp; Output</div>
+              <div class="project-dropdown-images">
+                <img src="Side_final.jpg" alt="Vault Protection System screenshot 1" class="lazy-img" loading="lazy" />
+                <img src="top_final.jpg" alt="Vault Protection System screenshot 2" class="lazy-img" loading="lazy" />
+                <img src="TK.png" alt="Vault Protection System screenshot 3" class="lazy-img" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end slide 6 -->
+         <!-- ── SLIDE 7 · SM101 Report ── -->
+<div class="proj-slide" style="--slide-accent: linear-gradient(90deg, var(--gold), rgba(255,209,102,0.3), transparent);">
+  <div class="proj-slide-num">07</div>
+  <div class="proj-slide-head">
+    <div class="proj-slide-icon gold">📊</div>
+    <span class="proj-slide-status done">Completed</span>
+  </div>
+  <div class="proj-slide-title">Video Games &amp; Mental Well-Being</div>
+  <p class="proj-slide-desc">A research report for SM101 (Critical Thinking &amp; Scientific Method) investigating whether video game usage causes depression indicators. Designed and iterated a questionnaire, collected 67 responses, and analyzed the data against the stated hypothesis.</p>
+  <ul class="proj-slide-bullets">
+    <li>67 respondents surveyed via WhatsApp, LinkedIn &amp; Instagram</li>
+    <li>Questionnaire redesigned after instructor feedback — fixed cornering &amp; assumption-based questions</li>
+    <li>8 questions — Yes/No, checklist, multiple-choice &amp; scale formats</li>
+    <li>Hypothesis rejected: no strong causal link found between gaming &amp; depression</li>
+    <li>Proposed follow-up hypothesis: academic load causes depression</li>
+  </ul>
+  <div class="proj-slide-tech">
+    <span class="tech-tag">Research Methods</span><span class="tech-tag">Survey Design</span><span class="tech-tag">Data Analysis</span><span class="tech-tag">Google Forms</span>
+    <a href="https://www.linkedin.com/posts/omar-shaker-elbana_full-report-activity-7464360450194010112-GYx3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEfLww4BhDniy2UjbAT01ppyyXKEFtZt5Pw" target="_blank" rel="noopener" class="proj-github-tag">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+  </div>
+  <div class="proj-slide-footer">
+    <div class="proj-slide-metrics">
+      <div><div class="proj-slide-metric-val" style="color:var(--gold)">67</div><div class="proj-slide-metric-lbl">Respondents</div></div>
+      <div><div class="proj-slide-metric-val" style="color:var(--gold)">8</div><div class="proj-slide-metric-lbl">Questions</div></div>
+      <div><div class="proj-slide-metric-val">4</div><div class="proj-slide-metric-lbl">Team Members</div></div>
+    </div>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <div class="proj-slide-num-badge">07</div>
+      <button class="project-toggle-btn" onclick="toggleDropdown(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px;flex-shrink:0;transition:transform 0.35s ease"><polyline points="6 9 12 15 18 9"/></svg>
+        Preview &amp; Output
+      </button>
+    </div>
+  </div>
+  <div class="project-dropdown">
+    <div class="project-dropdown-inner">
+      <div class="project-dropdown-label">Report &amp; Output</div>
+      <button class="pdf-view-btn" onclick="openPdfViewer('SM_Report.pdf', 'Video Games & Mental Well-Being Report')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        View Full Report (PDF)
+      </button>
+    </div>
+  </div>
+</div>
+<!-- end slide 7 -->
       </div>
       <!-- end .projects-track -->
 
@@ -2028,10 +2516,11 @@
           <div class="horiz-dot"></div>
           <div class="horiz-dot"></div>
           <div class="horiz-dot"></div>
+          <div class="horiz-dot"></div>
         </div>
       </div>
       <div class="horiz-scroll-hint">scroll to explore <span class="horiz-arrow">→&thinsp;→</span></div>
-      <div class="horiz-counter"><span>1</span> / 4</div>
+      <div class="horiz-counter"><span>1</span> / 5</div>
 
     </div><!-- end .projects-sticky-inner -->
   </div><!-- end .projects-sticky-outer -->
@@ -2046,6 +2535,18 @@
       <h2 class="section-title reveal reveal-delay-1">Beyond the code.</h2>
       <p class="section-sub reveal reveal-delay-2">Leadership, community, and output — the same discipline I bring to code, applied everywhere else.</p>
       <div class="timeline" id="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Jun 2026 — Present</div>
+          <div class="timeline-title">Software Engineering Intern</div>
+          <div class="timeline-org">IVE (Australian Research Centre for Interactive & Virtual Environments) · Adelaide University</div>
+          <ul class="timeline-desc">
+            <li>Selected for a remote research internship (~26% acceptance rate) to build a browser-based, zero-download 3D construction training environment</li>
+            <li>Modeling a 2-storey building in Unity (C#) as modular, metadata-tagged zones and layers so future teams can plug in new interactive scenarios without touching the core system</li>
+            <li>Converting raw architectural drawings and specs into a structured digital asset under remote mentorship from the academic project lead</li>
+            <li>Working with researchers and postgrads through version control and iterative review cycles, with milestone progress presentations to the team</li>
+          </ul>
+        </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Nov 2025 — Present</div>
@@ -2069,7 +2570,7 @@
             <li>Not a vanity project: it's a daily forcing function that keeps fundamentals sharp and thinking clear</li>
           </ul>
         </div>
-        <div class="timeline-item">
+        <!-- <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">2025 — Present</div>
           <div class="timeline-title">B.Sc. Computer Science & Informatics</div>
@@ -2077,10 +2578,11 @@
           <ul class="timeline-desc">
             <li>GPA: 0.7 (German Scale) — equivalent to 4.0 / A+ · Ranked 3rd out of 500+ students</li>
             <li>Full Excellence Scholarship — awarded on academic merit, not need</li>
-            <li>Coursework: Programming, Data Structure and Algorithms, Computer Organization, Mathematics, Computer Networks, Theoretical Computer Science, Digital Logic Design</li>
+            <li>Coursework:CSEN104: Programming1, CSIS201: Programming2, CSMR101: Computer Organization, CNET101: Computer Networks, CSIS102: Theoretical Computer Science,
+               MATH109: Math1, MATH204: Math2, CSEN103: Digital Logic Design, SM101: Scientific Methods, AS101: English for Academic Purposes, DE101: German1, DE202: German2</li>
             <li>Active in technical and entrepreneurship events — building network and exposure from year one</li>
           </ul>
-        </div>
+        </div> -->
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Ongoing</div>
@@ -2167,6 +2669,17 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="now-card reveal reveal-delay-3" style="margin-top:1.5rem;">
+        <div class="now-status-bar">
+          <div class="now-status-dot" style="background:var(--gold);box-shadow:0 0 0 3px var(--gold-dim);"></div>
+          <span class="now-status-text" style="color:var(--gold);">Internship · Active</span>
+        </div>
+        <div class="now-project-label">Alongside StoreHub</div>
+        <div class="now-project-name" style="font-size:1.6rem;">Software Engineering Intern</div>
+        <div class="now-project-type">IVE (Australian Research Centre for Interactive &amp; Virtual Environments) · Adelaide University</div>
+        <p class="now-project-summary" style="max-width:100%;">Building a browser-based, zero-download 3D construction training environment. Modeling a 2-storey building in Unity (C#) as modular, metadata-tagged zones so future teams can plug in new interactive scenarios without touching the core system.</p>
       </div>
     </div>
   </section>
@@ -2412,7 +2925,9 @@
           anim = 'animRise'; dur = '0.75s'; ease = 'var(--spring)';
         } else if (id === 'stats') {
           if (el.classList.contains('stat-card') || el.classList.contains('stats-row')) { anim = 'animScaleIn'; dur = '0.6s'; ease = 'var(--spring)'; }
-        }
+        } else if (id === 'education') {
+  if (el.classList.contains('edu-card')) { anim = 'animBlurIn'; dur = '0.9s'; }
+}
 
         el.style.setProperty('--anim', anim);
         el.style.setProperty('--dur', dur);
@@ -2552,7 +3067,7 @@
        10. 3D CARD TILT — mouse tracking on project/cert cards
     ══════════════════════════════════════════════════════════ */
     function initCardTilt() {
-      const tiltTargets = document.querySelectorAll('.project-card, .project-featured, .cert-card, .stat-card');
+  const tiltTargets = document.querySelectorAll('.project-card, .project-featured, .cert-card, .stat-card, .edu-card');
       tiltTargets.forEach(card => {
         card.addEventListener('mousemove', e => {
           const rect = card.getBoundingClientRect();
@@ -2754,7 +3269,6 @@
    23. HORIZONTAL PROJECTS SCROLL — sticky track
 ══════════════════════════════════════════════════════════ */
 function initHorizProjects() {
-  if (window.innerWidth <= 768) return;
   const outer   = document.querySelector('.projects-sticky-outer');
   const track   = document.querySelector('.projects-track');
   const hint    = document.querySelector('.horiz-scroll-hint');
@@ -2764,17 +3278,28 @@ function initHorizProjects() {
   if (!outer || !track) return;
 
   let cur = 0, target = 0, raf = null;
+  let isDesktop = window.innerWidth > 768;
+
+  function setOuterHeight() {
+    if (!isDesktop) { outer.style.height = ''; return; }
+    const extra = Math.max(track.scrollWidth - window.innerWidth, 0);
+    const scrollFactor = 1.15; // tune scroll "speed": lower = faster, higher = slower
+    outer.style.height = (window.innerHeight + extra * scrollFactor) + 'px';
+  }
 
   function getTarget() {
     const outerTop = outer.getBoundingClientRect().top + window.scrollY;
     const scrolled = window.scrollY - outerTop;
-    const range    = outer.offsetHeight - window.innerHeight;
+    const range = outer.offsetHeight - window.innerHeight;
+    if (range <= 0) return 0;
     return Math.max(0, Math.min(1, scrolled / range));
   }
 
   function render() {
+    if (!isDesktop) { track.style.transform = ''; raf = null; return; }
     cur += (target - cur) * 0.1;
-    const maxTx = track.scrollWidth - window.innerWidth;
+    if (Math.abs(target - cur) < 0.0008) cur = target;
+    const maxTx = Math.max(track.scrollWidth - window.innerWidth, 0);
     track.style.transform = `translateX(${-maxTx * cur}px)`;
 
     slides.forEach(s => {
@@ -2784,7 +3309,7 @@ function initHorizProjects() {
     });
 
     const n   = slides.length;
-    const idx = Math.min(Math.floor(cur * n + 0.38), n - 1);
+    const idx = n ? Math.min(Math.floor(cur * n + 0.38), n - 1) : 0;
     dots.forEach((d, i) => d.classList.toggle('active', i === idx));
     if (counter) counter.innerHTML = `<span>${idx + 1}</span> / ${n}`;
     if (hint)    hint.classList.toggle('hidden', cur > 0.04);
@@ -2792,13 +3317,35 @@ function initHorizProjects() {
     raf = Math.abs(cur - target) > 0.0003 ? requestAnimationFrame(render) : null;
   }
 
-  window.addEventListener('scroll', () => {
+  function onScroll() {
+    if (!isDesktop) return;
     target = getTarget();
     if (!raf) raf = requestAnimationFrame(render);
-  }, { passive: true });
+  }
 
-  target = getTarget(); render();
+  let resizeTimer;
+  function onResize() {
+    isDesktop = window.innerWidth > 768;
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      setOuterHeight();
+      target = getTarget();
+      cur = target;
+      render();
+    }, 120);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onResize);
+  window.addEventListener('load', () => { setOuterHeight(); target = getTarget(); render(); });
+
+  setOuterHeight();
+  target = getTarget();
+  render();
+  // catch late layout shifts from web font loading
+  setTimeout(() => { setOuterHeight(); target = getTarget(); render(); }, 400);
 }
+
 initHorizProjects();
 
 // Extend 3D tilt to the new slide cards
@@ -2816,6 +3363,34 @@ document.querySelectorAll('.proj-slide').forEach(card => {
     card.style.transition =
       'opacity 0.7s var(--expo), transform 0.7s var(--expo), border-color 0.4s, box-shadow 0.4s';
   });
+});
+/* ══════════════════════════════════════════════════════════
+ 25. PDF VIEWER — modal document viewer
+══════════════════════════════════════════════════════════ */
+function openPdfViewer(url, title) {
+const viewer = document.getElementById('pdf-viewer');
+const frame  = document.getElementById('pdf-frame');
+const titleEl = document.getElementById('pdf-title');
+const dl = document.getElementById('pdf-download');
+frame.src = url;
+titleEl.textContent = title || 'Document';
+dl.href = url;
+viewer.classList.add('open');
+document.body.style.overflow = 'hidden';
+}
+function closePdfViewer() {
+const viewer = document.getElementById('pdf-viewer');
+viewer.classList.remove('open');
+document.body.style.overflow = '';
+setTimeout(() => { document.getElementById('pdf-frame').src = ''; }, 380);
+}
+document.getElementById('pdf-close').addEventListener('click', closePdfViewer);
+document.getElementById('pdf-backdrop').addEventListener('click', closePdfViewer);
+document.addEventListener('keydown', e => {
+if (e.key === 'Escape') {
+  const v = document.getElementById('pdf-viewer');
+  if (v.classList.contains('open')) closePdfViewer();
+}
 });
 
 /* ══════════════════════════════════════════════════════════
@@ -2842,6 +3417,7 @@ document.querySelectorAll('.proj-slide').forEach(card => {
       show(img);
     }
   }
+
 
   function show(img, dir) {
     lbImg.src = img.src;

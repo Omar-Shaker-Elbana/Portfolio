@@ -1,256 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js" data-theme="dark">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#05050d" />
-<meta name="description" content="Omar Shaker's blog — notes on backend engineering, Django, and building StoreHub in public." />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Blog · Omar Shaker</title>
+<meta name="description" content="Omar Shaker's blog — notes on backend engineering, Django, and building StoreHub in public." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#06050f" />
+<meta name="color-scheme" content="dark light" />
+<link rel="canonical" href="https://omar-shaker-elbana.github.io/blog.html" />
+<meta property="og:site_name" content="Omar Shaker" />
+<meta property="og:title" content="Blog · Omar Shaker" />
+<meta property="og:description" content="Omar Shaker's blog — notes on backend engineering, Django, and building StoreHub in public." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://omar-shaker-elbana.github.io/blog.html" />
+<meta property="og:image" content="https://omar-shaker-elbana.github.io/images/omar.jpg" />
+<meta property="og:image:width" content="797" />
+<meta property="og:image:height" content="1191" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Blog · Omar Shaker" />
+<meta name="twitter:description" content="Omar Shaker's blog — notes on backend engineering, Django, and building StoreHub in public." />
+<meta name="twitter:image" content="https://omar-shaker-elbana.github.io/images/omar.jpg" />
 <link rel="icon" href="images/icon.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --bg-0: #0a0a1a; --bg-1: #0d0d1e; --bg-2: #121224;
-    --bg-card: #111120; --bg-hover: #161628;
-    --border: rgba(100,255,210,0.08); --border-mid: rgba(100,255,210,0.15);
-    --mint: #64ffda; --mint-dim: rgba(100,255,210,0.12); --mint-glow: rgba(100,255,210,0.25);
-    --gold: #ffd166; --gold-dim: rgba(255,209,102,0.12); --coral: #ff6b6b;
-    --text-0: #f0f0fa; --text-1: #c8c8e0; --text-2: #7878a0; --text-3: #454568;
-    --font-display: 'Syne', sans-serif; --font-mono: 'JetBrains Mono', monospace; --font-body: 'DM Sans', sans-serif;
-    --radius: 8px; --radius-lg: 16px;
-    --trans: 0.3s cubic-bezier(0.4,0,0.2,1);
-  }
-  [data-theme="light"] {
-    --bg-0: lch(97.29% 11.79 201.22); --bg-1: #e0edea; --bg-2: #d6e6e1; --bg-card: #f4faf8; --bg-hover: #ecf5f2;
-    --border: rgba(40,50,120,0.1); --border-mid: rgba(40,50,120,0.22);
-    --mint: #00b894; --mint-dim: rgba(0,184,148,0.1); --mint-glow: rgba(0,184,148,0.2);
-    --gold: #e09a00; --gold-dim: rgba(224,154,0,0.1); --coral: #e05252;
-    --text-0: #09091e; --text-1: #1c1c40; --text-2: #4a4a78; --text-3: #9090b8;
-  }
-  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; font-size: 16px; }
-  body {
-    background:
-      radial-gradient(ellipse 900px 500px at 12% -8%, rgba(0, 255, 183, 0.07), transparent 60%),
-      radial-gradient(ellipse 700px 500px at 92% 10%, rgba(255,209,102,0.05), transparent 55%),
-      radial-gradient(ellipse 800px 600px at 50% 100%, rgba(100,255,210,0.035), transparent 60%),
-      var(--bg-0);
-    background-attachment: fixed;
-    color: var(--text-1); font-family: var(--font-body); line-height: 1.7; overflow-x: hidden;
-  }
-  a { color: inherit; text-decoration: none; }
-  ::selection { background: var(--mint-dim); color: var(--mint); }
-  .container { width: min(880px, 100% - 3rem); margin-inline: auto; }
-
-  /* ─── TOP BAR ─── */
-  .blog-header {
-    position: sticky; top: 0; z-index: 50;
-    background: color-mix(in srgb, var(--bg-0) 88%, transparent);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-  }
-  .blog-header .container { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 0; }
-  .back-link {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-2);
-    border: 1px solid var(--border); border-radius: var(--radius); padding: 0.55rem 1rem;
-    transition: color var(--trans), border-color var(--trans), background var(--trans);
-  }
-  .back-link:hover { color: var(--mint); border-color: var(--mint); background: var(--mint-dim); }
-  .back-link svg { width: 14px; height: 14px; }
-  .theme-toggle {
-    background: none; border: 1px solid var(--border); border-radius: 50%;
-    width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
-    color: var(--text-2); cursor: pointer; transition: color var(--trans), border-color var(--trans);
-  }
-  .theme-toggle:hover { color: var(--mint); border-color: var(--mint); }
-  .theme-toggle svg { width: 17px; height: 17px; }
-  .theme-toggle .icon-moon { display: block; }
-  .theme-toggle .icon-sun { display: none; }
-  [data-theme="light"] .theme-toggle .icon-moon { display: none; }
-  [data-theme="light"] .theme-toggle .icon-sun { display: block; }
-
-  /* ─── HERO ─── */
-  .blog-hero { padding: 5rem 0 3rem; }
-  .blog-label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint); margin-bottom: 1rem; }
-  .blog-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.2rem, 5vw, 3.2rem); letter-spacing: -0.03em; color: var(--text-0); margin-bottom: 1rem; }
-  .blog-sub { font-size: 1.05rem; color: var(--text-2); max-width: 520px; }
-
-  /* ─── FILTER PILLS ─── */
-  .blog-filters { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2rem 0 3rem; }
-  .blog-filter {
-    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.03em;
-    padding: 0.45rem 0.95rem; border-radius: 100px; border: 1px solid var(--border-mid);
-    color: var(--text-2); cursor: pointer; background: transparent; transition: all var(--trans);
-  }
-  .blog-filter.active, .blog-filter:hover { color: var(--mint); border-color: var(--mint); background: var(--mint-dim); }
-
-  /* ─── POST LIST ─── */
-  .post-list { display: flex; flex-direction: column; gap: 1.25rem; padding-bottom: 6rem; }
-  .post-card {
-    display: block; background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: var(--radius-lg); padding: 1.75rem 2rem;
-    transition: border-color var(--trans), transform var(--trans), background var(--trans);
-  }
-  .post-card:hover { border-color: var(--border-mid); transform: translateY(-2px); background: var(--bg-hover); }
-  .post-meta { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.65rem; }
-  .post-tag { color: var(--mint); }
-  .post-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--text-0); letter-spacing: -0.01em; margin-bottom: 0.5rem; }
-  .post-excerpt { font-size: 0.92rem; color: var(--text-2); line-height: 1.7; }
-  .post-arrow { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-2); }
-  .post-card:hover .post-arrow { color: var(--mint); }
-
-  .post-card { position: relative; overflow: hidden; }
-  .post-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--mint), rgba(100,255,210,0.3), transparent);
-    opacity: 0; transition: opacity var(--trans);
-  }
-  .post-card:hover::before { opacity: 1; }
-
-  .post-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.25rem; }
-  .post-link-btn {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-2);
-    border: 1px solid var(--border-mid); border-radius: var(--radius);
-    padding: 0.5rem 0.9rem; transition: color var(--trans), border-color var(--trans), background var(--trans), transform var(--trans);
-  }
-  .post-link-btn:hover { color: var(--mint); border-color: var(--mint); background: var(--mint-dim); transform: translateY(-2px); }
-  .post-link-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
-
-  .post-inline-link {
-    color: var(--mint); text-decoration: underline;
-    text-decoration-color: var(--mint-glow); text-underline-offset: 3px;
-    transition: color var(--trans), text-decoration-color var(--trans);
-  }
-  .post-inline-link:hover { color: var(--text-0); text-decoration-color: var(--mint); }
-
-  /* ─── REVEAL ANIMATION SYSTEM ─── */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-  .reveal-delay-1 { transition-delay: 0.08s; }
-  .reveal-delay-2 { transition-delay: 0.16s; }
-  .reveal-delay-3 { transition-delay: 0.24s; }
-
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-14px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .blog-header { animation: fadeInDown 0.6s cubic-bezier(0.16,1,0.3,1) both; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .reveal, .blog-header { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
-  }
-
-  @media (max-width: 640px) {
-    .post-card { padding: 1.4rem 1.5rem; }
-    .post-links { flex-direction: column; align-items: stretch; }
-    .post-link-btn { justify-content: center; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script>(function(d){var r=d.documentElement;r.className=r.className.replace('no-js','js');try{if(localStorage.getItem('theme')==='light')r.setAttribute('data-theme','light')}catch(e){}setTimeout(function(){if(!window.__portfolioReady)r.classList.add('reveal-fallback')},3500)})(document);</script>
+<link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-
-  <header class="blog-header">
-    <div class="container">
-      <a href="index.html#hero" class="back-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Back to Portfolio
-      </a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      </button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-github" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></symbol><symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol><symbol id="i-medium" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol><symbol id="i-arrow-up-right" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol><symbol id="i-chevron-left" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></symbol><symbol id="i-chevron-right" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol><symbol id="i-expand" viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></symbol><symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol><symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol><symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></symbol></defs></svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+<header class="site-header" id="header">
+  <div class="nav-shell">
+    <a class="brand" href="index.html" aria-label="Omar Shaker — home">OS<span class="brand-dot">.</span></a>
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html" aria-current="page">Blog</a></li>
+        <li><a href="index.html#resume">Resume</a></li>
+      </ul>
+      <span class="nav-indicator" aria-hidden="true"></span>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light / dark theme"><svg class="ico i-moon i-moon" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg><svg class="ico i-sun i-sun" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg></button>
+      <a class="btn btn-primary btn-sm nav-cta" href="index.html#contact">Contact <svg class="ico i-arrow-up-right i-up-right" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="container">
-    <section class="blog-hero">
-      <div class="blog-label reveal">Blog</div>
-      <h1 class="blog-title reveal reveal-delay-1">Notes from the build.</h1>
-      <p class="blog-sub reveal reveal-delay-2">Longer-form write-ups on backend engineering, Django, and whatever breaks (and gets fixed) along the way. Companion reading to the LinkedIn series.</p>
-    </section>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+  <nav class="mobile-links" aria-label="Mobile">
+      <a href="index.html" style="--i:0"><small>01</small>Home</a>
+      <a href="projects.html" style="--i:1"><small>02</small>Projects</a>
+      <a href="blog.html" style="--i:2"><small>03</small>Blog</a>
+      <a href="index.html#resume" style="--i:3"><small>04</small>Resume</a>
+      <a href="index.html#contact" style="--i:4"><small>05</small>Contact</a>
+  </nav>
+  <div class="mobile-foot">
+    <a class="icon-btn" href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" aria-label="GitHub"><svg class="ico i-github ico-fill" aria-hidden="true" focusable="false"><use href="#i-github"/></svg></a>
+    <a class="icon-btn" href="https://www.linkedin.com/in/omar-shaker-elbana/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico i-linkedin ico-fill" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg></a>
+    <a class="icon-btn" href="mailto:omarshaker082@gmail.com" aria-label="Email"><svg class="ico i-mail" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg></a>
+  </div>
+</div>
 
-    <div class="blog-filters reveal reveal-delay-3" id="blog-filters">
-      <button class="blog-filter active" data-filter="all">All</button>
-      <button class="blog-filter" data-filter="codebase">Reclaiming the Codebase</button>
-      <button class="blog-filter" data-filter="general">General</button>
+<main id="main">
+  <section class="page-hero acc-violet" aria-labelledby="page-title">
+    <div class="hero-bg" aria-hidden="true"><div class="hero-grid"></div><span class="orb orb-1"></span><span class="orb orb-3"></span></div>
+    <div class="blog-wrap">
+      <a class="crumb" href="index.html"><svg class="ico i-arrow-left" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg> Back to home</a>
+      <h1 class="page-title" id="page-title"><span class="line"><span>Notes from</span></span><span class="line"><span class="grad-text">the build.</span></span></h1>
+      <p class="page-lede">Longer-form write-ups on backend engineering, Django, and whatever breaks (and gets fixed) along the way. Companion reading to the LinkedIn series.</p>
     </div>
+  </section>
 
-    <div class="post-list" id="post-list">
-      <div class="post-card reveal" data-tag="codebase">
-        <div class="post-meta"><span>August 6, 2026</span><span>·</span><span class="post-tag">Reclaiming the Codebase</span></div>
-        <div class="post-title">Reclaiming the Codebase — Part 0: How I Lost Control of My Own Backend</div>
-        <p class="post-excerpt">A few months ago, I left my biggest personal project. When I came back, I realized I no longer understood my own backend.
-<br><br>
-Originally, around 90% of the backend code was written by me (very little AI usage). After leaving the project untouched for five months, I came back and realized I had no idea where to continue. Even my Git history couldn't help.
-TBH the problem wasn't AI. It started much earlier: I had no roadmap, no milestones, and development became completely random.
-<br><br>
-So what did I do? I started using AI to resume the development of the project. At first, it looked handy, making views and DB models with only a simple prompt, I told myself: MAN! I was in denial for not using Claude and for writing most of the code myself at first! 
-<br><br>
-Then a problem became vivid: too many views and DB models were scripted with little review from my side, a mistake I admit and regret too much. I told myself it is time to stop being lazy and review the code at that stage. But every view depended on several functions, models, and utilities. Reviewing a single endpoint meant tracing code across the project. 
-Django, the framework I'd been using for years, suddenly felt intimidating.
-<br><br>
-If AI made that mess then AI can understand that mess, right? That was what I told myself. And I was wrong. AI started misunderstanding the code and even edited the code blocks it generated at first. I would be talking to Claude on 2 different chats and the answers would be different. Honestly, I would not blame any AI tool for that, a clear roadmap or set of actions was not there, AI was just improvising.
-<br><br>
-Then I lost hope in the whole thing, the project I thought would be the biggest in my portfolio was over, it felt like all the effort was wasted! I tried to fix as much as I could, but procrastination kicked in. For sometime, I did not open VS Code just because the code looked INTIMIDATING.
-AI did not ruin the project, it just accelerated the consequences of my plan.
-<br><br>
-And here comes the role of this series, by sharing updates as I go, I will force myself to improve the code and eventually reclaim the codebase. These posts will be a commitment device, as James Clear said in his book "Atomic Habits" (amazing book btw, recommend you read it).
-<br><br>
-So as for today (August 6, 2026), the project stands on
-commit <a href="https://github.com/Omar-Shaker-Elbana/Store_Hub/commit/87bac7e5a90045af0c0aa3b9a6dd0c67f5cf7664" target="_blank" rel="noopener" class="post-inline-link">#102</a>.
-<a href="https://github.com/Omar-Shaker-Elbana/Store_Hub" target="_blank" rel="noopener" class="post-inline-link">Full repo</a>
-<br><br>
-Every couple of days, I'll refactor one piece of the backend, explain what was wrong, what I learned, and how I fixed it.
-Let's see if I can reclaim this codebase!</p>
-        <div class="post-links">
-          <a href="https://www.linkedin.com/feed/update/urn:li:activity:7491101290723258368/" target="_blank" rel="noopener" class="post-link-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            Read on LinkedIn
-          </a>
-          <a href="https://medium.com/@omarmohamedshaker/reclaiming-the-codebase-part-0-how-i-lost-control-of-my-own-backend-8e154b401984" target="_blank" rel="noopener" class="post-link-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
-            Read on Medium
-          </a>
+  <section class="section" style="padding-top:clamp(1rem,3vw,2rem)" aria-label="Posts">
+    <div class="blog-wrap">
+      <div class="filter-bar" data-reveal="up">
+        <div class="filters" role="group" aria-label="Filter posts by category">
+          <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" type="button" data-filter="codebase" aria-pressed="false">Reclaiming the Codebase</button>
+          <button class="filter" type="button" data-filter="general" aria-pressed="false">General</button>
         </div>
+        <p class="result-count" aria-live="polite">Showing 1 of 1</p>
+      </div>
+      <div class="blog-list">
+        <article class="card post acc-violet" data-cats="codebase" data-reveal="up">
+          <div class="post-meta"><time>August 6, 2026</time><span class="sep">·</span><span class="tag">Reclaiming the Codebase</span><span class="sep">·</span><span>2 min read</span></div>
+          <h2 class="post-title">Reclaiming the Codebase — Part 0: How I Lost Control of My Own Backend</h2>
+          <div class="post-body" data-collapsible>
+            <p>A few months ago, I left my biggest personal project. When I came back, I realized I no longer understood my own backend.</p><p>Originally, around 90% of the backend code was written by me (very little AI usage). After leaving the project untouched for five months, I came back and realized I had no idea where to continue. Even my Git history couldn't help. TBH the problem wasn't AI. It started much earlier: I had no roadmap, no milestones, and development became completely random.</p><p>So what did I do? I started using AI to resume the development of the project. At first, it looked handy, making views and DB models with only a simple prompt, I told myself: MAN! I was in denial for not using Claude and for writing most of the code myself at first!</p><p>Then a problem became vivid: too many views and DB models were scripted with little review from my side, a mistake I admit and regret too much. I told myself it is time to stop being lazy and review the code at that stage. But every view depended on several functions, models, and utilities. Reviewing a single endpoint meant tracing code across the project. Django, the framework I'd been using for years, suddenly felt intimidating.</p><p>If AI made that mess then AI can understand that mess, right? That was what I told myself. And I was wrong. AI started misunderstanding the code and even edited the code blocks it generated at first. I would be talking to Claude on 2 different chats and the answers would be different. Honestly, I would not blame any AI tool for that, a clear roadmap or set of actions was not there, AI was just improvising.</p><p>Then I lost hope in the whole thing, the project I thought would be the biggest in my portfolio was over, it felt like all the effort was wasted! I tried to fix as much as I could, but procrastination kicked in. For sometime, I did not open VS Code just because the code looked INTIMIDATING. AI did not ruin the project, it just accelerated the consequences of my plan.</p><p>And here comes the role of this series, by sharing updates as I go, I will force myself to improve the code and eventually reclaim the codebase. These posts will be a commitment device, as James Clear said in his book "Atomic Habits" (amazing book btw, recommend you read it).</p><p>So as for today (August 6, 2026), the project stands on commit <a class="post-inline-link" href="https://github.com/Omar-Shaker-Elbana/Store_Hub/commit/87bac7e5a90045af0c0aa3b9a6dd0c67f5cf7664" rel="noopener" target="_blank">#102</a>. <a class="post-inline-link" href="https://github.com/Omar-Shaker-Elbana/Store_Hub" rel="noopener" target="_blank">Full repo</a></p><p>Every couple of days, I'll refactor one piece of the backend, explain what was wrong, what I learned, and how I fixed it. Let's see if I can reclaim this codebase!</p>
+          </div>
+          <button class="btn btn-sm post-more" type="button" hidden><svg class="ico i-chevron-down" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg><span>Read the full post</span></button>
+          <div class="post-links"><a class="btn btn-sm" href="https://www.linkedin.com/feed/update/urn:li:activity:7491101290723258368/" target="_blank" rel="noopener"><svg class="ico i-linkedin ico-fill" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg> Read on LinkedIn</a><a class="btn btn-sm" href="https://medium.com/@omarmohamedshaker/reclaiming-the-codebase-part-0-how-i-lost-control-of-my-own-backend-8e154b401984" target="_blank" rel="noopener"><svg class="ico i-medium ico-fill" aria-hidden="true" focusable="false"><use href="#i-medium"/></svg> Read on Medium</a></div>
+        </article>
+        <p class="empty">Nothing in this category yet — more posts are on the way.</p>
+      </div>
+      <p class="blog-foot">New posts land every couple of days while I reclaim the codebase. Follow along on LinkedIn.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="index.html#hero" aria-label="Back to top">OS<span class="brand-dot">.</span></a>
+        <p>Backend engineer &amp; CS student building systems that scale — and understanding them well enough to explain every line.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html#about">About</a><a href="index.html#experience">Experience</a><a href="projects.html">Projects</a>
+        <a href="index.html#skills">Skills</a><a href="blog.html">Blog</a><a href="index.html#resume">Resume</a><a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <a class="icon-btn" href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" aria-label="GitHub"><svg class="ico i-github ico-fill" aria-hidden="true" focusable="false"><use href="#i-github"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/omar-shaker-elbana/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico i-linkedin ico-fill" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg></a>
+        <a class="icon-btn" href="mailto:omarshaker082@gmail.com" aria-label="Email"><svg class="ico i-mail" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg></a>
       </div>
     </div>
-  </main>
+    <div class="footer-bottom">
+      <span>Designed &amp; built by <b>Omar Shaker</b> · Cairo, Egypt 🇪🇬</span>
+      <span>© <span data-year>2026</span></span>
+    </div>
+  </div>
+</footer><button class="to-top" type="button" aria-label="Back to top"><svg class="ico i-arrow-up" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg></button>
+<div class="toast" role="status" aria-live="polite"><svg class="ico i-check" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span></span></div>
 
-  <script>
-    if ((localStorage.getItem('theme') || 'dark') === 'light') document.documentElement.setAttribute('data-theme', 'light');
-    document.getElementById('theme-toggle').addEventListener('click', () => {
-      const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    });
-
-    const revealObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -60px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    const filters = document.querySelectorAll('.blog-filter');
-    const posts = document.querySelectorAll('.post-card');
-    filters.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filters.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        posts.forEach(p => {
-          p.style.display = (f === 'all' || p.dataset.tag === f) ? 'block' : 'none';
-        });
-      });
-    });
-  </script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>

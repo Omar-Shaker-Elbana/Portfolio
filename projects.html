@@ -1,1070 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js" data-theme="dark">
 <head>
-<link rel="canonical" href="https://omar-shaker-elbana.github.io/projects.html" />
-<link rel="icon" href="images/icon.png" type="image/png" />
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="robots" content="index, follow" />
-<meta name="theme-color" content="#05050d" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Projects · Omar Shaker</title>
 <meta name="description" content="All projects by Omar Shaker — backend systems, algorithms from scratch, networking, embedded systems, and research, built in depth." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#06050f" />
+<meta name="color-scheme" content="dark light" />
+<link rel="canonical" href="https://omar-shaker-elbana.github.io/projects.html" />
+<meta property="og:site_name" content="Omar Shaker" />
 <meta property="og:title" content="Projects · Omar Shaker" />
 <meta property="og:description" content="Seven projects, full write-ups — backend architecture, algorithms from first principles, networking, embedded systems, and research." />
-<meta property="og:image" content="https://omar-shaker-elbana.github.io/images/omar.jpg" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://omar-shaker-elbana.github.io/projects.html" />
+<meta property="og:image" content="https://omar-shaker-elbana.github.io/images/omar.jpg" />
+<meta property="og:image:width" content="797" />
+<meta property="og:image:height" content="1191" />
 <meta name="twitter:card" content="summary_large_image" />
-<title>Projects · Omar Shaker</title>
+<meta name="twitter:title" content="Projects · Omar Shaker" />
+<meta name="twitter:description" content="Seven projects, full write-ups — backend architecture, algorithms from first principles, networking, embedded systems, and research." />
+<meta name="twitter:image" content="https://omar-shaker-elbana.github.io/images/omar.jpg" />
+<link rel="icon" href="images/icon.png" type="image/png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-<style>
-    /* ─── VARIABLES (matches index.html) ─── */
-    :root {
-      --bg-0: #05050d; --bg-1: #090915; --bg-2: #0e0e1c;
-      --bg-card: #111120; --bg-hover: #161628;
-      --border: rgba(100,255,210,0.08); --border-mid: rgba(100,255,210,0.15);
-      --mint: #64ffda; --mint-dim: rgba(100,255,210,0.12); --mint-glow: rgba(100,255,210,0.25);
-      --gold: #ffd166; --gold-dim: rgba(255,209,102,0.12); --coral: #ff6b6b;
-      --text-0: #f0f0fa; --text-1: #c8c8e0; --text-2: #7878a0; --text-3: #454568;
-      --acc-projects: #a78bfa;
-      --font-display: 'Syne', sans-serif; --font-mono: 'JetBrains Mono', monospace; --font-body: 'DM Sans', sans-serif;
-      --radius: 8px; --radius-lg: 16px;
-      --trans: 0.3s cubic-bezier(0.4,0,0.2,1); --trans-slow: 0.6s cubic-bezier(0.4,0,0.2,1);
-      --spring: cubic-bezier(0.34,1.56,0.64,1);
-      --expo: cubic-bezier(0.16,1,0.3,1);
-      --sec-projects: #0d0a1a;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body { background: var(--bg-0); color: var(--text-1); font-family: var(--font-body); line-height: 1.7; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    ::selection { background: var(--mint-dim); color: var(--mint); }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg-0); }
-    ::-webkit-scrollbar-thumb { background: var(--text-3); border-radius: 2px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--mint); }
-
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 0; opacity: 0.5;
-    }
-
-    .cursor-glow {
-      position: fixed; width: 300px; height: 300px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(100,255,210,0.04) 0%, transparent 70%);
-      pointer-events: none; transform: translate(-50%, -50%); z-index: 9999;
-      transition: transform 0.15s ease, opacity 0.3s ease; will-change: transform;
-    }
-
-    .container { width: min(1160px, 100% - 4rem); margin-inline: auto; }
-    section { position: relative; z-index: 1; }
-
-    /* ─── HEADER (matches index.html) ─── */
-    #header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0; transition: background var(--trans), box-shadow var(--trans); }
-    #header.scrolled { background: rgba(5,5,13,0.88); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--border); }
-    nav { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 2rem; }
-    .nav-logo { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em; color: var(--text-0); display: flex; align-items: center; gap: 0.5rem; animation: navLogoIn 0.7s var(--expo) both; }
-    .nav-logo span { color: var(--mint); }
-    .nav-links { display: flex; align-items: center; gap: 0.25rem; list-style: none; }
-    .nav-links li { animation: navItemDrop 0.5s var(--expo) both; }
-    .nav-links li:nth-child(1) { animation-delay: 0.05s; }
-    .nav-links li:nth-child(2) { animation-delay: 0.1s; }
-    .nav-links li:nth-child(3) { animation-delay: 0.15s; }
-    .nav-links li:nth-child(4) { animation-delay: 0.2s; }
-    .nav-links a { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-2); padding: 0.45rem 0.85rem; border-radius: var(--radius); transition: color var(--trans), background var(--trans); letter-spacing: 0.02em; position: relative; }
-    .nav-links a::after { content: ''; position: absolute; bottom: 2px; left: 50%; right: 50%; height: 1px; background: var(--mint); transition: left 0.3s var(--expo), right 0.3s var(--expo); }
-    .nav-links a:hover::after, .nav-links a.active::after { left: 10%; right: 10%; }
-    .nav-links a:hover, .nav-links a.active { color: var(--mint); background: var(--mint-dim); }
-    .nav-cta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--mint) !important; border: 1px solid var(--mint) !important; padding: 0.45rem 1rem !important; border-radius: var(--radius) !important; background: transparent !important; transition: background var(--trans), color var(--trans) !important; }
-    .nav-cta:hover { background: var(--mint); color: var(--bg-0) !important; }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-1); border-radius: 2px; transition: var(--trans); }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .mobile-menu { display: flex; position: fixed; inset: 0; background: rgba(5,5,13,0.97); backdrop-filter: blur(20px); z-index: 99; flex-direction: column; align-items: center; gap: 2rem; opacity: 0; pointer-events: none; transform: translateY(-12px); transition: opacity 0.35s var(--expo), transform 0.35s var(--expo); overflow-y: auto; justify-content: flex-start; padding-top: 5rem; }
-    .mobile-menu.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
-    .mobile-menu a { font-family: var(--font-display); font-size: 1.6rem; font-weight: 600; color: var(--text-1); transition: color var(--trans); }
-    .mobile-menu a:hover { color: var(--mint); }
-
-    .theme-toggle { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: var(--radius); background: var(--bg-card); border: 1px solid var(--border); cursor: pointer; transition: border-color var(--trans), background var(--trans), transform var(--trans); flex-shrink: 0; }
-    .theme-toggle:hover { border-color: var(--mint); background: var(--mint-dim); transform: rotate(20deg) scale(1.1); }
-    .theme-toggle svg { width: 16px; height: 16px; color: var(--text-2); transition: color var(--trans); }
-    .theme-toggle:hover svg { color: var(--mint); }
-    .theme-toggle .icon-moon { display: block; }
-    .theme-toggle .icon-sun { display: none; }
-    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
-    [data-theme="light"] .theme-toggle .icon-sun { display: block; }
-
-    #scroll-progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(90deg, var(--mint), rgba(100,255,210,0.5)); z-index: 200; transition: width 0.08s linear; box-shadow: 0 0 8px var(--mint-glow); }
-
-    /* ─── PAGE HERO ─── */
-    #page-hero { min-height: 62vh; display: flex; align-items: center; padding: 9rem 0 4rem; position: relative; overflow: hidden; }
-    .hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(100,255,210,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(100,255,210,0.03) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); animation: gridShift 20s linear infinite; }
-    .hero-glow { position: absolute; top: 10%; left: 50%; transform: translateX(-50%); width: 700px; height: 400px; background: radial-gradient(ellipse, rgba(167,139,250,0.08) 0%, transparent 70%); pointer-events: none; animation: glowPulse 4s ease-in-out infinite alternate; }
-    .breadcrumb { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-2); margin-bottom: 2rem; padding: 0.35rem 0.85rem; border: 1px solid var(--border); border-radius: 100px; transition: border-color var(--trans), color var(--trans), background var(--trans); animation: slideInLeft 0.8s var(--expo) 0.1s both; }
-    .breadcrumb:hover { color: var(--mint); border-color: var(--border-mid); background: var(--mint-dim); }
-    .breadcrumb svg { width: 13px; height: 13px; }
-    .page-hero-title { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.75rem, 7vw, 4.75rem); line-height: 1; letter-spacing: -0.04em; color: var(--text-0); margin-bottom: 1.25rem; }
-    .page-hero-title .accent { color: #a78bfa; }
-    .char-split { display: inline-block; animation: charFlip 0.6s var(--expo) both; transform-origin: bottom center; }
-    .page-hero-sub { font-size: 1.05rem; color: var(--text-2); max-width: 620px; line-height: 1.75; margin-bottom: 2.5rem; animation: blurIn 0.9s ease 0.5s both; }
-    .page-hero-stats { display: flex; flex-wrap: wrap; gap: 2.5rem; animation: popBounce 0.8s var(--spring) 0.75s both; }
-    .stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--text-0); line-height: 1; }
-    .stat-num span { color: #a78bfa; }
-    .stat-label { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-3); letter-spacing: 0.08em; margin-top: 0.25rem; text-transform: uppercase; }
-
-    .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
-
-    /* ─── PROJECTS LIST ─── */
-    #project-list { background: var(--sec-projects); position: relative; padding: 6rem 0 8rem; }
-    #project-list::before {
-      content: '';
-      position: absolute; inset: 0; z-index: 0;
-      background-image: repeating-linear-gradient(135deg, rgba(167,139,250,0.05) 0px, rgba(167,139,250,0.05) 2px, transparent 2px, transparent 24px);
-      pointer-events: none;
-    }
-    .project-list-inner { display: grid; grid-template-columns: 64px 1fr; gap: 3rem; position: relative; z-index: 1; }
-
-    /* Side rail */
-    .rail { position: sticky; top: 7rem; height: fit-content; display: flex; flex-direction: column; align-items: center; gap: 1rem; padding-top: 0.5rem; }
-    .rail-line { width: 1px; flex: 1; background: linear-gradient(to bottom, var(--border-mid), transparent); min-height: 40px; }
-    .rail-dot { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border); font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-3); cursor: pointer; transition: border-color var(--trans), color var(--trans), background var(--trans), transform var(--trans); flex-shrink: 0; }
-    .rail-dot:hover { border-color: var(--border-mid); color: var(--text-1); transform: scale(1.08); }
-    .rail-dot.active { border-color: var(--mint); color: var(--mint); background: var(--mint-dim); box-shadow: 0 0 0 3px var(--mint-dim); }
-
-    .projects-stack { display: flex; flex-direction: column; gap: 2.5rem; }
-
-    /* ─── FULL PROJECT CARD ─── */
-    .proj-full {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 2.75rem;
-      position: relative; overflow: hidden;
-      transition: border-color 0.4s, box-shadow 0.4s;
-      transform-style: preserve-3d;
-      scroll-margin-top: 6.5rem;
-    }
-    .proj-full::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--accent-grad, linear-gradient(90deg, var(--mint), transparent));
-    }
-    .proj-full::after {
-      content: ''; position: absolute; inset: -1px; border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, var(--accent-solo, var(--mint)), transparent, var(--accent-solo, var(--mint)), transparent);
-      z-index: -1; opacity: 0; transition: opacity 0.4s;
-    }
-    .proj-full:hover::after { opacity: 0.12; animation: borderSpin 3s linear infinite; }
-    .proj-full:hover { border-color: var(--border-mid); box-shadow: 0 24px 64px rgba(0,0,0,0.45); }
-    @property --border-angle { syntax: '<angle>'; initial-value: 135deg; inherits: false; }
-    @keyframes borderSpin { from { --border-angle: 0deg; } to { --border-angle: 360deg; } }
-
-    .proj-full-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-    .proj-full-id { display: flex; align-items: center; gap: 1.1rem; }
-    .proj-full-icon { width: 52px; height: 52px; border-radius: 13px; background: var(--accent-dim, var(--mint-dim)); border: 1px solid var(--accent-border, var(--border-mid)); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0; transition: transform 0.4s var(--spring); }
-    .proj-full:hover .proj-full-icon { transform: rotate(-6deg) scale(1.06); }
-    .proj-full-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem; }
-    .proj-full-title { font-family: var(--font-display); font-size: clamp(1.4rem, 2.6vw, 1.85rem); font-weight: 800; color: var(--text-0); letter-spacing: -0.03em; line-height: 1.1; }
-    .proj-full-status { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 100px; color: var(--gold); background: var(--gold-dim); border: 1px solid rgba(255,209,102,0.2); flex-shrink: 0; }
-    .proj-full-status.done { color: var(--mint); background: var(--mint-dim); border-color: var(--border-mid); }
-
-    .proj-full-desc { font-size: 0.98rem; color: var(--text-2); line-height: 1.8; max-width: 760px; margin-bottom: 1.75rem; }
-
-    .proj-full-body { display: grid; grid-template-columns: 1fr 220px; gap: 2.5rem; align-items: start; }
-    .proj-full-highlights { list-style: none; margin-bottom: 1.5rem; }
-    .proj-full-highlights li { font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-2); padding: 0.4rem 0; display: flex; align-items: flex-start; gap: 0.65rem; line-height: 1.6; border-bottom: 1px dashed var(--border); }
-    .proj-full-highlights li:last-child { border-bottom: none; }
-    .proj-full-highlights li::before { content: '›'; color: var(--accent-solo, var(--mint)); flex-shrink: 0; margin-top: 1px; font-weight: 700; }
-
-    .proj-full-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
-    .tech-tag { font-family: var(--font-mono); font-size: 0.7rem; padding: 0.22rem 0.6rem; border-radius: 4px; background: var(--bg-2); color: var(--text-2); border: 1px solid var(--border); transition: color var(--trans), border-color var(--trans), transform 0.2s var(--spring); }
-    .proj-full:hover .tech-tag { color: var(--text-1); border-color: var(--border-mid); }
-
-    .proj-full-links { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-    .proj-link-tag { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.75rem; padding: 0.5rem 0.95rem; border-radius: var(--radius); background: var(--accent-dim, var(--mint-dim)); color: var(--accent-solo, var(--mint)); border: 1px solid var(--accent-border, var(--border-mid)); transition: background var(--trans), color var(--trans), transform 0.2s var(--spring); }
-    .proj-link-tag:hover { background: var(--accent-solo, var(--mint)); color: var(--bg-0); transform: translateY(-2px); }
-    .proj-link-tag svg { width: 13px; height: 13px; flex-shrink: 0; }
-
-    .proj-full-metrics { display: flex; flex-direction: column; gap: 1rem; }
-    .proj-metric { background: var(--bg-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.1rem 1.25rem; transition: border-color var(--trans); }
-    .proj-metric:hover { border-color: var(--border-mid); }
-    .proj-metric-value { font-family: var(--font-display); font-size: 1.55rem; font-weight: 700; color: var(--accent-solo, var(--mint)); line-height: 1; margin-bottom: 0.3rem; }
-    .proj-metric-label { font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.07em; }
-
-    .proj-full-footer { margin-top: 1.75rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-    .project-toggle-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500; color: var(--bg-0); background: var(--accent-solo, var(--mint)); border: none; border-radius: var(--radius); padding: 0.65rem 1.25rem; cursor: pointer; transition: background var(--trans), transform var(--trans), box-shadow var(--trans); letter-spacing: 0.03em; }
-    .project-toggle-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 16px var(--accent-glow, var(--mint-glow)); filter: brightness(1.12); }
-    .project-toggle-btn.open { background: var(--accent-dim, var(--mint-dim)); color: var(--accent-solo, var(--mint)); border: 1px solid var(--accent-border, var(--border-mid)); }
-    .project-toggle-btn svg { width: 12px; height: 12px; transition: transform 0.35s ease; flex-shrink: 0; }
-    .project-toggle-btn.open svg { transform: rotate(180deg); }
-
-    .project-dropdown { max-height: 0; overflow: hidden; transition: max-height 0.55s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease; opacity: 0; }
-    .project-dropdown.open { max-height: 1000px; opacity: 1; margin-top: 1.5rem; }
-    .project-dropdown-inner { border-top: 1px solid var(--border); padding-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
-    .project-dropdown-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); }
-    .project-dropdown-images { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; }
-    .project-dropdown-images img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); object-fit: cover; cursor: zoom-in; transition: border-color var(--trans), transform 0.4s var(--spring); }
-    .project-dropdown-images img:hover { border-color: var(--border-mid); transform: scale(1.02); }
-
-    .pdf-view-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; color: var(--bg-0); background: var(--gold); border: none; border-radius: var(--radius); padding: 0.6rem 1.15rem; cursor: pointer; transition: background var(--trans), transform var(--trans), box-shadow var(--trans); letter-spacing: 0.02em; width: fit-content; }
-    .pdf-view-btn:hover { background: #ffe08a; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(255,209,102,0.3); }
-    .pdf-view-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
-
-    /* ─── REVEAL SYSTEM ─── */
-    .reveal { animation-name: var(--anim, animFadeUp); animation-duration: var(--dur, 0.7s); animation-timing-function: var(--ease, var(--expo)); animation-delay: var(--delay, 0s); animation-fill-mode: both; animation-play-state: paused; }
-    .reveal.visible { animation-play-state: running; }
-
-    /* ─── LIGHTBOX ─── */
-    #lightbox { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
-    #lightbox.open { opacity: 1; pointer-events: auto; }
-    #lb-backdrop { position: absolute; inset: 0; background: rgba(5,5,13,0.93); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-    #lb-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 0.75rem; max-width: 92vw; transform: scale(0.91) translateY(10px); transition: transform 0.45s var(--spring), opacity 0.35s ease; opacity: 0; }
-    #lightbox.open #lb-inner { transform: scale(1) translateY(0); opacity: 1; }
-    #lb-img { display: block; max-width: 90vw; max-height: 82vh; width: auto; height: auto; border-radius: var(--radius-lg); border: 1px solid var(--border-mid); box-shadow: 0 32px 80px rgba(0,0,0,0.65); object-fit: contain; transition: opacity 0.18s ease, transform 0.18s ease; }
-    #lb-meta { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 1rem; }
-    #lb-caption { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-3); letter-spacing: 0.06em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    #lb-counter { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-3); letter-spacing: 0.06em; flex-shrink: 0; }
-    #lb-counter span { color: var(--mint); font-weight: 700; }
-    #lb-close { position: absolute; top: 1.5rem; right: 1.5rem; z-index: 2; width: 40px; height: 40px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border-mid); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-2); transition: background var(--trans), color var(--trans), transform var(--trans); }
-    #lb-close:hover { background: var(--mint-dim); color: var(--mint); transform: rotate(90deg) scale(1.1); }
-    #lb-close svg { width: 16px; height: 16px; }
-    #lb-prev, #lb-next { position: absolute; top: 50%; z-index: 2; width: 44px; height: 44px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border-mid); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-2); transition: background var(--trans), color var(--trans), transform var(--trans); opacity: 0; pointer-events: none; transform: translateY(-50%); }
-    #lb-prev { left: 1.5rem; } #lb-next { right: 1.5rem; }
-    #lb-prev:hover { background: var(--mint-dim); color: var(--mint); transform: translateY(-50%) translateX(-3px); }
-    #lb-next:hover { background: var(--mint-dim); color: var(--mint); transform: translateY(-50%) translateX(3px); }
-    #lb-prev svg, #lb-next svg { width: 18px; height: 18px; }
-    #lightbox.multi #lb-prev, #lightbox.multi #lb-next { opacity: 1; pointer-events: auto; }
-    #lb-prev.edge, #lb-next.edge { opacity: 0.25 !important; }
-
-    /* ─── PDF VIEWER MODAL ─── */
-    #pdf-viewer { position: fixed; inset: 0; z-index: 2100; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
-    #pdf-viewer.open { opacity: 1; pointer-events: auto; }
-    #pdf-backdrop { position: absolute; inset: 0; background: rgba(5,5,13,0.93); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
-    #pdf-inner { position: relative; z-index: 1; width: min(920px, 94vw); height: min(88vh, 1000px); display: flex; flex-direction: column; background: var(--bg-card); border: 1px solid var(--border-mid); border-radius: var(--radius-lg); box-shadow: 0 32px 80px rgba(0,0,0,0.65); overflow: hidden; transform: scale(0.92) translateY(14px); opacity: 0; transition: transform 0.45s var(--spring), opacity 0.35s ease; }
-    #pdf-viewer.open #pdf-inner { transform: scale(1) translateY(0); opacity: 1; }
-    #pdf-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); background: var(--bg-2); flex-shrink: 0; gap: 1rem; }
-    #pdf-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--text-0); letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    #pdf-header-actions { display: flex; align-items: center; gap: 0.6rem; flex-shrink: 0; }
-    .pdf-action-btn { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-2); border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: var(--radius); transition: color var(--trans), border-color var(--trans), background var(--trans); }
-    .pdf-action-btn:hover { color: var(--mint); border-color: var(--mint); background: var(--mint-dim); }
-    #pdf-close { width: 32px; height: 32px; border-radius: 50%; background: var(--bg-card); border: 1px solid var(--border-mid); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-2); flex-shrink: 0; transition: background var(--trans), color var(--trans), transform var(--trans); }
-    #pdf-close:hover { background: var(--mint-dim); color: var(--mint); transform: rotate(90deg) scale(1.1); }
-    #pdf-close svg { width: 14px; height: 14px; }
-    #pdf-frame { flex: 1; width: 100%; border: none; background: #fff; }
-
-    /* ─── LAZY IMAGES ─── */
-    .lazy-img { opacity: 0; transform: translateY(12px) scale(0.98); transition: opacity 0.6s ease, transform 0.6s var(--spring); }
-    .lazy-img.img-loaded { opacity: 1; transform: translateY(0) scale(1); }
-
-    /* ─── FOOTER ─── */
-    footer { padding: 2.5rem 0; border-top: 1px solid var(--border); text-align: center; animation: riseOvershoot 0.6s var(--spring) both; position: relative; z-index: 1; background: var(--bg-0); }
-    footer p { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-3); letter-spacing: 0.04em; }
-    footer p span { color: var(--mint); }
-
-    #back-to-top { position: fixed; bottom: 2rem; right: 2rem; z-index: 150; width: 42px; height: 42px; border-radius: 10px; background: var(--bg-card); border: 1px solid var(--border-mid); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-2); opacity: 0; pointer-events: none; transition: opacity 0.35s var(--expo), background var(--trans), color var(--trans), transform 0.4s var(--spring), border-color var(--trans), box-shadow var(--trans); }
-    #back-to-top.visible { opacity: 1; pointer-events: auto; }
-    #back-to-top:hover { background: var(--mint-dim); color: var(--mint); border-color: var(--mint); transform: translateY(-3px); box-shadow: 0 8px 24px var(--mint-glow); }
-
-    /* ─── LIGHT THEME ─── */
-    [data-theme="light"] { --bg-0: #f4f5fb; --bg-1: #eceef8; --bg-2: #e2e5f5; --bg-card: #ffffff; --bg-hover: #f0f2fc; --border: rgba(40,50,120,0.1); --border-mid: rgba(40,50,120,0.22); --mint: #00b894; --mint-dim: rgba(0,184,148,0.1); --mint-glow: rgba(0,184,148,0.2); --gold: #e09a00; --gold-dim: rgba(224,154,0,0.1); --coral: #e05252; --text-0: #09091e; --text-1: #1c1c40; --text-2: #4a4a78; --text-3: #9090b8; --acc-projects: #7c5cff; --sec-projects: #eee7fc; }
-    [data-theme="light"] body { background: var(--bg-0); }
-    [data-theme="light"] #header.scrolled { background: rgba(244,245,251,0.92); box-shadow: 0 1px 0 var(--border); }
-    [data-theme="light"] .mobile-menu { background: rgba(244,245,251,0.98); }
-    [data-theme="light"] body::before { opacity: 0.25; }
-    [data-theme="light"] footer { background: var(--bg-0); }
-
-    /* ─── KEYFRAMES ─── */
-    @keyframes animFadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes blurIn { from { opacity: 0; filter: blur(16px); transform: scale(1.02); } to { opacity: 1; filter: blur(0); transform: scale(1); } }
-    @keyframes popBounce { 0% { opacity: 0; transform: scale(0.7) translateY(20px); } 65% { opacity: 1; transform: scale(1.05) translateY(-5px); } 100% { opacity: 1; transform: scale(1) translateY(0); } }
-    @keyframes charFlip { from { opacity: 0; transform: rotateX(85deg) translateY(0.4em) scaleX(0.9); } to { opacity: 1; transform: rotateX(0) translateY(0) scaleX(1); } }
-    @keyframes navLogoIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
-    @keyframes navItemDrop { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes glowPulse { from { opacity: 0.8; transform: translateX(-50%) scale(1); } to { opacity: 1; transform: translateX(-50%) scale(1.1); } }
-    @keyframes gridShift { from { background-position: 0 0; } to { background-position: 60px 60px; } }
-    @keyframes riseOvershoot { 0% { opacity: 0; transform: translateY(45px); } 60% { transform: translateY(-6px); } 100% { opacity: 1; transform: translateY(0); } }
-    @keyframes animBlurIn { from { opacity: 0; filter: blur(18px); transform: scale(1.03); } to { opacity: 1; filter: blur(0); transform: scale(1); } }
-    @keyframes animPopBounce { 0% { opacity: 0; transform: scale(0.65) rotate(-3deg); } 60% { opacity: 1; transform: scale(1.06) rotate(0.5deg); } 80% { transform: scale(0.97) rotate(0); } 100% { opacity: 1; transform: scale(1) rotate(0); } }
-
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .project-list-inner { grid-template-columns: 1fr; }
-      .rail { position: static; flex-direction: row; overflow-x: auto; padding-bottom: 0.5rem; }
-      .rail-line { display: none; }
-      .proj-full-body { grid-template-columns: 1fr; }
-      .proj-full-metrics { flex-direction: row; flex-wrap: wrap; }
-      .proj-metric { flex: 1; min-width: 130px; }
-    }
-    @media (max-width: 720px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      #page-hero { padding: 6.5rem 0 3rem; }
-      .proj-full { padding: 1.75rem; }
-      .proj-full-top { flex-direction: column; align-items: flex-start; }
-    }
-    @media (max-width: 480px) {
-      .container { width: calc(100% - 2.5rem); }
-      .proj-full-icon { width: 44px; height: 44px; font-size: 1.3rem; }
-      .proj-full-title { font-size: 1.25rem; }
-    }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script>(function(d){var r=d.documentElement;r.className=r.className.replace('no-js','js');try{if(localStorage.getItem('theme')==='light')r.setAttribute('data-theme','light')}catch(e){}setTimeout(function(){if(!window.__portfolioReady)r.classList.add('reveal-fallback')},3500)})(document);</script>
+<link rel="stylesheet" href="assets/css/style.css" />
 </head>
-
-<!-- ─── LIGHTBOX ─── -->
-<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
-  <div id="lb-backdrop"></div>
-  <button id="lb-close" aria-label="Close image viewer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  <button id="lb-prev" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
-  <div id="lb-inner">
-    <img id="lb-img" src="" alt="" />
-    <div id="lb-meta"><span id="lb-caption"></span><span id="lb-counter"></span></div>
-  </div>
-  <button id="lb-next" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
-</div>
-
-<!-- ─── PDF VIEWER ─── -->
-<div id="pdf-viewer" role="dialog" aria-modal="true" aria-label="PDF viewer">
-  <div id="pdf-backdrop"></div>
-  <div id="pdf-inner">
-    <div id="pdf-header">
-      <span id="pdf-title">Document</span>
-      <div id="pdf-header-actions">
-        <a id="pdf-download" href="#" download class="pdf-action-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download</a>
-        <button id="pdf-close" aria-label="Close PDF viewer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-      </div>
-    </div>
-    <iframe id="pdf-frame" src="" title="PDF Viewer"></iframe>
-  </div>
-</div>
-
 <body>
-  <div id="scroll-progress"></div>
-
-  <!-- ─── HEADER ─── -->
-  <header id="header">
-    <nav class="container">
-       <a href="index.html" class="nav-logo">OS<span>.</span></a>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      </button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-github" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></symbol><symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol><symbol id="i-medium" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol><symbol id="i-arrow-up-right" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol><symbol id="i-chevron-left" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></symbol><symbol id="i-chevron-right" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol><symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol><symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol><symbol id="i-expand" viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></symbol><symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></symbol><symbol id="i-layers" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></symbol><symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol><symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></symbol></defs></svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+<header class="site-header" id="header">
+  <div class="nav-shell">
+    <a class="brand" href="index.html" aria-label="Omar Shaker — home">OS<span class="brand-dot">.</span></a>
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="index.html#resume">Resume</a></li>
+      </ul>
+      <span class="nav-indicator" aria-hidden="true"></span>
     </nav>
-  </header>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light / dark theme"><svg class="ico i-moon i-moon" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg><svg class="ico i-sun i-sun" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg></button>
+      <a class="btn btn-primary btn-sm nav-cta" href="index.html#contact">Contact <svg class="ico i-arrow-up-right i-up-right" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
 
-  <!-- ─── PAGE HERO ─── -->
-  <section id="page-hero">
-    <div class="hero-grid-bg"></div>
-    <div class="hero-glow"></div>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site menu">
+  <nav class="mobile-links" aria-label="Mobile">
+      <a href="index.html" style="--i:0"><small>01</small>Home</a>
+      <a href="projects.html" style="--i:1"><small>02</small>Projects</a>
+      <a href="blog.html" style="--i:2"><small>03</small>Blog</a>
+      <a href="index.html#resume" style="--i:3"><small>04</small>Resume</a>
+      <a href="index.html#contact" style="--i:4"><small>05</small>Contact</a>
+  </nav>
+  <div class="mobile-foot">
+    <a class="icon-btn" href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" aria-label="GitHub"><svg class="ico i-github ico-fill" aria-hidden="true" focusable="false"><use href="#i-github"/></svg></a>
+    <a class="icon-btn" href="https://www.linkedin.com/in/omar-shaker-elbana/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico i-linkedin ico-fill" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg></a>
+    <a class="icon-btn" href="mailto:omarshaker082@gmail.com" aria-label="Email"><svg class="ico i-mail" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg></a>
+  </div>
+</div>
+
+<main id="main">
+  <section class="page-hero acc-pink" aria-labelledby="page-title">
+    <div class="hero-bg" aria-hidden="true"><div class="hero-grid"></div><span class="orb orb-1"></span><span class="orb orb-2"></span></div>
     <div class="container">
-      <a href="index.html" class="breadcrumb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-        Back to Home
-      </a>
-      <h1 class="page-hero-title">All <span class="accent">Projects.</span></h1>
-      <p class="page-hero-sub">
-        Seven builds, full write-ups. Backend architecture, algorithms derived from first principles,
-        a hand-rolled network protocol, embedded systems, game engineering, and applied research —
-        each one built to be understood, not just shipped.
-      </p>
-      <div class="page-hero-stats">
-        <div class="stat-item"><div class="stat-num">7</div><div class="stat-label">Projects Documented</div></div>
-        <div class="stat-item"><div class="stat-num">5<span>+</span></div><div class="stat-label">Languages &amp; Stacks</div></div>
-        <div class="stat-item"><div class="stat-num"><span>0</span></div><div class="stat-label">Tutorial Clones</div></div>
+      <a class="crumb" href="index.html"><svg class="ico i-arrow-left" aria-hidden="true" focusable="false"><use href="#i-arrow-left"/></svg> Back to home</a>
+      <h1 class="page-title" id="page-title"><span class="line"><span>All</span></span><span class="line"><span class="grad-text">Projects.</span></span></h1>
+      <p class="page-lede">Seven builds, full write-ups. Backend architecture, algorithms derived from first principles, a hand-rolled network protocol, embedded systems, game engineering, and applied research — each one built to be understood, not just shipped.</p>
+      <div class="page-stats">
+        <div class="page-stat"><b data-count="7">7</b><span>Projects documented</span></div>
+        <div class="page-stat"><b data-count="5" data-suffix="+">5+</b><span>Languages &amp; stacks</span></div>
+        <div class="page-stat"><b data-count="0">0</b><span>Tutorial clones</span></div>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- ─── PROJECT LIST ─── -->
-  <section id="project-list">
-    <div class="container project-list-inner">
-
-      <!-- side rail -->
-      <div class="rail" id="rail">
-        <div class="rail-dot" data-target="p1" title="StoreHub">01</div>
-        <div class="rail-line"></div>
-        <div class="rail-dot" data-target="p2" title="DooR DasH">02</div>
-        <div class="rail-line"></div>
-        <div class="rail-dot" data-target="p3" title="Linear Regression">03</div>
-        <div class="rail-line"></div>
-        <div class="rail-dot" data-target="p4" title="Dijkstra's Algorithm">04</div>
-        <div class="rail-line"></div>
-        <div class="rail-dot" data-target="p5" title="GIU-Net">05</div>
-        <div class="rail-line"></div>
-        <div class="rail-dot" data-target="p6" title="Vault Protection">06</div>
-        <div class="rail-line"></div>
-        <div class="rail-dot" data-target="p7" title="Video Games &amp; Mental Well-Being">07</div>
+  <section class="section" style="padding-top:clamp(1rem,3vw,2rem)" aria-label="Project list">
+    <div class="container">
+      <div class="filter-bar" data-reveal="up">
+        <div class="filters" role="group" aria-label="Filter projects by category"><button class="filter" type="button" data-filter="all" aria-pressed="true">All</button><button class="filter" type="button" data-filter="backend" aria-pressed="false">Backend</button><button class="filter" type="button" data-filter="ml-algo" aria-pressed="false">Algorithms &amp; ML</button><button class="filter" type="button" data-filter="systems" aria-pressed="false">Systems &amp; Hardware</button><button class="filter" type="button" data-filter="java" aria-pressed="false">Java</button><button class="filter" type="button" data-filter="research" aria-pressed="false">Research</button></div>
+        <p class="result-count" aria-live="polite">Showing 7 of 7</p>
       </div>
-
-      <div class="projects-stack">
-
-        <!-- ── 01 · StoreHub ── -->
-        <article class="proj-full reveal" id="p1" style="--accent-solo:var(--mint); --accent-dim:var(--mint-dim); --accent-border:var(--border-mid); --accent-glow:var(--mint-glow); --accent-grad:linear-gradient(90deg, var(--mint), rgba(100,255,210,0.3), transparent);">
-          <div class="proj-full-top">
-            <div class="proj-full-id">
-              <div class="proj-full-icon">🛒</div>
-              <div>
-                <div class="proj-full-num">Project 01</div>
-                <div class="proj-full-title">StoreHub</div>
-              </div>
-            </div>
-            <span class="proj-full-status">In Progress</span>
+      <div class="proj-layout">
+        <aside class="rail" aria-label="Project index">
+          <p class="rail-title">Index</p>
+          <ol><li class="acc-cyan" data-cats="backend"><a href="#p1"><b>01</b>StoreHub</a></li><li class="acc-pink" data-cats="java"><a href="#p2"><b>02</b>DooR DasH: Scare vs Laugh Touchdown</a></li><li class="acc-amber" data-cats="ml-algo"><a href="#p3"><b>03</b>Linear Regression from Scratch</a></li><li class="acc-violet" data-cats="ml-algo"><a href="#p4"><b>04</b>Dijkstra's Algorithm</a></li><li class="acc-blue" data-cats="systems java"><a href="#p5"><b>05</b>GIU-Net: Protocol &amp; Campus Network</a></li><li class="acc-lime" data-cats="systems"><a href="#p6"><b>06</b>Vault Protection System</a></li><li class="acc-orange" data-cats="research"><a href="#p7"><b>07</b>Video Games &amp; Mental Well-Being</a></li></ol>
+        </aside>
+        <div class="proj-stack">
+        <article class="card proj acc-cyan" id="p1" data-cats="backend" data-reveal="up">
+          <div class="proj-top">
+            <div class="proj-id"><span class="icon-tile" aria-hidden="true">🛒</span><div><p class="proj-num">PROJECT 01</p><h2 class="proj-h">StoreHub</h2></div></div>
+            <span class="status"><span class="dot"></span>In Progress</span>
           </div>
-          <p class="proj-full-desc">A full-stack e-commerce platform built from scratch across 7 Django apps — not a tutorial clone. Covers the complete user-merchant flow with a normalized relational schema, RESTful backend logic, session-based authentication, and role-based access control.</p>
-          <div class="proj-full-body">
-            <div>
-              <ul class="proj-full-highlights">
-                <li>9 Django apps with clean domain separation</li>
-                <li>30+ views · 12+ normalized database models</li>
-                <li>Role-based access — admin, merchant, customer</li>
-                <li>RESTful APIs — products, orders, inventory, auth</li>
-                <li>Session management &amp; authentication flow</li>
-              </ul>
-              <div class="proj-full-tech">
-                <span class="tech-tag">Python</span><span class="tech-tag">Django</span><span class="tech-tag">DRF</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">JWT</span><span class="tech-tag">REST API</span><span class="tech-tag">Signals</span>
-              </div>
-              <div class="proj-full-links">
-                <a href="https://github.com/Omar-Shaker-Elbana/Store_Hub" target="_blank" rel="noopener" class="proj-link-tag">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-            <div class="proj-full-metrics">
-              <div class="proj-metric"><div class="proj-metric-value">7</div><div class="proj-metric-label">Django Apps</div></div>
-              <div class="proj-metric"><div class="proj-metric-value" style="color:var(--gold)">30+</div><div class="proj-metric-label">Views</div></div>
-              <div class="proj-metric"><div class="proj-metric-value">12+</div><div class="proj-metric-label">DB Models</div></div>
-            </div>
+          <p class="proj-desc">A full-stack e-commerce platform built from scratch across 7 Django apps — not a tutorial clone. Covers the complete user-merchant flow with a normalized relational schema, RESTful backend logic, session-based authentication, and role-based access control.</p>
+          <div class="proj-body">
+            <div><ul class="proj-points"><li>9 Django apps with clean domain separation</li><li>30+ views · 12+ normalized database models</li><li>Role-based access — admin, merchant, customer</li><li>RESTful APIs — products, orders, inventory, auth</li><li>Session management &amp; authentication flow</li></ul><div class="chip-row"><span class="chip">Python</span><span class="chip">Django</span><span class="chip">DRF</span><span class="chip">PostgreSQL</span><span class="chip">JWT</span><span class="chip">REST API</span><span class="chip">Signals</span></div></div>
+            <div class="metrics"><div class="metric"><div class="metric-val">7</div><div class="metric-label">Django Apps</div></div><div class="metric"><div class="metric-val">30+</div><div class="metric-label">Views</div></div><div class="metric"><div class="metric-val">12+</div><div class="metric-label">DB Models</div></div></div>
           </div>
-          <div class="proj-full-footer">
-            <button class="project-toggle-btn" onclick="toggleDropdown(this)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-              Preview &amp; Output
-            </button>
-            <div class="project-dropdown">
-              <div class="project-dropdown-inner">
-                <div class="project-dropdown-label">Screenshots &amp; Output</div>
-                <div class="project-dropdown-images">
-                  <img src="images/SH1.png" alt="StoreHub screenshot 1" class="lazy-img" loading="lazy" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="proj-foot"><div class="links"><a class="btn btn-sm" href="https://github.com/Omar-Shaker-Elbana/Store_Hub" target="_blank" rel="noopener"><svg class="ico i-github ico-fill" aria-hidden="true" focusable="false"><use href="#i-github"/></svg> GitHub</a></div><button class="btn btn-sm toggle" type="button" aria-expanded="false" aria-controls="pv-p1"><svg class="ico i-chevron-down" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg><span class="toggle-label">Preview &amp; output</span></button></div>
+          <div class="preview" id="pv-p1"><div class="preview-inner"><p class="preview-label">Screenshots &amp; output</p><div class="shots"><button class="shot" type="button" aria-label="Open image: StoreHub screenshot 1"><img data-src="images/SH1.png" alt="StoreHub screenshot 1" decoding="async" /><span class="zoom"><svg class="ico i-expand" aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span></button></div></div></div>
         </article>
-
-        <!-- ── 02 · DooR DasH ── -->
-        <article class="proj-full reveal" id="p2" style="--accent-solo:var(--coral); --accent-dim:rgba(255,107,107,0.1); --accent-border:rgba(255,107,107,0.2); --accent-glow:rgba(255,107,107,0.3); --accent-grad:linear-gradient(90deg, var(--coral), rgba(255,107,107,0.2), transparent);">
-          <div class="proj-full-top">
-            <div class="proj-full-id">
-              <div class="proj-full-icon">🎮</div>
-              <div>
-                <div class="proj-full-num">Project 02</div>
-                <div class="proj-full-title">DooR DasH: Scare vs Laugh Touchdown</div>
-              </div>
-            </div>
-            <span class="proj-full-status done">Completed</span>
+        <article class="card proj acc-pink" id="p2" data-cats="java" data-reveal="up">
+          <div class="proj-top">
+            <div class="proj-id"><span class="icon-tile" aria-hidden="true">🎮</span><div><p class="proj-num">PROJECT 02</p><h2 class="proj-h">DooR DasH: Scare vs Laugh Touchdown</h2></div></div>
+            <span class="status is-done"><span class="dot"></span>Completed</span>
           </div>
-          <p class="proj-full-desc">A 2-player, 100-cell strategy board game engineered across 20+ Java classes. Built with a fully event-driven JavaFX GUI, a deep OOP class hierarchy, and a polymorphic monster system where energy mechanics cascade through overridden method chains.</p>
-          <div class="proj-full-body">
-            <div>
-              <ul class="proj-full-highlights">
-                <li>20+ Java classes across a clean MVC architecture</li>
-                <li>10+ distinct cell effect types with unique board interaction logic</li>
-                <li>Polymorphic monster system with cascading energy mechanics</li>
-                <li>Fully event-driven JavaFX GUI — zero logic in the view layer</li>
-                <li>JUnit test suite covering core game logic and edge cases</li>
-              </ul>
-              <div class="proj-full-tech">
-                <span class="tech-tag">Java</span><span class="tech-tag">JavaFX</span><span class="tech-tag">OOP</span><span class="tech-tag">MVC</span><span class="tech-tag">JUnit</span>
-              </div>
-              <div class="proj-full-links">
-                <a href="https://github.com/Omar-Shaker-Elbana/DooR_DasH" target="_blank" rel="noopener" class="proj-link-tag">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                  GitHub
-                </a>
-                <a href="https://omar-shaker-elbana.github.io/doordashdownload" target="_blank" rel="noopener" class="proj-link-tag" style="--accent-solo:var(--coral);--accent-dim:rgba(255,107,107,0.1);--accent-border:rgba(255,107,107,0.2);">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg>
-                  Download
-                </a>
-              </div>
-            </div>
-            <div class="proj-full-metrics">
-              <div class="proj-metric"><div class="proj-metric-value">20+</div><div class="proj-metric-label">Java Classes</div></div>
-              <div class="proj-metric"><div class="proj-metric-value" style="color:var(--gold)">10+</div><div class="proj-metric-label">Cell Types</div></div>
-              <div class="proj-metric"><div class="proj-metric-value">MVC</div><div class="proj-metric-label">Architecture</div></div>
-            </div>
+          <p class="proj-desc">A 2-player, 100-cell strategy board game engineered across 20+ Java classes. Built with a fully event-driven JavaFX GUI, a deep OOP class hierarchy, and a polymorphic monster system where energy mechanics cascade through overridden method chains.</p>
+          <div class="proj-body">
+            <div><ul class="proj-points"><li>20+ Java classes across a clean MVC architecture</li><li>10+ distinct cell effect types with unique board interaction logic</li><li>Polymorphic monster system with cascading energy mechanics</li><li>Fully event-driven JavaFX GUI — zero logic in the view layer</li><li>JUnit test suite covering core game logic and edge cases</li></ul><div class="chip-row"><span class="chip">Java</span><span class="chip">JavaFX</span><span class="chip">OOP</span><span class="chip">MVC</span><span class="chip">JUnit</span></div></div>
+            <div class="metrics"><div class="metric"><div class="metric-val">20+</div><div class="metric-label">Java Classes</div></div><div class="metric"><div class="metric-val">10+</div><div class="metric-label">Cell Types</div></div><div class="metric"><div class="metric-val">MVC</div><div class="metric-label">Architecture</div></div></div>
           </div>
-          <div class="proj-full-footer">
-            <button class="project-toggle-btn" onclick="toggleDropdown(this)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-              Preview &amp; Output
-            </button>
-            <div class="project-dropdown">
-              <div class="project-dropdown-inner">
-                <div class="project-dropdown-label">Screenshots &amp; Output</div>
-                <div class="project-dropdown-images">
-                  <img src="images/DD1.png" alt="DooR DasH screenshot 1" class="lazy-img" loading="lazy" />
-                  <img src="images/DD2.png" alt="DooR DasH screenshot 2" class="lazy-img" loading="lazy" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="proj-foot"><div class="links"><a class="btn btn-sm" href="https://github.com/Omar-Shaker-Elbana/DooR_DasH" target="_blank" rel="noopener"><svg class="ico i-github ico-fill" aria-hidden="true" focusable="false"><use href="#i-github"/></svg> GitHub</a><a class="btn btn-sm" href="https://omar-shaker-elbana.github.io/doordashdownload" target="_blank" rel="noopener"><svg class="ico i-download" aria-hidden="true" focusable="false"><use href="#i-download"/></svg> Download</a></div><button class="btn btn-sm toggle" type="button" aria-expanded="false" aria-controls="pv-p2"><svg class="ico i-chevron-down" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg><span class="toggle-label">Preview &amp; output</span></button></div>
+          <div class="preview" id="pv-p2"><div class="preview-inner"><p class="preview-label">Screenshots &amp; output</p><div class="shots"><button class="shot" type="button" aria-label="Open image: DooR DasH screenshot 1"><img data-src="images/DD1.png" alt="DooR DasH screenshot 1" decoding="async" /><span class="zoom"><svg class="ico i-expand" aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span></button><button class="shot" type="button" aria-label="Open image: DooR DasH screenshot 2"><img data-src="images/DD2.png" alt="DooR DasH screenshot 2" decoding="async" /><span class="zoom"><svg class="ico i-expand" aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span></button></div></div></div>
         </article>
-
-        <!-- ── 03 · Linear Regression ── -->
-        <article class="proj-full reveal" id="p3" style="--accent-solo:var(--gold); --accent-dim:var(--gold-dim); --accent-border:rgba(255,209,102,0.2); --accent-glow:rgba(255,209,102,0.3); --accent-grad:linear-gradient(90deg, var(--gold), rgba(255,209,102,0.3), transparent);">
-          <div class="proj-full-top">
-            <div class="proj-full-id">
-              <div class="proj-full-icon">📉</div>
-              <div>
-                <div class="proj-full-num">Project 03</div>
-                <div class="proj-full-title">Linear Regression from Scratch</div>
-              </div>
-            </div>
-            <span class="proj-full-status done">Completed</span>
+        <article class="card proj acc-amber" id="p3" data-cats="ml-algo" data-reveal="up">
+          <div class="proj-top">
+            <div class="proj-id"><span class="icon-tile" aria-hidden="true">📉</span><div><p class="proj-num">PROJECT 03</p><h2 class="proj-h">Linear Regression from Scratch</h2></div></div>
+            <span class="status is-done"><span class="dot"></span>Completed</span>
           </div>
-          <p class="proj-full-desc">Implemented three regression algorithms from mathematical first principles — no ML libraries, just NumPy and matrix calculus. Results achieve machine-precision agreement with scikit-learn at under 1e-13 error. Trained on a Canadian vehicle CO₂ emissions dataset.</p>
-          <div class="proj-full-body">
-            <div>
-              <ul class="proj-full-highlights">
-                <li>Normal Equation from matrix calculus — (XᵀX)⁻¹Xᵀy from scratch</li>
-                <li>Gradient Descent converging to optimal weights at Δ &lt; 1e-3</li>
-                <li>Ridge Regularization across λ = 0 → 100 with bias-variance analysis</li>
-                <li>MSE ≈ 913 · R² ≈ 0.734 · &lt;1e-13 error vs scikit-learn</li>
-              </ul>
-              <div class="proj-full-tech">
-                <span class="tech-tag">Python</span><span class="tech-tag">NumPy</span><span class="tech-tag">Linear Algebra</span><span class="tech-tag">Math 204</span>
-              </div>
-              <div class="proj-full-links">
-                <a href="https://github.com/AhmedMohammedRo/Linear_Algebra_Project" target="_blank" rel="noopener" class="proj-link-tag">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-            <div class="proj-full-metrics">
-              <div class="proj-metric"><div class="proj-metric-value">1e-13</div><div class="proj-metric-label">Error vs sklearn</div></div>
-              <div class="proj-metric"><div class="proj-metric-value" style="color:var(--text-0)">3</div><div class="proj-metric-label">Algorithms</div></div>
-              <div class="proj-metric"><div class="proj-metric-value">0.734</div><div class="proj-metric-label">R² Score</div></div>
-            </div>
+          <p class="proj-desc">Implemented three regression algorithms from mathematical first principles — no ML libraries, just NumPy and matrix calculus. Results achieve machine-precision agreement with scikit-learn at under 1e-13 error. Trained on a Canadian vehicle CO₂ emissions dataset.</p>
+          <div class="proj-body">
+            <div><ul class="proj-points"><li>Normal Equation from matrix calculus — (XᵀX)⁻¹Xᵀy from scratch</li><li>Gradient Descent converging to optimal weights at Δ &lt; 1e-3</li><li>Ridge Regularization across λ = 0 → 100 with bias-variance analysis</li><li>MSE ≈ 913 · R² ≈ 0.734 · &lt;1e-13 error vs scikit-learn</li></ul><div class="chip-row"><span class="chip">Python</span><span class="chip">NumPy</span><span class="chip">Linear Algebra</span><span class="chip">Math 204</span></div></div>
+            <div class="metrics"><div class="metric"><div class="metric-val">1e-13</div><div class="metric-label">Error vs sklearn</div></div><div class="metric"><div class="metric-val">3</div><div class="metric-label">Algorithms</div></div><div class="metric"><div class="metric-val">0.734</div><div class="metric-label">R² Score</div></div></div>
           </div>
-          <div class="proj-full-footer">
-            <button class="project-toggle-btn" onclick="toggleDropdown(this)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-              Preview &amp; Output
-            </button>
-            <div class="project-dropdown">
-              <div class="project-dropdown-inner">
-                <div class="project-dropdown-label">Screenshots &amp; Output</div>
-                <div class="project-dropdown-images">
-                  <img src="images/ML1.png" alt="Linear Regression output 1" class="lazy-img" loading="lazy" />
-                  <img src="images/ML2.png" alt="Linear Regression output 2" class="lazy-img" loading="lazy" />
-                  <img src="images/ML3.png" alt="Linear Regression output 3" class="lazy-img" loading="lazy" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="proj-foot"><div class="links"><a class="btn btn-sm" href="https://github.com/AhmedMohammedRo/Linear_Algebra_Project" target="_blank" rel="noopener"><svg class="ico i-github ico-fill" aria-hidden="true" focusable="false"><use href="#i-github"/></svg> GitHub</a></div><button class="btn btn-sm toggle" type="button" aria-expanded="false" aria-controls="pv-p3"><svg class="ico i-chevron-down" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg><span class="toggle-label">Preview &amp; output</span></button></div>
+          <div class="preview" id="pv-p3"><div class="preview-inner"><p class="preview-label">Screenshots &amp; output</p><div class="shots"><button class="shot" type="button" aria-label="Open image: Linear Regression output 1"><img data-src="images/ML1.png" alt="Linear Regression output 1" decoding="async" /><span class="zoom"><svg class="ico i-expand" aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span></button><button class="shot" type="button" aria-label="Open image: Linear Regression output 2"><img data-src="images/ML2.png" alt="Linear Regression output 2" decoding="async" /><span class="zoom"><svg class="ico i-expand" aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span></button><button class="shot" type="button" aria-label="Open image: Linear Regression output 3"><img data-src="images/ML3.png" alt="Linear Regression output 3" decoding="async" /><span class="zoom"><svg class="ico i-expand" aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span></button></div></div></div>
         </article>
-
-        <!-- ── 04 · Dijkstra ── -->
-        <article class="proj-full reveal" id="p4" style="--accent-solo:#a78bfa; --accent-dim:rgba(138,99,255,0.1); --accent-border:rgba(138,99,255,0.2); --accent-glow:rgba(138,99,255,0.3); --accent-grad:linear-gradient(90deg, rgba(138,99,255,0.8), rgba(138,99,255,0.2), transparent);">
-          <div class="proj-full-top">
-            <div class="proj-full-id">
-              <div class="proj-full-icon">🔗</div>
-              <div>
-                <div class="proj-full-num">Project 04</div>
-                <div class="proj-full-title">Dijkstra's Algorithm</div>
-              </div>
-            </div>
-            <span class="proj-full-status done">Completed</span>
+        <article class="card proj acc-violet" id="p4" data-cats="ml-algo" data-reveal="up">
+          <div class="proj-top">
+            <div class="proj-id"><span class="icon-tile" aria-hidden="true">🔗</span><div><p class="proj-num">PROJECT 04</p><h2 class="proj-h">Dijkstra's Algorithm</h2></div></div>
+            <span class="status is-done"><span class="dot"></span>Completed</span>
           </div>
-          <p class="proj-full-desc">A clean, production-ready implementation of Dijkstra's shortest path algorithm built from scratch in Python — no library calls, just a custom Graph class, a min-heap priority queue, and path reconstruction logic. Stress-tested on a 17-node graph with cycles, zero-weight edges, and disconnected components.</p>
-          <div class="proj-full-body">
-            <div>
-              <ul class="proj-full-highlights">
-                <li>Custom Graph class — adjacency list, add/remove vertex &amp; edge, vertex renaming</li>
-                <li>O((V + E) log V) via binary heap — handles 0-weight edges and unreachable nodes</li>
-                <li>Path reconstruction with full route tracing back to source</li>
-                <li>17-node stress-test graph with cycles, traps, chords, disconnected island</li>
-              </ul>
-              <div class="proj-full-tech">
-                <span class="tech-tag">Python</span><span class="tech-tag">Graph Theory</span><span class="tech-tag">DSA</span><span class="tech-tag">OOP</span>
-              </div>
-              <div class="proj-full-links">
-                <a href="https://github.com/Omar-Shaker-Elbana/Dijkstra-s_Algorithm" target="_blank" rel="noopener" class="proj-link-tag">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-            <div class="proj-full-metrics">
-              <div class="proj-metric"><div class="proj-metric-value">17</div><div class="proj-metric-label">Test Nodes</div></div>
-              <div class="proj-metric"><div class="proj-metric-value" style="font-size:1.15rem;">O(E log V)</div><div class="proj-metric-label">Complexity</div></div>
-            </div>
+          <p class="proj-desc">A clean, production-ready implementation of Dijkstra's shortest path algorithm built from scratch in Python — no library calls, just a custom Graph class, a min-heap priority queue, and path reconstruction logic. Stress-tested on a 17-node graph with cycles, zero-weight edges, and disconnected components.</p>
+          <div class="proj-body">
+            <div><ul class="proj-points"><li>Custom Graph class — adjacency list, add/remove vertex &amp; edge, vertex renaming</li><li>O((V + E) log V) via binary heap — handles 0-weight edges and unreachable nodes</li><li>Path reconstruction with full route tracing back to source</li><li>17-node stress-test graph with cycles, traps, chords, disconnected island</li></ul><div class="chip-row"><span class="chip">Python</span><span class="chip">Graph Theory</span><span class="chip">DSA</span><span class="chip">OOP</span></div></div>
+            <div class="metrics"><div class="metric"><div class="metric-val">17</div><div class="metric-label">Test Nodes</div></div><div class="metric"><div class="metric-val sm">O(E log V)</div><div class="metric-label">Complexity</div></div></div>
           </div>
-          <div class="proj-full-footer">
-            <button class="project-toggle-btn" onclick="toggleDropdown(this)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-              Preview &amp; Output
-            </button>
-            <div class="project-dropdown">
-              <div class="project-dropdown-inner">
-                <div class="project-dropdown-label">Screenshots &amp; Output</div>
-                <div class="project-dropdown-images">
-                  <img src="images/DI1.png" alt="Dijkstra output 1" class="lazy-img" loading="lazy" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="proj-foot"><div class="links"><a class="btn btn-sm" href="https://github.com/Omar-Shaker-Elbana/Dijkstra-s_Algorithm" target="_blank" rel="noopener"><svg class="ico i-github ico-fill" aria-hidden="true" focusable="false"><use href="#i-github"/></svg> GitHub</a></div><button class="btn btn-sm toggle" type="button" aria-expanded="false" aria-controls="pv-p4"><svg class="ico i-chevron-down" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg><span class="toggle-label">Preview &amp; output</span></button></div>
+          <div class="preview" id="pv-p4"><div class="preview-inner"><p class="preview-label">Screenshots &amp; output</p><div class="shots"><button class="shot" type="button" aria-label="Open image: Dijkstra output 1"><img data-src="images/DI1.png" alt="Dijkstra output 1" decoding="async" /><span class="zoom"><svg class="ico i-expand" aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span></button></div></div></div>
         </article>
-
-        <!-- ── 05 · GIU-Net ── -->
-        <article class="proj-full reveal" id="p5" style="--accent-solo:#5ec8ff; --accent-dim:rgba(94,200,255,0.12); --accent-border:rgba(94,200,255,0.25); --accent-glow:rgba(94,200,255,0.3); --accent-grad:linear-gradient(90deg, #5ec8ff, rgba(94,200,255,0.25), transparent);">
-          <div class="proj-full-top">
-            <div class="proj-full-id">
-              <div class="proj-full-icon">🖧</div>
-              <div>
-                <div class="proj-full-num">Project 05</div>
-                <div class="proj-full-title">GIU-Net: Protocol &amp; Campus Network</div>
-              </div>
-            </div>
-            <span class="proj-full-status done">Completed</span>
+        <article class="card proj acc-blue" id="p5" data-cats="systems java" data-reveal="up">
+          <div class="proj-top">
+            <div class="proj-id"><span class="icon-tile" aria-hidden="true">🖧</span><div><p class="proj-num">PROJECT 05</p><h2 class="proj-h">GIU-Net: Protocol &amp; Campus Network</h2></div></div>
+            <span class="status is-done"><span class="dot"></span>Completed</span>
           </div>
-          <p class="proj-full-desc">A hand-built transport protocol on raw UDP, paired with the campus network engineered to carry it — designed and shipped with a 4-person team for CNET101. No TCP, no shortcuts: every handshake, ACK, and route was derived from scratch and verified live on the wire.</p>
-          <div class="proj-full-body">
-            <div>
-              <ul class="proj-full-highlights">
-                <li>Custom UDP protocol — handshake, sequencing, ACKs, retransmission</li>
-                <li>Multithreaded Java client/server, verified with a live Wireshark capture</li>
-                <li>VLSM subnetting of a /22 block into 5 right-sized subnets by hand</li>
-                <li>Cisco Packet Tracer topology — 2 routers, static routing, HTTP service</li>
-                <li>Bonus ACL enforcing access control at the network layer</li>
-              </ul>
-              <div class="proj-full-tech">
-                <span class="tech-tag">Java</span><span class="tech-tag">UDP Sockets</span><span class="tech-tag">Wireshark</span><span class="tech-tag">Cisco Packet Tracer</span><span class="tech-tag">VLSM</span>
-              </div>
-              <div class="proj-full-links">
-                <a href="https://github.com/mark1234720/GIUNet/tree/main" target="_blank" rel="noopener" class="proj-link-tag">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-            <div class="proj-full-metrics">
-              <div class="proj-metric"><div class="proj-metric-value">5</div><div class="proj-metric-label">VLSM Subnets</div></div>
-              <div class="proj-metric"><div class="proj-metric-value" style="color:var(--gold)">3s</div><div class="proj-metric-label">Retry Timeout</div></div>
-              <div class="proj-metric"><div class="proj-metric-value">2</div><div class="proj-metric-label">Routers Configured</div></div>
-            </div>
+          <p class="proj-desc">A hand-built transport protocol on raw UDP, paired with the campus network engineered to carry it — designed and shipped with a 4-person team for CNET101. No TCP, no shortcuts: every handshake, ACK, and route was derived from scratch and verified live on the wire.</p>
+          <div class="proj-body">
+            <div><ul class="proj-points"><li>Custom UDP protocol — handshake, sequencing, ACKs, retransmission</li><li>Multithreaded Java client/server, verified with a live Wireshark capture</li><li>VLSM subnetting of a /22 block into 5 right-sized subnets by hand</li><li>Cisco Packet Tracer topology — 2 routers, static routing, HTTP service</li><li>Bonus ACL enforcing access control at the network layer</li></ul><div class="chip-row"><span class="chip">Java</span><span class="chip">UDP Sockets</span><span class="chip">Wireshark</span><span class="chip">Cisco Packet Tracer</span><span class="chip">VLSM</span></div></div>
+            <div class="metrics"><div class="metric"><div class="metric-val">5</div><div class="metric-label">VLSM Subnets</div></div><div class="metric"><div class="metric-val">3s</div><div class="metric-label">Retry Timeout</div></div><div class="metric"><div class="metric-val">2</div><div class="metric-label">Routers Configured</div></div></div>
           </div>
-          <div class="proj-full-footer">
-            <button class="pdf-view-btn" onclick="openPdfViewer('GIUNet_Report.pdf', 'GIU-Net Project Report')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              View Full Report (PDF)
-            </button>
-          </div>
+          <div class="proj-foot"><div class="links"><a class="btn btn-sm" href="https://github.com/mark1234720/GIUNet/tree/main" target="_blank" rel="noopener"><svg class="ico i-github ico-fill" aria-hidden="true" focusable="false"><use href="#i-github"/></svg> GitHub</a><a class="btn btn-sm" href="GIUNet_Report.pdf" target="_blank" rel="noopener" data-pdf="GIUNet_Report.pdf" data-pdf-title="GIU-Net Project Report"><svg class="ico i-file" aria-hidden="true" focusable="false"><use href="#i-file"/></svg> View full report (PDF)</a></div></div>
+          
         </article>
-
-        <!-- ── 06 · Vault Protection System ── -->
-        <article class="proj-full reveal" id="p6" style="--accent-solo:#4ade80; --accent-dim:rgba(74,222,128,0.12); --accent-border:rgba(74,222,128,0.25); --accent-glow:rgba(74,222,128,0.3); --accent-grad:linear-gradient(90deg, #4ade80, rgba(74,222,128,0.25), transparent);">
-          <div class="proj-full-top">
-            <div class="proj-full-id">
-              <div class="proj-full-icon">🔐</div>
-              <div>
-                <div class="proj-full-num">Project 06</div>
-                <div class="proj-full-title">Vault Protection System</div>
-              </div>
-            </div>
-            <span class="proj-full-status done">Completed</span>
+        <article class="card proj acc-lime" id="p6" data-cats="systems" data-reveal="up">
+          <div class="proj-top">
+            <div class="proj-id"><span class="icon-tile" aria-hidden="true">🔐</span><div><p class="proj-num">PROJECT 06</p><h2 class="proj-h">Vault Protection System</h2></div></div>
+            <span class="status is-done"><span class="dot"></span>Completed</span>
           </div>
-          <p class="proj-full-desc">A PIN-authenticated vault access system built on Arduino, simulated in Tinkercad and rebuilt on real hardware. Four push buttons set the 4-digit code by press-count, an I2C LCD tracks entry live, and a strict 3-trial lockout drives a buzzer alarm on repeated failed attempts.</p>
-          <div class="proj-full-body">
-            <div>
-              <ul class="proj-full-highlights">
-                <li>Press-count digit entry — each press increments 0→9, rolls over, hold-to-repeat</li>
-                <li>Edge-detected button reads with debounced state tracking across 5 inputs</li>
-                <li>3-trial lockout — red LED + buzzer alarm on repeated failures</li>
-                <li>16x2 I2C LCD — live PIN entry, Accepted/Rejected/Alarm status</li>
-                <li>Designed &amp; simulated in Tinkercad before hardware implementation</li>
-              </ul>
-              <div class="proj-full-tech">
-                <span class="tech-tag">Arduino</span><span class="tech-tag">C++</span><span class="tech-tag">Embedded Systems</span><span class="tech-tag">I2C LCD</span><span class="tech-tag">State Machine</span><span class="tech-tag">Tinkercad</span>
-              </div>
-              <div class="proj-full-links">
-                <a href="https://github.com/Omar-Shaker-Elbana/Vault-Sim" target="_blank" rel="noopener" class="proj-link-tag">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                  GitHub
-                </a>
-              </div>
-            </div>
-            <div class="proj-full-metrics">
-              <div class="proj-metric"><div class="proj-metric-value">4</div><div class="proj-metric-label">PIN Digits</div></div>
-              <div class="proj-metric"><div class="proj-metric-value" style="color:var(--coral)">3</div><div class="proj-metric-label">Max Trials</div></div>
-              <div class="proj-metric"><div class="proj-metric-value">16x2</div><div class="proj-metric-label">I2C LCD</div></div>
-            </div>
+          <p class="proj-desc">A PIN-authenticated vault access system built on Arduino, simulated in Tinkercad and rebuilt on real hardware. Four push buttons set the 4-digit code by press-count, an I2C LCD tracks entry live, and a strict 3-trial lockout drives a buzzer alarm on repeated failed attempts.</p>
+          <div class="proj-body">
+            <div><ul class="proj-points"><li>Press-count digit entry — each press increments 0→9, rolls over, hold-to-repeat</li><li>Edge-detected button reads with debounced state tracking across 5 inputs</li><li>3-trial lockout — red LED + buzzer alarm on repeated failures</li><li>16x2 I2C LCD — live PIN entry, Accepted/Rejected/Alarm status</li><li>Designed &amp; simulated in Tinkercad before hardware implementation</li></ul><div class="chip-row"><span class="chip">Arduino</span><span class="chip">C++</span><span class="chip">Embedded Systems</span><span class="chip">I2C LCD</span><span class="chip">State Machine</span><span class="chip">Tinkercad</span></div></div>
+            <div class="metrics"><div class="metric"><div class="metric-val">4</div><div class="metric-label">PIN Digits</div></div><div class="metric"><div class="metric-val">3</div><div class="metric-label">Max Trials</div></div><div class="metric"><div class="metric-val">16x2</div><div class="metric-label">I2C LCD</div></div></div>
           </div>
-          <div class="proj-full-footer">
-            <button class="project-toggle-btn" onclick="toggleDropdown(this)">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-              Preview &amp; Output
-            </button>
-            <div class="project-dropdown">
-              <div class="project-dropdown-inner">
-                <div class="project-dropdown-label">Screenshots &amp; Output</div>
-                <div class="project-dropdown-images">
-                  <img src="Side_final.jpg" alt="Vault Protection System screenshot 1" class="lazy-img" loading="lazy" />
-                  <img src="top_final.jpg" alt="Vault Protection System screenshot 2" class="lazy-img" loading="lazy" />
-                  <img src="TK.png" alt="Vault Protection System screenshot 3" class="lazy-img" loading="lazy" />
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="proj-foot"><div class="links"><a class="btn btn-sm" href="https://github.com/Omar-Shaker-Elbana/Vault-Sim" target="_blank" rel="noopener"><svg class="ico i-github ico-fill" aria-hidden="true" focusable="false"><use href="#i-github"/></svg> GitHub</a></div><button class="btn btn-sm toggle" type="button" aria-expanded="false" aria-controls="pv-p6"><svg class="ico i-chevron-down" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg><span class="toggle-label">Preview &amp; output</span></button></div>
+          <div class="preview" id="pv-p6"><div class="preview-inner"><p class="preview-label">Screenshots &amp; output</p><div class="shots"><button class="shot" type="button" aria-label="Open image: Vault Protection System screenshot 1"><img data-src="Side_final.jpg" alt="Vault Protection System screenshot 1" decoding="async" /><span class="zoom"><svg class="ico i-expand" aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span></button><button class="shot" type="button" aria-label="Open image: Vault Protection System screenshot 2"><img data-src="top_final.jpg" alt="Vault Protection System screenshot 2" decoding="async" /><span class="zoom"><svg class="ico i-expand" aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span></button><button class="shot" type="button" aria-label="Open image: Vault Protection System screenshot 3"><img data-src="TK.png" alt="Vault Protection System screenshot 3" decoding="async" /><span class="zoom"><svg class="ico i-expand" aria-hidden="true" focusable="false"><use href="#i-expand"/></svg></span></button></div></div></div>
         </article>
-
-        <!-- ── 07 · SM101 Report ── -->
-        <article class="proj-full reveal" id="p7" style="--accent-solo:#ff9f6b; --accent-dim:rgba(255,159,107,0.12); --accent-border:rgba(255,159,107,0.25); --accent-glow:rgba(255,159,107,0.3); --accent-grad:linear-gradient(90deg, #ff9f6b, rgba(255,159,107,0.25), transparent);">
-          <div class="proj-full-top">
-            <div class="proj-full-id">
-              <div class="proj-full-icon">📊</div>
-              <div>
-                <div class="proj-full-num">Project 07</div>
-                <div class="proj-full-title">Video Games &amp; Mental Well-Being</div>
-              </div>
-            </div>
-            <span class="proj-full-status done">Completed</span>
+        <article class="card proj acc-orange" id="p7" data-cats="research" data-reveal="up">
+          <div class="proj-top">
+            <div class="proj-id"><span class="icon-tile" aria-hidden="true">📊</span><div><p class="proj-num">PROJECT 07</p><h2 class="proj-h">Video Games &amp; Mental Well-Being</h2></div></div>
+            <span class="status is-done"><span class="dot"></span>Completed</span>
           </div>
-          <p class="proj-full-desc">A research report for SM101 (Critical Thinking &amp; Scientific Method) investigating whether video game usage causes depression indicators. Designed and iterated a questionnaire, collected 67 responses, and analyzed the data against the stated hypothesis.</p>
-          <div class="proj-full-body">
-            <div>
-              <ul class="proj-full-highlights">
-                <li>67 respondents surveyed via WhatsApp, LinkedIn &amp; Instagram</li>
-                <li>Questionnaire redesigned after instructor feedback — fixed cornering &amp; assumption-based questions</li>
-                <li>8 questions — Yes/No, checklist, multiple-choice &amp; scale formats</li>
-                <li>Hypothesis rejected: no strong causal link found between gaming &amp; depression</li>
-                <li>Proposed follow-up hypothesis: academic load causes depression</li>
-              </ul>
-              <div class="proj-full-tech">
-                <span class="tech-tag">Research Methods</span><span class="tech-tag">Survey Design</span><span class="tech-tag">Data Analysis</span><span class="tech-tag">Google Forms</span>
-              </div>
-              <div class="proj-full-links">
-                <a href="https://www.linkedin.com/posts/omar-shaker-elbana_full-report-activity-7464360450194010112-GYx3?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEfLww4BhDniy2UjbAT01ppyyXKEFtZt5Pw" target="_blank" rel="noopener" class="proj-link-tag">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-            <div class="proj-full-metrics">
-              <div class="proj-metric"><div class="proj-metric-value">67</div><div class="proj-metric-label">Respondents</div></div>
-              <div class="proj-metric"><div class="proj-metric-value" style="color:var(--gold)">8</div><div class="proj-metric-label">Questions</div></div>
-              <div class="proj-metric"><div class="proj-metric-value">4</div><div class="proj-metric-label">Team Members</div></div>
-            </div>
+          <p class="proj-desc">A research report for SM101 (Critical Thinking &amp; Scientific Method) investigating whether video game usage causes depression indicators. Designed and iterated a questionnaire, collected 67 responses, and analyzed the data against the stated hypothesis.</p>
+          <div class="proj-body">
+            <div><ul class="proj-points"><li>67 respondents surveyed via WhatsApp, LinkedIn &amp; Instagram</li><li>Questionnaire redesigned after instructor feedback — fixed cornering &amp; assumption-based questions</li><li>8 questions — Yes/No, checklist, multiple-choice &amp; scale formats</li><li>Hypothesis rejected: no strong causal link found between gaming &amp; depression</li><li>Proposed follow-up hypothesis: academic load causes depression</li></ul><div class="chip-row"><span class="chip">Research Methods</span><span class="chip">Survey Design</span><span class="chip">Data Analysis</span><span class="chip">Google Forms</span></div></div>
+            <div class="metrics"><div class="metric"><div class="metric-val">67</div><div class="metric-label">Respondents</div></div><div class="metric"><div class="metric-val">8</div><div class="metric-label">Questions</div></div><div class="metric"><div class="metric-val">4</div><div class="metric-label">Team Members</div></div></div>
           </div>
-          <div class="proj-full-footer">
-            <button class="pdf-view-btn" onclick="openPdfViewer('SM_Report.pdf', 'Video Games & Mental Well-Being Report')">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              View Full Report (PDF)
-            </button>
-          </div>
+          <div class="proj-foot"><div class="links"><a class="btn btn-sm" href="https://www.linkedin.com/posts/omar-shaker-elbana_full-report-activity-7464360450194010112-GYx3?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAEfLww4BhDniy2UjbAT01ppyyXKEFtZt5Pw" target="_blank" rel="noopener"><svg class="ico i-linkedin ico-fill" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg> LinkedIn</a><a class="btn btn-sm" href="SM_Report.pdf" target="_blank" rel="noopener" data-pdf="SM_Report.pdf" data-pdf-title="Video Games &amp; Mental Well-Being Report"><svg class="ico i-file" aria-hidden="true" focusable="false"><use href="#i-file"/></svg> View full report (PDF)</a></div></div>
+          
         </article>
-
-      </div><!-- end .projects-stack -->
+        <p class="empty">No projects in this category yet.</p>
+        </div>
+      </div>
     </div>
   </section>
+</main>
 
-  <!-- ─── FOOTER ─── -->
-  <footer>
-    <div class="container">
-      <p>Designed &amp; built by <span>Omar Shaker</span> · Cairo, Egypt 🇪🇬 · <span id="footer-year"></span></p>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="index.html#hero" aria-label="Back to top">OS<span class="brand-dot">.</span></a>
+        <p>Backend engineer &amp; CS student building systems that scale — and understanding them well enough to explain every line.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html#about">About</a><a href="index.html#experience">Experience</a><a href="projects.html">Projects</a>
+        <a href="index.html#skills">Skills</a><a href="blog.html">Blog</a><a href="index.html#resume">Resume</a><a href="index.html#contact">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <a class="icon-btn" href="https://github.com/Omar-Shaker-Elbana" target="_blank" rel="noopener" aria-label="GitHub"><svg class="ico i-github ico-fill" aria-hidden="true" focusable="false"><use href="#i-github"/></svg></a>
+        <a class="icon-btn" href="https://www.linkedin.com/in/omar-shaker-elbana/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ico i-linkedin ico-fill" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg></a>
+        <a class="icon-btn" href="mailto:omarshaker082@gmail.com" aria-label="Email"><svg class="ico i-mail" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg></a>
+      </div>
     </div>
-  </footer>
+    <div class="footer-bottom">
+      <span>Designed &amp; built by <b>Omar Shaker</b> · Cairo, Egypt 🇪🇬</span>
+      <span>© <span data-year>2026</span></span>
+    </div>
+  </div>
+</footer><button class="to-top" type="button" aria-label="Back to top"><svg class="ico i-arrow-up" aria-hidden="true" focusable="false"><use href="#i-arrow-up"/></svg></button>
+<div class="toast" role="status" aria-live="polite"><svg class="ico i-check" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span></span></div>
+<dialog class="lightbox" id="lightbox" aria-label="Image viewer">
+  <div class="lb-bar"><span class="lb-count" aria-live="polite"></span><button class="lb-close" type="button" aria-label="Close image viewer"><svg class="ico i-x" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button></div>
+  <div class="lb-stage">
+    <button class="lb-nav lb-prev" type="button" aria-label="Previous image"><svg class="ico i-chevron-left" aria-hidden="true" focusable="false"><use href="#i-chevron-left"/></svg></button>
+    <img class="lb-img" alt="" />
+    <button class="lb-nav lb-next" type="button" aria-label="Next image"><svg class="ico i-chevron-right" aria-hidden="true" focusable="false"><use href="#i-chevron-right"/></svg></button>
+  </div>
+  <p class="lb-cap"></p>
+</dialog>
 
-  <button id="back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-  </button>
-
-  <script>
-    /* ── 1. HERO TITLE — char-split flip ── */
-    (function splitHeroTitle() {
-      const el = document.querySelector('.page-hero-title');
-      if (!el) return;
-      let charIndex = 0;
-      function processNode(node) {
-        if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
-          const chars = node.textContent.split('');
-          const frag = document.createDocumentFragment();
-          chars.forEach(ch => {
-            const span = document.createElement('span');
-            span.className = 'char-split';
-            span.textContent = ch === ' ' ? '\u00A0' : ch;
-            span.style.animationDelay = (0.1 + charIndex * 0.045) + 's';
-            charIndex++;
-            frag.appendChild(span);
-          });
-          node.parentNode.replaceChild(frag, node);
-        } else if (node.nodeType === Node.ELEMENT_NODE) {
-          Array.from(node.childNodes).forEach(processNode);
-        }
-      }
-      Array.from(el.childNodes).forEach(processNode);
-    })();
-
-    /* ── 2. AURORA-FREE GLOW is inline via CSS; REVEAL OBSERVER with stagger per card ── */
-    const cards = document.querySelectorAll('.proj-full.reveal');
-    cards.forEach((card, i) => {
-      card.style.setProperty('--anim', 'animBlurIn');
-      card.style.setProperty('--dur', '0.85s');
-      card.style.setProperty('--delay', (i % 2) * 0.05 + 's');
-    });
-    const revealObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObs.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -80px 0px', threshold: 0.05 });
-    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
-
-    /* ── 3. RAIL — jump links + active-state scroll spy ── */
-    const railDots = document.querySelectorAll('.rail-dot');
-    railDots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const target = document.getElementById(dot.dataset.target);
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-    });
-    const railObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          railDots.forEach(d => d.classList.toggle('active', d.dataset.target === entry.target.id));
-        }
-      });
-    }, { rootMargin: '-35% 0px -55% 0px' });
-    cards.forEach(c => railObs.observe(c));
-
-    /* ── 4. NAV: header scroll state ── */
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-
-    /* ── 5. SCROLL PROGRESS BAR ── */
-    const scrollBar = document.getElementById('scroll-progress');
-    window.addEventListener('scroll', () => {
-      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
-      scrollBar.style.width = pct + '%';
-    }, { passive: true });
-
-    /* ── 6. THEME TOGGLE ── */
-    const themeToggle = document.getElementById('theme-toggle');
-    if ((localStorage.getItem('theme') || 'dark') === 'light') document.documentElement.setAttribute('data-theme', 'light');
-    themeToggle.addEventListener('click', () => {
-      const next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    });
-
-     
-
-    /* ── 8. SMOOTH SCROLL for in-page anchors ── */
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const t = document.querySelector(a.getAttribute('href'));
-        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-      });
-    });
-
-    /* ── 9. PROJECT DROPDOWN ── */
-    function toggleDropdown(btn) {
-      const card = btn.closest('.proj-full');
-      const dropdown = card.querySelector('.project-dropdown');
-      const isOpen = dropdown.classList.contains('open');
-      dropdown.classList.toggle('open', !isOpen);
-      btn.classList.toggle('open', !isOpen);
-      btn.textContent = '';
-      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('fill', 'none');
-      svg.setAttribute('stroke', 'currentColor'); svg.setAttribute('stroke-width', '2.5');
-      Object.assign(svg.style, { width: '12px', height: '12px', flexShrink: '0', transition: 'transform 0.35s ease' });
-      if (!isOpen) svg.style.transform = 'rotate(180deg)';
-      const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
-      poly.setAttribute('points', '6 9 12 15 18 9');
-      svg.appendChild(poly);
-      btn.appendChild(svg);
-      btn.appendChild(document.createTextNode(!isOpen ? ' Hide Preview' : ' Preview & Output'));
-    }
-
-    /* ── 10. LAZY IMAGE FADE-IN ── */
-    const imgObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          if (img.complete) img.classList.add('img-loaded');
-          img.addEventListener('load', () => img.classList.add('img-loaded'));
-          imgObs.unobserve(img);
-        }
-      });
-    }, { rootMargin: '0px 0px 100px 0px' });
-    document.querySelectorAll('.lazy-img').forEach(img => imgObs.observe(img));
-
-    /* ── 11. LIGHTBOX ── */
-    (function initLightbox() {
-      const lb = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lb-img');
-      const lbCap = document.getElementById('lb-caption');
-      const lbCnt = document.getElementById('lb-counter');
-      const lbClose = document.getElementById('lb-close');
-      const lbPrev = document.getElementById('lb-prev');
-      const lbNext = document.getElementById('lb-next');
-      const lbBack = document.getElementById('lb-backdrop');
-      let siblings = [], idx = 0;
-
-      function show(img, dir) {
-        lbImg.src = img.src;
-        lbImg.alt = img.alt;
-        lbCap.textContent = img.alt || '';
-        lbCnt.innerHTML = siblings.length > 1 ? `<span>${idx + 1}</span> / ${siblings.length}` : '';
-        lbPrev.classList.toggle('edge', idx === 0);
-        lbNext.classList.toggle('edge', idx === siblings.length - 1);
-        if (dir !== undefined) {
-          lbImg.style.transition = 'none';
-          lbImg.style.transform = `translateX(${-dir * 20}px)`;
-          lbImg.style.opacity = '0';
-          requestAnimationFrame(() => {
-            lbImg.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
-            lbImg.style.opacity = '1';
-            lbImg.style.transform = 'translateX(0)';
-          });
-        }
-      }
-      function setImg(img, dir) {
-        if (dir !== undefined) {
-          lbImg.style.opacity = '0';
-          lbImg.style.transform = `translateX(${dir * 35}px)`;
-          setTimeout(() => show(img, dir), 180);
-        } else { show(img); }
-      }
-      function open(img) {
-        const wrap = img.closest('.project-dropdown-images');
-        siblings = wrap ? Array.from(wrap.querySelectorAll('img')) : [img];
-        idx = siblings.indexOf(img);
-        lb.classList.toggle('multi', siblings.length > 1);
-        setImg(img);
-        lb.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      }
-      function close() {
-        lb.classList.remove('open');
-        document.body.style.overflow = '';
-        setTimeout(() => { lbImg.src = ''; }, 380);
-      }
-      function go(dir) {
-        const next = idx + dir;
-        if (next < 0 || next >= siblings.length) return;
-        idx = next;
-        setImg(siblings[idx], dir);
-      }
-      document.addEventListener('click', e => {
-        const img = e.target.closest('.project-dropdown-images img');
-        if (img) { e.stopPropagation(); open(img); }
-      });
-      lbClose.addEventListener('click', close);
-      lbBack.addEventListener('click', close);
-      lbPrev.addEventListener('click', e => { e.stopPropagation(); go(-1); });
-      lbNext.addEventListener('click', e => { e.stopPropagation(); go(1); });
-      document.addEventListener('keydown', e => {
-        if (!lb.classList.contains('open')) return;
-        if (e.key === 'Escape') close();
-        if (e.key === 'ArrowLeft') go(-1);
-        if (e.key === 'ArrowRight') go(1);
-      });
-    })();
-
-    /* ── 12. PDF VIEWER ── */
-    function openPdfViewer(url, title) {
-      const viewer = document.getElementById('pdf-viewer');
-      const frame = document.getElementById('pdf-frame');
-      const titleEl = document.getElementById('pdf-title');
-      const dl = document.getElementById('pdf-download');
-      frame.src = url;
-      titleEl.textContent = title || 'Document';
-      dl.href = url;
-      viewer.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-    function closePdfViewer() {
-      const viewer = document.getElementById('pdf-viewer');
-      viewer.classList.remove('open');
-      document.body.style.overflow = '';
-      setTimeout(() => { document.getElementById('pdf-frame').src = ''; }, 380);
-    }
-    document.getElementById('pdf-close').addEventListener('click', closePdfViewer);
-    document.getElementById('pdf-backdrop').addEventListener('click', closePdfViewer);
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        const v = document.getElementById('pdf-viewer');
-        if (v.classList.contains('open')) closePdfViewer();
-      }
-    });
-
-    /* ── 13. 3D CARD TILT (desktop only) ── */
-    (function initCardTilt() {
-      if (!window.matchMedia('(pointer: fine)').matches) return;
-      document.querySelectorAll('.proj-full').forEach(card => {
-        let pending = null;
-        card.addEventListener('mousemove', e => {
-          if (pending) return;
-          pending = requestAnimationFrame(() => {
-            const rect = card.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width - 0.5;
-            const y = (e.clientY - rect.top) / rect.height - 0.5;
-            card.style.transform = `perspective(1200px) rotateY(${x * 2.5}deg) rotateX(${-y * 2.5}deg) translateZ(4px)`;
-            card.style.transition = 'transform 0.1s ease';
-            pending = null;
-          });
-        }, { passive: true });
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = '';
-          card.style.transition = 'transform 0.6s var(--spring), border-color 0.4s, box-shadow 0.4s';
-        });
-      });
-    })();
-
-    /* ── 14. CURSOR GLOW (desktop only) ── */
-    (function initCursor() {
-      if (!window.matchMedia('(pointer: fine)').matches) return;
-      const glow = document.createElement('div');
-      glow.className = 'cursor-glow';
-      document.body.appendChild(glow);
-      let mx = 0, my = 0, cx = 0, cy = 0, raf = null;
-      window.addEventListener('mousemove', e => {
-        mx = e.clientX; my = e.clientY;
-        if (!raf) raf = requestAnimationFrame(animate);
-      }, { passive: true });
-      function animate() {
-        cx += (mx - cx) * 0.08;
-        cy += (my - cy) * 0.08;
-        glow.style.transform = `translate3d(${cx}px, ${cy}px, 0) translate(-50%, -50%)`;
-        if (Math.abs(mx - cx) > 0.3 || Math.abs(my - cy) > 0.3) raf = requestAnimationFrame(animate);
-        else raf = null;
-      }
-    })();
-
-    /* ── 15. BACK TO TOP ── */
-    const backToTop = document.getElementById('back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 400);
-    }, { passive: true });
-
-    /* ── 16. FOOTER YEAR ── */
-    document.getElementById('footer-year').textContent = new Date().getFullYear();
-  </script>
+<dialog class="pdf-dialog" id="pdf-dialog" aria-labelledby="pdf-title">
+  <div class="pdf-head">
+    <h2 id="pdf-title">Document</h2>
+    <div>
+      <a class="btn btn-sm" id="pdf-download" href="#" download><svg class="ico i-download" aria-hidden="true" focusable="false"><use href="#i-download"/></svg> Download</a>
+      <button class="icon-btn" id="pdf-close" type="button" aria-label="Close PDF viewer"><svg class="ico i-x" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
+    </div>
+  </div>
+  <iframe id="pdf-frame" title="PDF viewer"></iframe>
+</dialog>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
